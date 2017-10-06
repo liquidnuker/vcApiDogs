@@ -8,7 +8,7 @@ template,[hidden] {
   display: none;
 }
 
-html,body,div,h1,h2,h3,h4,h5,h6,p,em,center,table,[type="reset"],[type="submit"] {
+html,body,div,object,p,sub,i,[type="reset"],[type="submit"] {
   margin: 0;
   padding: 0;
 }
@@ -23,7 +23,7 @@ html,body,div,h1,h2,h3,h4,h5,h6,p,em,center,table,[type="reset"],[type="submit"]
    License: none (public domain)
 */
 
-html,body,div,h1,h2,h3,h4,h5,h6,p,em,center,table {
+html,body,div,object,p,sub,i {
   border: 0;
   font-size: 100%;
   font: inherit;
@@ -34,11 +34,6 @@ body {
   line-height: 1;
 }
 
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
 /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
 
 html {
@@ -47,9 +42,15 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
+sub {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
 }
 
 html [type="button"],[type="reset"],[type="submit"] {
