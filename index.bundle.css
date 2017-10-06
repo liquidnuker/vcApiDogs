@@ -8,7 +8,7 @@ template,[hidden] {
   display: none;
 }
 
-html,body,div,object,p,sub,i,[type="reset"],[type="submit"] {
+html,body,div,object,p,sub,i,ul,li,[type="reset"],[type="submit"] {
   margin: 0;
   padding: 0;
 }
@@ -23,7 +23,7 @@ html,body,div,object,p,sub,i,[type="reset"],[type="submit"] {
    License: none (public domain)
 */
 
-html,body,div,object,p,sub,i {
+html,body,div,object,p,sub,i,ul,li {
   border: 0;
   font-size: 100%;
   font: inherit;
@@ -32,6 +32,10 @@ html,body,div,object,p,sub,i {
 
 body {
   line-height: 1;
+}
+
+ul {
+  list-style: none;
 }
 
 /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */

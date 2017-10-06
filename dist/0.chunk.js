@@ -66,53 +66,86 @@ if (false) {(function () {
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
     return {
-      allBreeds: [],
+      allBreedNames: [],
+      masterBreedImages: [],
       breedImages: [],
+      subBreed: [],
 
       // api urls
       // List all breed names including sub breeds.
-      allBreedNames: "https://dog.ceo/api/breeds/list/all",
+      url_allBreedNames: "https://dog.ceo/api/breeds/list/all",
       // Returns an array of all the dog images from all the master breeds
-      masterBreedImages: "https://dog.ceo/api/breeds/list"
+      url_masterBreedImages: "https://dog.ceo/api/breeds/list"
 
     };
   },
 
   mounted: function mounted() {
-    // this.listAllBreedNames();
-    this.listMasterBreedImages();
+    this.listAllBreedNames();
+    // this.listMasterBreedImages();
+    // this.listBreedImages("african");
+    // this.listSubBreed("african");
   },
   methods: {
     listAllBreedNames: function listAllBreedNames() {
       var self = this;
-      __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__["a" /* axios_get */](self.allBreedNames).then(function (response) {
+      __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__["a" /* axios_get */](self.url_allBreedNames).then(function (response) {
         var arr = Object.values(response);
         var arr2 = arr[0].message;
 
         for (var i in arr2) {
-          self.allBreeds.push(i);
+          self.allBreedNames.push(i);
         }
+
+        // console.log(self.allBreedNames);
       }).then(function () {
         // self.pagerActive = true;
         // pager.activate(4, self.perPage); // timeOut, perPage
       });
     },
     listMasterBreedImages: function listMasterBreedImages() {
-      // todo: fetch .jpg for this
       var self = this;
       __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__["a" /* axios_get */](self.masterBreedImages).then(function (response) {
         var arr = Object.values(response);
         var arr2 = arr[0].message;
+        console.log(arr2);
+      }).then(function () {
+        // self.pagerActive = true;
+        // pager.activate(4, self.perPage); // timeOut, perPage
+      });
+    },
+    listBreedImages: function listBreedImages(breedName) {
+      // Returns an array of all the images from the breed
+      var url = "https://dog.ceo/api/breed/" + breedName + "/images";
+      var self = this;
+      __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__["a" /* axios_get */](url).then(function (response) {
+        var arr = Object.values(response);
+        var arr2 = arr[0].message;
+        console.log(arr2[0]); // jpg ok
+      }).then(function () {
+        // self.pagerActive = true;
+        // pager.activate(4, self.perPage); // timeOut, perPage
+      });
+    },
+    listSubBreed: function listSubBreed(breedName) {
+      // empty if no sub-breed
+      var url = "https://dog.ceo/api/breed/" + breedName + "/list";
+      var self = this;
+      __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__["a" /* axios_get */](url).then(function (response) {
+        // console.log(response);
       }).then(function () {
         // self.pagerActive = true;
         // pager.activate(4, self.perPage); // timeOut, perPage
       });
     }
+
   }
 });
 
@@ -122,7 +155,9 @@ if (false) {(function () {
 
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div')
+  return _c('div', _vm._l((_vm.allBreedNames), function(i) {
+    return _c('ul', [_c('li', [_vm._v(_vm._s(i))])])
+  }))
 }
 var staticRenderFns = []
 render._withStripped = true
