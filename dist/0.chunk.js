@@ -68,19 +68,25 @@ if (false) {(function () {
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
     return {
-      allBreedNames: [],
+      allBreedNames: "",
       masterBreedImages: [],
       breedImages: [],
       subBreed: [],
 
       // api urls
+
       // List all breed names including sub breeds.
-      url_allBreedNames: "https://dog.ceo/api/breeds/list/all",
+      // url for api mode:
+      // url_allBreedNames: "https://dog.ceo/api/breeds/list/all",
+      // url for local list
+      url_allBreedNames: "./src/js/ajax/allbreednames.json",
+
       // Returns an array of all the dog images from all the master breeds
       url_masterBreedImages: "https://dog.ceo/api/breeds/list"
 
@@ -88,38 +94,42 @@ if (false) {(function () {
   },
 
   mounted: function mounted() {
-    this.listAllBreedNames();
+    // this.listAllBreedNames();
     // this.listMasterBreedImages();
-    // this.listBreedImages("african");
+    this.listBreedImages("african");
     // this.listSubBreed("african");
   },
   methods: {
     listAllBreedNames: function listAllBreedNames() {
       var self = this;
       __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__["a" /* axios_get */](self.url_allBreedNames).then(function (response) {
-        var arr = Object.values(response);
-        var arr2 = arr[0].message;
+        // for local list
+        self.allBreedNames = response.data.allbreeds;
 
-        for (var i in arr2) {
-          self.allBreedNames.push(i);
-        }
+        // for api mode
+        // let arr = Object.values(response);
+        // let arr2 = arr[0].message;
 
-        // console.log(self.allBreedNames);
+        // for (let i in arr2) {
+        //   self.allBreedNames.push(i);
+        // }
       }).then(function () {
         // self.pagerActive = true;
         // pager.activate(4, self.perPage); // timeOut, perPage
       });
     },
     listMasterBreedImages: function listMasterBreedImages() {
-      var self = this;
-      __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__["a" /* axios_get */](self.masterBreedImages).then(function (response) {
-        var arr = Object.values(response);
-        var arr2 = arr[0].message;
-        console.log(arr2);
-      }).then(function () {
-        // self.pagerActive = true;
-        // pager.activate(4, self.perPage); // timeOut, perPage
-      });
+      // let self = this;
+      // axios_get(self.url_masterBreedImages)
+      //   .then(function (response) {
+      //     let arr = Object.values(response);
+      //     let arr2 = arr[0].message;
+      //     console.log(arr2);
+      //   })
+      //   .then(function () {
+      //   // self.pagerActive = true;
+      //   // pager.activate(4, self.perPage); // timeOut, perPage
+      // });
     },
     listBreedImages: function listBreedImages(breedName) {
       // Returns an array of all the images from the breed
@@ -129,6 +139,7 @@ if (false) {(function () {
         var arr = Object.values(response);
         var arr2 = arr[0].message;
         console.log(arr2[0]); // jpg ok
+        console.dir(arr2); // jpg ok
       }).then(function () {
         // self.pagerActive = true;
         // pager.activate(4, self.perPage); // timeOut, perPage
