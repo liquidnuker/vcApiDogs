@@ -1,13 +1,20 @@
 <template>
   <div>
+  <!-- random -->
+  {{ randomDogBreed[0] }}
+  <br>
+  {{ randomDogImage[0] }}
+
     <!-- all breed names -->
-    <ul v-for="i in allBreedNames">
+    <!-- <ul v-for="i in allBreedNames">
       <li>{{ i }}</li>
-    </ul>
+    </ul> -->
   </div>
 </template>
 <script>
 import {axios_get} from "../js/axios_get.js";
+import {shuffle} from "../js/shuffle.js";
+import {allbreeds} from "../js/allbreeds.js";
 export default {
   data() {
     return {
@@ -15,6 +22,11 @@ export default {
       masterBreedImages: [],
       breedImages: [],
       subBreed: [],
+
+      // random dog
+      randomDogBreed: "",
+      randomDogImage: "",
+
       
       // api urls
       
@@ -23,16 +35,10 @@ export default {
       // url_allBreedNames: "https://dog.ceo/api/breeds/list/all",
       // url for local list
       url_allBreedNames: "./src/js/ajax/allbreeds.json",
-
-      // Returns a random dog image from all the breed
-      url_randomDogImage: "https://dog.ceo/api/breeds/image/random",
     }
   },
   mounted: function () {
-    // this.listAllBreedNames();
-    // this.listBreedImages("african");
-    // this.listSubBreed("african");
-    // this.showRandomDogImage();
+    this.listAllBreedNames();
   },
   methods: {
     listAllBreedNames: function () {
@@ -51,47 +57,23 @@ export default {
           // }
         })
         .then(function () {
-        // self.pagerActive = true;
-        // pager.activate(4, self.perPage); // timeOut, perPage
+          self.showRandomDogImage();
       });
     },
-    listBreedImages: function (breedName) {
+    showRandomDogImage: function () {
+      this.randomDogBreed = shuffle(allbreeds);
       // Returns an array of all the images from the breed
-      let url = "https://dog.ceo/api/breed/" + breedName + "/images";
+      let url = "https://dog.ceo/api/breed/" + this.randomDogBreed[0] + "/images";
       let self = this;
       axios_get(url)
         .then(function (response) {
           let arr = Object.values(response);
-          let arr2 = arr[0].message;
-          console.log(arr2[0]); // jpg ok
-          console.dir(arr2); // jpg ok
+          self.randomDogImage = shuffle(arr[0].message);
         })
         .then(function () {
-        // self.pagerActive = true;
-        // pager.activate(4, self.perPage); // timeOut, perPage
-      });
-    },
-    listSubBreed: function (breedName) {
-      // empty if no sub-breed
-      let url = "https://dog.ceo/api/breed/" + breedName + "/list";
-      let self = this;
-      axios_get(url)
-        .then(function (response) {
-          // console.log(response);
-        })
-        .then(function () {
-        // self.pagerActive = true;
-        // pager.activate(4, self.perPage); // timeOut, perPage
-      });
-    },
-    showRandomDogImage: function () {
-      // todo:
-      // shuffle AllbreedNames
-      // listBreedImage
-      // shuffle < listBreedImage.length
-      // show
+        
+      });      
     }
-
   }
 }
 </script>
