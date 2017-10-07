@@ -7,11 +7,15 @@ Vue.use(VueRouter);
 
 // const vcHome = (resolve) => import("../vue-components/Home.vue").then(resolve);
 const vcHome = () => import('../vue-components/Home.vue');
+const vcGallery = () => import('../vue-components/Gallery.vue');
 
 const routes = [
   {
     path: "/",
     component: vcHome
+  },  {
+    path: "/gallery/:breedname",
+    component: vcGallery
   }
 ];
 

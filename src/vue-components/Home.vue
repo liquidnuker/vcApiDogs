@@ -22,7 +22,7 @@ export default {
       // url for api mode:
       // url_allBreedNames: "https://dog.ceo/api/breeds/list/all",
       // url for local list
-      url_allBreedNames: "./src/js/ajax/allbreednames.json",
+      url_allBreedNames: "./src/js/ajax/allbreeds.json",
 
       // Returns a random dog image from all the breed
       url_randomDogImage: "https://dog.ceo/api/breeds/image/random",

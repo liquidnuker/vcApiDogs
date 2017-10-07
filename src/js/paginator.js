@@ -3,7 +3,7 @@ import "./vendor/jPages.min.js";
 const pager = {
   start: function (perPage) {
     $("div.gallery-listing-paginator").jPages({
-      containerID: "itemContainer",
+      containerID: "galleryContainer",
       first: "first",
       previous: "previous",
       next: "next",
