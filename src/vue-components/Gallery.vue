@@ -1,5 +1,8 @@
 <template>
 <div>
+  <vcBreedSelector 
+  :pr-selected="currentBreed" />
+  
   <!-- begin temporary display  -->
   <div class="row" id="tempdisplay">
     <!--top controls-->
@@ -27,6 +30,8 @@ import {allbreeds} from "../js/allbreeds.js";
 import {itemExists} from "../js/itemexists.js";
 import {router} from "../js/router.js";
 import {pager} from "../js/paginator.js";
+
+const vcBreedSelector = () => import ('./vcBreedSelector.vue');
 export default {
   data () {
     return {   
@@ -37,22 +42,23 @@ export default {
       perPage: 8,
     }
   },
+  components: {
+    vcBreedSelector: vcBreedSelector,
+  },
   watch: {
     $route: function () {
         console.log("watcherpageractive:" + " " + this.pagerActive);
         if (this.pagerActive) {
           pager.destroy();
         }
-        // this.checkCategory();
+        this.checkCategory();
       }
   },
   props: [
     "prName1"
   ],
-  components: {
-  },
   mounted: function () {
-    // this.checkCategory();
+    this.checkCategory();
   },
   methods: {  
     checkCategory: function () {
@@ -66,7 +72,7 @@ export default {
       // });
       } else {
       this.currentBreed = breedToCheck;
-      this.displayBreedImages(this.currentBreed);      
+      // this.displayBreedImages(this.currentBreed);      
       }
     },
     displayBreedImages: function (breedName) {

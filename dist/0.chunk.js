@@ -12,8 +12,8 @@ webpackJsonp([0],[
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Gallery_vue__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_46c817f9_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Gallery_vue__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Gallery_vue__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_46c817f9_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Gallery_vue__ = __webpack_require__(48);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -1836,14 +1836,24 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 37 */,
+/* 37 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return allbreeds; });
+var allbreeds = ["affenpinscher", "african", "airedale", "akita", "appenzeller", "basenji", "beagle", "bluetick", "borzoi", "bouvier", "boxer", "brabancon", "briard", "bulldog", "bullterrier", "cairn", "chihuahua", "chow", "clumber", "collie", "coonhound", "corgi", "dachshund", "dane", "deerhound", "dhole", "dingo", "doberman", "elkhound", "entlebucher", "eskimo", "germanshepherd", "greyhound", "groenendael", "hound", "husky", "keeshond", "kelpie", "komondor", "kuvasz", "labrador", "leonberg", "lhasa", "malamute", "malinois", "maltese", "mastiff", "mexicanhairless", "mountain", "newfoundland", "otterhound", "papillon", "pekinese", "pembroke", "pinscher", "pointer", "pomeranian", "poodle", "pug", "pyrenees", "redbone", "retriever", "ridgeback", "rottweiler", "saluki", "samoyed", "schipperke", "schnauzer", "setter", "sheepdog", "shiba", "shihtzu", "spaniel", "springer", "stbernard", "terrier", "vizsla", "weimaraner", "whippet", "wolfhound"];
+
+
+
+/***/ }),
 /* 38 */,
-/* 39 */
+/* 39 */,
+/* 40 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_allbreeds_js__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_allbreeds_js__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_itemexists_js__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__js_router_js__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__js_paginator_js__ = __webpack_require__(42);
@@ -1870,12 +1880,19 @@ module.exports = function spread(callback) {
 //
 //
 //
+//
+//
+//
 
 
 
 
 
 
+
+var vcBreedSelector = function vcBreedSelector() {
+  return __webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, 45));
+};
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
     return {
@@ -1887,19 +1904,21 @@ module.exports = function spread(callback) {
     };
   },
 
+  components: {
+    vcBreedSelector: vcBreedSelector
+  },
   watch: {
     $route: function $route() {
       console.log("watcherpageractive:" + " " + this.pagerActive);
       if (this.pagerActive) {
         __WEBPACK_IMPORTED_MODULE_4__js_paginator_js__["a" /* pager */].destroy();
       }
-      // this.checkCategory();
+      this.checkCategory();
     }
   },
   props: ["prName1"],
-  components: {},
   mounted: function mounted() {
-    // this.checkCategory();
+    this.checkCategory();
   },
   methods: {
     checkCategory: function checkCategory() {
@@ -1913,7 +1932,7 @@ module.exports = function spread(callback) {
         // });
       } else {
         this.currentBreed = breedToCheck;
-        this.displayBreedImages(this.currentBreed);
+        // this.displayBreedImages(this.currentBreed);      
       }
     },
     displayBreedImages: function displayBreedImages(breedName) {
@@ -1930,16 +1949,6 @@ module.exports = function spread(callback) {
     }
   }
 });
-
-/***/ }),
-/* 40 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return allbreeds; });
-var allbreeds = ["affenpinscher", "african", "airedale", "akita", "appenzeller", "basenji", "beagle", "bluetick", "borzoi", "bouvier", "boxer", "brabancon", "briard", "bulldog", "bullterrier", "cairn", "chihuahua", "chow", "clumber", "collie", "coonhound", "corgi", "dachshund", "dane", "deerhound", "dhole", "dingo", "doberman", "elkhound", "entlebucher", "eskimo", "germanshepherd", "greyhound", "groenendael", "hound", "husky", "keeshond", "kelpie", "komondor", "kuvasz", "labrador", "leonberg", "lhasa", "malamute", "malinois", "maltese", "mastiff", "mexicanhairless", "mountain", "newfoundland", "otterhound", "papillon", "pekinese", "pembroke", "pinscher", "pointer", "pomeranian", "poodle", "pug", "pyrenees", "redbone", "retriever", "ridgeback", "rottweiler", "saluki", "samoyed", "schipperke", "schnauzer", "setter", "sheepdog", "shiba", "shihtzu", "spaniel", "springer", "stbernard", "terrier", "vizsla", "weimaraner", "whippet", "wolfhound"];
-
-
 
 /***/ }),
 /* 41 */
@@ -1962,7 +1971,7 @@ var itemExists = function itemExists(item, array) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return pager; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vendor_jPages_min_js__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vendor_jPages_min_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__vendor_jPages_min_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vendor_lazyload_min_js__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vendor_lazyload_min_js__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vendor_lazyload_min_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__vendor_lazyload_min_js__);
 
 
@@ -2199,55 +2208,6 @@ var pager = {
 
 /***/ }),
 /* 44 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('div', {
-    staticClass: "row",
-    attrs: {
-      "id": "tempdisplay"
-    }
-  }, [_c('div', {
-    staticClass: "gallery-listing-paginator"
-  }), _vm._v(" "), _c('section', {
-    staticClass: "row col-sm-12",
-    attrs: {
-      "id": "gallery-placeholder"
-    }
-  }, [_c('div', {
-    attrs: {
-      "id": "galleryContainer"
-    }
-  }, _vm._l((_vm.breedImages), function(i, index) {
-    return _c('div', {
-      staticClass: "col-xs-12 col-sm-4 col-lg-3"
-    }, [_c('div', {
-      attrs: {
-        "id": "ajaxbox"
-      }
-    }, [_c('img', {
-      attrs: {
-        "src": "src/img/ui/loading.gif",
-        "data-src": i
-      }
-    })])])
-  }))])])])
-}
-var staticRenderFns = []
-render._withStripped = true
-var esExports = { render: render, staticRenderFns: staticRenderFns }
-/* harmony default export */ __webpack_exports__["a"] = (esExports);
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-46c817f9", esExports)
-  }
-}
-
-/***/ }),
-/* 45 */,
-/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -2360,6 +2320,61 @@ var _extends = Object.assign || function (e) {
     } else s(e, t);
   }(m, b), m;
 });
+
+/***/ }),
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('vcBreedSelector', {
+    attrs: {
+      "pr-selected": _vm.currentBreed
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "row",
+    attrs: {
+      "id": "tempdisplay"
+    }
+  }, [_c('div', {
+    staticClass: "gallery-listing-paginator"
+  }), _vm._v(" "), _c('section', {
+    staticClass: "row col-sm-12",
+    attrs: {
+      "id": "gallery-placeholder"
+    }
+  }, [_c('div', {
+    attrs: {
+      "id": "galleryContainer"
+    }
+  }, _vm._l((_vm.breedImages), function(i, index) {
+    return _c('div', {
+      staticClass: "col-xs-12 col-sm-4 col-lg-3"
+    }, [_c('div', {
+      attrs: {
+        "id": "ajaxbox"
+      }
+    }, [_c('img', {
+      attrs: {
+        "src": "src/img/ui/loading.gif",
+        "data-src": i
+      }
+    })])])
+  }))])])], 1)
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-46c817f9", esExports)
+  }
+}
 
 /***/ })
 ]);
