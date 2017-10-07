@@ -24,17 +24,15 @@ export default {
       // url for local list
       url_allBreedNames: "./src/js/ajax/allbreednames.json",
 
-      // Returns an array of all the dog images from all the master breeds
-      url_masterBreedImages: "https://dog.ceo/api/breeds/list",
-           
-
+      // Returns a random dog image from all the breed
+      url_randomDogImage: "https://dog.ceo/api/breeds/image/random",
     }
   },
   mounted: function () {
     // this.listAllBreedNames();
-    // this.listMasterBreedImages();
-    this.listBreedImages("african");
+    // this.listBreedImages("african");
     // this.listSubBreed("african");
+    // this.showRandomDogImage();
   },
   methods: {
     listAllBreedNames: function () {
@@ -56,19 +54,6 @@ export default {
         // self.pagerActive = true;
         // pager.activate(4, self.perPage); // timeOut, perPage
       });
-    },
-    listMasterBreedImages: function () {
-      // let self = this;
-      // axios_get(self.url_masterBreedImages)
-      //   .then(function (response) {
-      //     let arr = Object.values(response);
-      //     let arr2 = arr[0].message;
-      //     console.log(arr2);
-      //   })
-      //   .then(function () {
-      //   // self.pagerActive = true;
-      //   // pager.activate(4, self.perPage); // timeOut, perPage
-      // });
     },
     listBreedImages: function (breedName) {
       // Returns an array of all the images from the breed
@@ -99,6 +84,13 @@ export default {
         // pager.activate(4, self.perPage); // timeOut, perPage
       });
     },
+    showRandomDogImage: function () {
+      // todo:
+      // shuffle AllbreedNames
+      // listBreedImage
+      // shuffle < listBreedImage.length
+      // show
+    }
 
   }
 }

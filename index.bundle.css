@@ -8,7 +8,7 @@ template,[hidden] {
   display: none;
 }
 
-html,body,div,object,p,sub,i,ul,li,[type="reset"],[type="submit"] {
+html,body,div,object,p,a,sub,i,ul,li,[type="reset"],[type="submit"] {
   margin: 0;
   padding: 0;
 }
@@ -23,7 +23,7 @@ html,body,div,object,p,sub,i,ul,li,[type="reset"],[type="submit"] {
    License: none (public domain)
 */
 
-html,body,div,object,p,sub,i,ul,li {
+html,body,div,object,p,a,sub,i,ul,li {
   border: 0;
   font-size: 100%;
   font: inherit;
@@ -44,6 +44,11 @@ html {
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+}
+
+a {
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
 }
 
 sub {
