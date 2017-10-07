@@ -11,7 +11,7 @@
         <!-- grid for rwd -->
         <div v-for="(i, index) in breedImages" class="col-xs-12 col-sm-4 col-lg-3">
           <div id="ajaxbox">
-            <img :src="i">
+            <img src="src/img/ui/loading.gif" :data-src="i">
           </div>
         </div>
         <!-- close grid -->
@@ -43,7 +43,7 @@ export default {
         if (this.pagerActive) {
           pager.destroy();
         }
-        this.checkCategory();
+        // this.checkCategory();
       }
   },
   props: [
@@ -76,11 +76,11 @@ export default {
       axios_get(url)
         .then(function (response) {
           let arr = Object.values(response);
-          self.breedImages = arr[0].message;
+          // self.breedImages = arr[0].message;
         })
         .then(function () {
-        self.pagerActive = true;
-        pager.activate(4, self.perPage); // timeOut, perPage
+        // self.pagerActive = true;
+        // pager.activate(4, self.perPage); // timeOut, perPage
       });
     },      
   }

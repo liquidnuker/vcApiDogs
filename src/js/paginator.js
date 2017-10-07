@@ -1,4 +1,5 @@
 import "./vendor/jPages.min.js";
+import LazyLoad from "./vendor/lazyload.min.js";
 
 const pager = {
   start: function (perPage) {
@@ -14,6 +15,10 @@ const pager = {
       startPage: 1,
       perPage: perPage,
       midRange: 5,
+    });
+
+    let myLazyLoad = new LazyLoad({
+      container: document.getElementById('galleryContainer')
     });
   },
   activate: function (timeout, perPage) {
