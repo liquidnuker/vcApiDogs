@@ -13,7 +13,7 @@ webpackJsonp([0],[
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Gallery_vue__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_46c817f9_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Gallery_vue__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_46c817f9_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Gallery_vue__ = __webpack_require__(53);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -1892,9 +1892,6 @@ module.exports = function spread(callback) {
 //
 //
 //
-//
-//
-//
 
 
 
@@ -1904,6 +1901,9 @@ module.exports = function spread(callback) {
 
 var vcBreedSelector = function vcBreedSelector() {
   return __webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, 38));
+};
+var vcGalleryDisplay = function vcGalleryDisplay() {
+  return __webpack_require__.e/* import() */(4).then(__webpack_require__.bind(null, 50));
 };
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
@@ -1920,7 +1920,8 @@ var vcBreedSelector = function vcBreedSelector() {
   },
 
   components: {
-    vcBreedSelector: vcBreedSelector
+    vcBreedSelector: vcBreedSelector,
+    vcGalleryDisplay: vcGalleryDisplay
   },
   watch: {
     $route: function $route() {
@@ -2096,7 +2097,10 @@ Paginate.prototype.hasNext = function () {
 if (true) module.exports = Paginate;
 
 /***/ }),
-/* 50 */
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2105,12 +2109,10 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "pr-selected": _vm.currentBreed
     }
-  }), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _vm._l((_vm.currentImages), function(i) {
-    return _c('ul', [_c('li', [_c('img', {
-      attrs: {
-        "src": i
-      }
-    })])])
+  }), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('vcGalleryDisplay', {
+    attrs: {
+      "pr-current-images": _vm.currentImages
+    }
   }), _vm._v(" "), (_vm.pagerButtons) ? _c('span', [_c('button', {
     on: {
       "click": function($event) {
@@ -2152,7 +2154,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         _vm.nextPage()
       }
     }
-  }, [_vm._v("next>")])]) : _vm._e()], 2)
+  }, [_vm._v("next>")])]) : _vm._e()], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
