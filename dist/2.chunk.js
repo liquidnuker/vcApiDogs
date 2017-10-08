@@ -1,12 +1,12 @@
 webpackJsonp([2],{
 
-/***/ 46:
+/***/ 38:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_vcBreedSelector_vue__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_365d1f8d_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_vcBreedSelector_vue__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_vcBreedSelector_vue__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_365d1f8d_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_vcBreedSelector_vue__ = __webpack_require__(42);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -51,7 +51,7 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 47:
+/***/ 41:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -79,7 +79,7 @@ if (false) {(function () {
   data: function data() {
     return {
       // selected: store.currentCategory,
-      options: __WEBPACK_IMPORTED_MODULE_0__js_allbreeds_js__["a" /* allbreeds */]
+      options: __WEBPACK_IMPORTED_MODULE_0__js_allbreeds_js__["a" /* allbreeds */].sort()
     };
   },
 
@@ -94,7 +94,7 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 48:
+/***/ 42:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

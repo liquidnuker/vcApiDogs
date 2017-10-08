@@ -11,8 +11,8 @@ webpackJsonp([1],[
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Home_vue__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_19b7a970_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Home_vue__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Home_vue__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_19b7a970_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Home_vue__ = __webpack_require__(46);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -1846,12 +1846,13 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 38 */
+/* 38 */,
+/* 39 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_shuffle_js__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_shuffle_js__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_allbreeds_js__ = __webpack_require__(17);
 //
 //
@@ -1866,24 +1867,33 @@ module.exports = function spread(callback) {
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
 
+
+var vcBreedSelector = function vcBreedSelector() {
+  return __webpack_require__.e/* import() */(2/* duplicate */).then(__webpack_require__.bind(null, 38));
+};
+var vcRandomDog = function vcRandomDog() {
+  return __webpack_require__.e/* import() */(3).then(__webpack_require__.bind(null, 43));
+};
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
     return {
       allBreedNames: "",
-      masterBreedImages: [],
-      breedImages: [],
-      subBreed: [],
 
       // random dog
       randomDogBreed: "",
       randomDogImage: "",
 
       // api urls
-
       // List all breed names including sub breeds.
       // url for api mode:
       // url_allBreedNames: "https://dog.ceo/api/breeds/list/all",
@@ -1892,6 +1902,10 @@ module.exports = function spread(callback) {
     };
   },
 
+  components: {
+    vcRandomDog: vcRandomDog,
+    vcBreedSelector: vcBreedSelector
+  },
   mounted: function mounted() {
     this.listAllBreedNames();
   },
@@ -1927,7 +1941,7 @@ module.exports = function spread(callback) {
 });
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1955,12 +1969,22 @@ var shuffle = function shuffle(array) {
 
 
 /***/ }),
-/* 40 */
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_vm._v("\n" + _vm._s(_vm.randomDogBreed[0]) + "\n"), _c('br'), _vm._v("\n" + _vm._s(_vm.randomDogImage[0]) + "\n\n  ")])
+  return _c('div', [_c('vcRandomDog', {
+    attrs: {
+      "pr-random-breed": _vm.randomDogBreed,
+      "pr-random-image": _vm.randomDogImage
+    }
+  }), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('vcBreedSelector')], 1)
 }
 var staticRenderFns = []
 render._withStripped = true

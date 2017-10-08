@@ -1,9 +1,15 @@
 <template>
   <div>
-  <!-- random -->
-  {{ randomDogBreed[0] }}
-  <br>
-  {{ randomDogImage[0] }}
+    <vcRandomDog 
+    :pr-random-breed="randomDogBreed"
+    :pr-random-image="randomDogImage" />
+    
+    <br>
+    <br>
+
+    <vcBreedSelector />
+
+    
 
     <!-- all breed names -->
     <!-- <ul v-for="i in allBreedNames">
@@ -15,21 +21,19 @@
 import {axios_get} from "../js/axios_get.js";
 import {shuffle} from "../js/shuffle.js";
 import {allbreeds} from "../js/allbreeds.js";
+
+const vcBreedSelector = () => import ('./vcBreedSelector.vue');
+const vcRandomDog = () => import ('./vcRandomDog.vue');
 export default {
   data() {
     return {
       allBreedNames: "",
-      masterBreedImages: [],
-      breedImages: [],
-      subBreed: [],
-
+      
       // random dog
       randomDogBreed: "",
       randomDogImage: "",
 
-      
       // api urls
-      
       // List all breed names including sub breeds.
       // url for api mode:
       // url_allBreedNames: "https://dog.ceo/api/breeds/list/all",
@@ -37,8 +41,13 @@ export default {
       url_allBreedNames: "./src/js/ajax/allbreeds.json",
     }
   },
+  components: {
+    vcRandomDog: vcRandomDog,
+    vcBreedSelector: vcBreedSelector
+  },
   mounted: function () {
     this.listAllBreedNames();
+    
   },
   methods: {
     listAllBreedNames: function () {

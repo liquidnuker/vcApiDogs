@@ -12,8 +12,8 @@ webpackJsonp([0],[
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Gallery_vue__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_46c817f9_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Gallery_vue__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Gallery_vue__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_46c817f9_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Gallery_vue__ = __webpack_require__(52);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -1849,15 +1849,21 @@ module.exports = function spread(callback) {
 /* 38 */,
 /* 39 */,
 /* 40 */,
-/* 41 */
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_allbreeds_js__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_itemexists_js__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_itemexists_js__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__js_router_js__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__js_paginator_js__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__js_paginator_js__ = __webpack_require__(49);
 //
 //
 //
@@ -1892,7 +1898,7 @@ module.exports = function spread(callback) {
 
 
 var vcBreedSelector = function vcBreedSelector() {
-  return __webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, 46));
+  return __webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, 38));
 };
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
@@ -1952,7 +1958,7 @@ var vcBreedSelector = function vcBreedSelector() {
 });
 
 /***/ }),
-/* 42 */
+/* 48 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1965,14 +1971,14 @@ var itemExists = function itemExists(item, array) {
 
 
 /***/ }),
-/* 43 */
+/* 49 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return pager; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vendor_jPages_min_js__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vendor_jPages_min_js__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vendor_jPages_min_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__vendor_jPages_min_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vendor_lazyload_min_js__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vendor_lazyload_min_js__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vendor_lazyload_min_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__vendor_lazyload_min_js__);
 
 
@@ -2010,7 +2016,7 @@ var pager = {
 
 
 /***/ }),
-/* 44 */
+/* 50 */
 /***/ (function(module, exports) {
 
 /**
@@ -2208,7 +2214,7 @@ var pager = {
 })(jQuery, window, document);
 
 /***/ }),
-/* 45 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -2323,10 +2329,7 @@ var _extends = Object.assign || function (e) {
 });
 
 /***/ }),
-/* 46 */,
-/* 47 */,
-/* 48 */,
-/* 49 */
+/* 52 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

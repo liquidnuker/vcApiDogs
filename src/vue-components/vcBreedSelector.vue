@@ -20,7 +20,7 @@ export default {
   data () {
     return {   
       // selected: store.currentCategory,
-      options: allbreeds
+      options: allbreeds.sort()
     }
   },
   props: [
