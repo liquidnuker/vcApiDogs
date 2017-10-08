@@ -6,13 +6,10 @@
   <br>
   <br>
 
-  <!-- temp image display -->
-  <ul v-for="i in currentImages">
-    <li>
-      <img :src="i" />
-    </li>
-  </ul>
-  <!-- end temp image display -->
+  <!-- gallery display -->
+  <vcGalleryDisplay 
+  :pr-current-images="currentImages" />
+  <!-- end gallery display -->
 
   <!-- page controls -->
   <span v-if="pagerButtons">
@@ -36,6 +33,7 @@ import {router} from "../js/router.js";
 import Paginate from "../js/vendor/Paginate.js";
 
 const vcBreedSelector = () => import ('./vcBreedSelector.vue');
+const vcGalleryDisplay = () => import ('./vcGalleryDisplay.vue');
 export default {
   data () {
     return {   
@@ -51,6 +49,7 @@ export default {
   },
   components: {
     vcBreedSelector: vcBreedSelector,
+    vcGalleryDisplay: vcGalleryDisplay
   },
   watch: {
     $route: function () {
