@@ -6,9 +6,15 @@
   <br>
   <br>
 
+  <!-- temp image display -->
   <ul v-for="i in currentImages">
-    <li>{{ i }}</li>
+    <li>
+      <img :src="i" />
+    </li>
   </ul>
+  <!-- end temp image display -->
+
+  <!-- page controls -->
   <span v-if="pagerButtons">
   <button @click="prevPage()">&lt;previous</button>
   page
@@ -18,8 +24,7 @@
   </select> of {{ totalPages }}
   <button @click="nextPage()">next&gt;</button>
   </span>
-
-  
+  <!-- end page controls -->  
   
 </div>
 </template>
@@ -28,7 +33,6 @@ import {axios_get} from "../js/axios_get.js";
 import {allbreeds} from "../js/allbreeds.js";
 import {itemExists} from "../js/itemexists.js";
 import {router} from "../js/router.js";
-// import {pager} from "../js/paginator.js";
 import Paginate from "../js/vendor/Paginate.js";
 
 const vcBreedSelector = () => import ('./vcBreedSelector.vue');
@@ -79,16 +83,16 @@ export default {
       axios_get(url)
         .then(function (response) {
           let arr = Object.values(response);
-          self.pager = new Paginate(arr[0].message);
+          self.pager = new Paginate(arr[0].message);          
           
           // default page
           self.currentImages = self.pager.page(0);
-          self.currentPage = self.pager.currentPage;
+          self.currentPage = self.pager.currentPage;          
         })
         .then(function () {
           self.totalPages = self.pager.totalPages;
           self.pagerButtons = true;
-      });
+        });
     },
     showPage: function(num) {
       this.currentImages = this.pager.page(num);

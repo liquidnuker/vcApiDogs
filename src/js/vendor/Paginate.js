@@ -14,7 +14,7 @@ function Paginate (data, perPage) {
 	if (!(data instanceof Array)) throw new Error('Invalid Argument Type')
 
 	this.data = data
-	this.perPage = perPage || 10
+	this.perPage = perPage || 8
 	this.currentPage = 0
 	this.totalPages = Math.ceil(this.data.length / this.perPage)
 }

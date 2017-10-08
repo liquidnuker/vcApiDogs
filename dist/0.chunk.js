@@ -13,7 +13,7 @@ webpackJsonp([0],[
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Gallery_vue__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_46c817f9_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Gallery_vue__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_46c817f9_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Gallery_vue__ = __webpack_require__(50);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -1863,7 +1863,7 @@ module.exports = function spread(callback) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_allbreeds_js__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_itemexists_js__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__js_router_js__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__js_vendor_Paginate_js__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__js_vendor_Paginate_js__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__js_vendor_Paginate_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__js_vendor_Paginate_js__);
 //
 //
@@ -1890,12 +1890,16 @@ module.exports = function spread(callback) {
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
 
 
-// import {pager} from "../js/paginator.js";
 
 
 var vcBreedSelector = function vcBreedSelector() {
@@ -1992,77 +1996,7 @@ var itemExists = function itemExists(item, array) {
 
 
 /***/ }),
-/* 49 */,
-/* 50 */,
-/* 51 */,
-/* 52 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('vcBreedSelector', {
-    attrs: {
-      "pr-selected": _vm.currentBreed
-    }
-  }), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _vm._l((_vm.currentImages), function(i) {
-    return _c('ul', [_c('li', [_vm._v(_vm._s(i))])])
-  }), _vm._v(" "), (_vm.pagerButtons) ? _c('span', [_c('button', {
-    on: {
-      "click": function($event) {
-        _vm.prevPage()
-      }
-    }
-  }, [_vm._v("<previous")]), _vm._v("\r\n  page\r\n  "), _c('select', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.currentPage),
-      expression: "currentPage"
-    }],
-    on: {
-      "change": function($event) {
-        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
-          return o.selected
-        }).map(function(o) {
-          var val = "_value" in o ? o._value : o.value;
-          return val
-        });
-        _vm.currentPage = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-      }
-    }
-  }, _vm._l((_vm.totalPages), function(i) {
-    return _c('option', {
-      domProps: {
-        "value": i
-      },
-      on: {
-        "click": function($event) {
-          _vm.showPage(i)
-        }
-      }
-    }, [_vm._v(_vm._s(i))])
-  })), _vm._v(" of " + _vm._s(_vm.totalPages) + "\r\n  "), _c('button', {
-    on: {
-      "click": function($event) {
-        _vm.nextPage()
-      }
-    }
-  }, [_vm._v("next>")])]) : _vm._e()], 2)
-}
-var staticRenderFns = []
-render._withStripped = true
-var esExports = { render: render, staticRenderFns: staticRenderFns }
-/* harmony default export */ __webpack_exports__["a"] = (esExports);
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-46c817f9", esExports)
-  }
-}
-
-/***/ }),
-/* 53 */,
-/* 54 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -2081,7 +2015,7 @@ function Paginate(data, perPage) {
   if (!(data instanceof Array)) throw new Error('Invalid Argument Type');
 
   this.data = data;
-  this.perPage = perPage || 10;
+  this.perPage = perPage || 8;
   this.currentPage = 0;
   this.totalPages = Math.ceil(this.data.length / this.perPage);
 }
@@ -2160,6 +2094,76 @@ Paginate.prototype.hasNext = function () {
  */
 
 if (true) module.exports = Paginate;
+
+/***/ }),
+/* 50 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('vcBreedSelector', {
+    attrs: {
+      "pr-selected": _vm.currentBreed
+    }
+  }), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _vm._l((_vm.currentImages), function(i) {
+    return _c('ul', [_c('li', [_c('img', {
+      attrs: {
+        "src": i
+      }
+    })])])
+  }), _vm._v(" "), (_vm.pagerButtons) ? _c('span', [_c('button', {
+    on: {
+      "click": function($event) {
+        _vm.prevPage()
+      }
+    }
+  }, [_vm._v("<previous")]), _vm._v("\r\n  page\r\n  "), _c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.currentPage),
+      expression: "currentPage"
+    }],
+    on: {
+      "change": function($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        });
+        _vm.currentPage = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+      }
+    }
+  }, _vm._l((_vm.totalPages), function(i) {
+    return _c('option', {
+      domProps: {
+        "value": i
+      },
+      on: {
+        "click": function($event) {
+          _vm.showPage(i)
+        }
+      }
+    }, [_vm._v(_vm._s(i))])
+  })), _vm._v(" of " + _vm._s(_vm.totalPages) + "\r\n  "), _c('button', {
+    on: {
+      "click": function($event) {
+        _vm.nextPage()
+      }
+    }
+  }, [_vm._v("next>")])]) : _vm._e()], 2)
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-46c817f9", esExports)
+  }
+}
 
 /***/ })
 ]);
