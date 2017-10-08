@@ -2,26 +2,25 @@
 <div>
   <vcBreedSelector 
   :pr-selected="currentBreed" />
+
+  <br>
+  <br>
+
+  <ul v-for="i in currentImages">
+    <li>{{ i }}</li>
+  </ul>
+  <span v-if="pagerButtons">
+  <button @click="prevPage()">&lt;previous</button>
+  page
+  <select v-model="currentPage">
+    <option v-for="i in totalPages" :value="i" 
+    @click="showPage(i)">{{ i }}</option>
+  </select> of {{ totalPages }}
+  <button @click="nextPage()">next&gt;</button>
+  </span>
+
   
-  <!-- begin temporary display  -->
-  <div class="row" id="tempdisplay">
-    <!--top controls-->
-    <div class="gallery-listing-paginator">
-    </div>
-    <!--top controls-->
-    <section id="gallery-placeholder" class="row col-sm-12">
-      <div id="galleryContainer">
-        <!-- grid for rwd -->
-        <div v-for="(i, index) in breedImages" class="col-xs-12 col-sm-4 col-lg-3">
-          <div id="ajaxbox">
-            <img src="src/img/ui/loading.gif" :data-src="i">
-          </div>
-        </div>
-        <!-- close grid -->
-      </div>
-    </section>
-  </div>
-  <!-- end temporary display  -->
+  
 </div>
 </template>
 <script>
@@ -29,17 +28,21 @@ import {axios_get} from "../js/axios_get.js";
 import {allbreeds} from "../js/allbreeds.js";
 import {itemExists} from "../js/itemexists.js";
 import {router} from "../js/router.js";
-import {pager} from "../js/paginator.js";
+// import {pager} from "../js/paginator.js";
+import Paginate from "../js/vendor/Paginate.js";
 
 const vcBreedSelector = () => import ('./vcBreedSelector.vue');
 export default {
   data () {
     return {   
       currentBreed: "",
-      breedImages: "",
+      currentImages: "",
 
-      pagerActive: false,
-      perPage: 8,
+      // paginator 
+      pager: "",
+      currentPage: "",
+      totalPages: "",
+      pagerButtons: false
     }
   },
   components: {
@@ -47,10 +50,6 @@ export default {
   },
   watch: {
     $route: function () {
-        console.log("watcherpageractive:" + " " + this.pagerActive);
-        if (this.pagerActive) {
-          pager.destroy();
-        }
         this.checkCategory();
       }
   },
@@ -66,13 +65,11 @@ export default {
       let breedToCheck = this.$route.params.breedname.toLowerCase();
 
       if (!itemExists(breedToCheck, allbreeds)) {
-      console.log("404/revert to gallery/defaultItem");
-      // router.push({
-      // path: "/gallery/all"
-      // });
+      // 404/default item
+      router.push({path: "/gallery/bulldog"});
       } else {
       this.currentBreed = breedToCheck;
-      // this.displayBreedImages(this.currentBreed);      
+      this.displayBreedImages(this.currentBreed);      
       }
     },
     displayBreedImages: function (breedName) {
@@ -82,13 +79,36 @@ export default {
       axios_get(url)
         .then(function (response) {
           let arr = Object.values(response);
-          // self.breedImages = arr[0].message;
+          self.pager = new Paginate(arr[0].message);
+          
+          // default page
+          self.currentImages = self.pager.page(0);
+          self.currentPage = self.pager.currentPage;
         })
         .then(function () {
-        // self.pagerActive = true;
-        // pager.activate(4, self.perPage); // timeOut, perPage
+          self.totalPages = self.pager.totalPages;
+          self.pagerButtons = true;
       });
-    },      
+    },
+    showPage: function(num) {
+      this.currentImages = this.pager.page(num);
+    },
+    nextPage: function() {
+      if (!this.pager.hasNext()) {
+        this.currentImages = this.pager.page(0);
+      } else {
+        this.currentImages = this.pager.page(this.pager.currentPage + 1);
+      }
+      this.currentPage = this.pager.currentPage;
+    },
+    prevPage: function() {
+      if (this.pager.currentPage === 1) {
+        this.currentImages = this.pager.page(this.pager.totalPages);
+      } else {
+        this.currentImages = this.pager.page(this.pager.currentPage - 1);
+      }
+      this.currentPage = this.pager.currentPage;
+    }      
   }
 }
 </script>

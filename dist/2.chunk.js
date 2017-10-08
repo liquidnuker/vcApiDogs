@@ -72,6 +72,7 @@ if (false) {(function () {
 //
 //
 //
+//
 
 
 
@@ -86,8 +87,8 @@ if (false) {(function () {
   props: ["prSelected"],
   mounted: function mounted() {},
   methods: {
-    switchCategory: function switchCategory(category) {
-      // router.push(category);
+    switchBreed: function switchBreed(breed) {
+      __WEBPACK_IMPORTED_MODULE_1__js_router_js__["a" /* router */].push({ path: "/gallery/" + breed });
     }
   }
 });
@@ -120,7 +121,16 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       }
     }
   }, _vm._l((_vm.options), function(i) {
-    return _c('option', [_vm._v(_vm._s(i))])
+    return _c('option', {
+      domProps: {
+        "value": i
+      },
+      on: {
+        "click": function($event) {
+          _vm.switchBreed(i)
+        }
+      }
+    }, [_vm._v(_vm._s(i))])
   }))])])])
 }
 var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

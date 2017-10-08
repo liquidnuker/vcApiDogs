@@ -7,7 +7,8 @@
     <!-- vendor/select-css.scss -->
     <div class="custom-select1_01">
      <select v-model="prSelected">
-        <option v-for="i in options">{{ i }}</option>
+        <option v-for="i in options" 
+        @click="switchBreed(i)" :value="i">{{ i }}</option>
       </select>
     </div>
   </form>
@@ -30,8 +31,8 @@ export default {
     
   },
   methods: {   
-    switchCategory: function(category) {
-      // router.push(category);
+    switchBreed: function(breed) {
+      router.push({path: "/gallery/" + breed});
     }     
   }
 }
