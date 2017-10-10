@@ -64,6 +64,7 @@ if (false) {(function () {
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
@@ -83,7 +84,7 @@ if (false) {(function () {
 
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_vm._v("\n" + _vm._s(_vm.prStatus) + "\n"), _vm._v("\n" + _vm._s(_vm.prRandomBreed[0]) + "\n"), _c('br'), _vm._v("\n" + _vm._s(_vm.prRandomImage[0]) + "\n")])
+  return _c('div', [_vm._v("\n" + _vm._s(_vm.prStatus) + "\n"), _c('br'), _vm._v(" "), _vm._v("\n" + _vm._s(_vm.prRandomBreed[0]) + "\n"), _c('br'), _vm._v("\n" + _vm._s(_vm.prRandomImage[0]) + "\n")])
 }
 var staticRenderFns = []
 render._withStripped = true

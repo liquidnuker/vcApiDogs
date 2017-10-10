@@ -1,6 +1,7 @@
 <template>
 <div>
   <vcRandomDog
+  :pr-status="status.randomDog"
   :pr-random-breed="randomDogBreed"
   :pr-random-image="randomDogImage" />
   
@@ -37,6 +38,10 @@ export default {
       randomDogBreed: "",
       randomDogImage: "",
 
+      status: {
+        randomDog: ""
+      },
+
       // api urls
       // List all breed names including sub breeds.
       // url for api mode:
@@ -69,17 +74,20 @@ export default {
           // }
         })
         .then(function () {
-          // self.showRandomDogImage();
+          self.showRandomDogImage();
       });
     },
     showRandomDogImage: function () {
       this.randomDogBreed = shuffle(allbreeds);
+      this.status.randomDog = `loading ${this.randomDogBreed[0]}`;
+
       // Returns an array of all the images from the breed
       let url = "https://dog.ceo/api/breed/" + this.randomDogBreed[0] + "/images";
       let self = this;
       axios_get(url)
         .then(function (response) {
           let arr = Object.values(response);
+          self.status.randomDog = "";
           self.randomDogImage = shuffle(arr[0].message);
         })
         .then(function () {

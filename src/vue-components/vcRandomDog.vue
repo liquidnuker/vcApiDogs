@@ -1,6 +1,7 @@
 <template>
   <div>
   {{ prStatus }}
+  <br>
   <!-- random -->
   {{ prRandomBreed[0] }}
   <br>

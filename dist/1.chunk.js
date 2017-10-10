@@ -1904,6 +1904,7 @@ var shuffle = function shuffle(array) {
 //
 //
 //
+//
 
 
 
@@ -1923,6 +1924,10 @@ var vcRandomDog = function vcRandomDog() {
       // random dog
       randomDogBreed: "",
       randomDogImage: "",
+
+      status: {
+        randomDog: ""
+      },
 
       // api urls
       // List all breed names including sub breeds.
@@ -1954,16 +1959,19 @@ var vcRandomDog = function vcRandomDog() {
         //   self.allBreedNames.push(i);
         // }
       }).then(function () {
-        // self.showRandomDogImage();
+        self.showRandomDogImage();
       });
     },
     showRandomDogImage: function showRandomDogImage() {
       this.randomDogBreed = __WEBPACK_IMPORTED_MODULE_1__js_shuffle_js__["a" /* shuffle */](__WEBPACK_IMPORTED_MODULE_2__js_allbreeds_js__["a" /* allbreeds */]);
+      this.status.randomDog = "loading " + this.randomDogBreed[0];
+
       // Returns an array of all the images from the breed
       var url = "https://dog.ceo/api/breed/" + this.randomDogBreed[0] + "/images";
       var self = this;
       __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__["a" /* axios_get */](url).then(function (response) {
         var arr = Object.values(response);
+        self.status.randomDog = "";
         self.randomDogImage = __WEBPACK_IMPORTED_MODULE_1__js_shuffle_js__["a" /* shuffle */](arr[0].message);
       }).then(function () {});
     },
@@ -1983,6 +1991,7 @@ var vcRandomDog = function vcRandomDog() {
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('vcRandomDog', {
     attrs: {
+      "pr-status": _vm.status.randomDog,
       "pr-random-breed": _vm.randomDogBreed,
       "pr-random-image": _vm.randomDogImage
     }
