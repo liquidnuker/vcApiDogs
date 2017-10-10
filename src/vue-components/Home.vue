@@ -1,5 +1,6 @@
 <template>
 <div>
+  <!-- random dog -->
   <vcRandomDog
   :pr-status="status.randomDog"
   :pr-random-breed="randomDogBreed"
@@ -8,6 +9,7 @@
   <br>
   <br>
 
+  <!-- breed selector -->
   <select>
     <option value="">Choose Breed...</option>
     <option v-for="i in options"

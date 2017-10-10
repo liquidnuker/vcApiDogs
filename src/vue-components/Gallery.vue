@@ -76,9 +76,6 @@ export default {
         this.checkCategory();
       }
   },
-  props: [
-    "prName1"
-  ],
   mounted: function () {
     this.checkCategory();
   },

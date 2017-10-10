@@ -55,6 +55,15 @@ if (false) {(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_store_js__ = __webpack_require__(56);
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -66,9 +75,12 @@ if (false) {(function () {
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
-    return {};
+    return {
+      lastViewed: ""
+    };
   },
 
   watch: {
@@ -78,7 +90,17 @@ if (false) {(function () {
   props: ["prStatus", "prCurrentImages"],
   components: {},
   mounted: function mounted() {},
-  methods: {}
+  methods: {
+    insertLastViewed: function insertLastViewed(item) {
+      if (__WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].lastViewed.length < 4) {
+        __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].lastViewed.unshift(item);
+      } else {
+        __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].lastViewed.unshift(item);
+        __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].lastViewed.pop();
+      }
+      this.lastViewed = __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].lastViewed;
+    }
+  }
 });
 
 /***/ }),
@@ -92,8 +114,15 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     return _c('ul', [_c('li', [_c('img', {
       attrs: {
         "src": i
+      },
+      on: {
+        "click": function($event) {
+          _vm.insertLastViewed(i)
+        }
       }
-    })])])
+    }), _c('br')])])
+  }), _vm._v(" "), _vm._l((_vm.lastViewed), function(i) {
+    return _c('ul', [_c('li', [_vm._v("\r\n      " + _vm._s(i) + "\r\n    ")])])
   })], 2)
 }
 var staticRenderFns = []
@@ -106,6 +135,19 @@ if (false) {
      require("vue-hot-reload-api").rerender("data-v-ee2dba34", esExports)
   }
 }
+
+/***/ }),
+
+/***/ 56:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return store; });
+var store = {
+  lastViewed: []
+};
+
+
 
 /***/ })
 
