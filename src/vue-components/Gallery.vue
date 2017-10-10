@@ -6,6 +6,11 @@
   <br>
   <br>
 
+  <!-- random dog -->
+  <vcRandomDog
+  :pr-random-breed="randomDogBreed"
+  :pr-random-image="randomDogImage" />
+
   <!-- gallery display -->
   <vcGalleryDisplay 
   :pr-current-images="currentImages" />
@@ -29,16 +34,22 @@
 import {axios_get} from "../js/axios_get.js";
 import {allbreeds} from "../js/allbreeds.js";
 import {itemExists} from "../js/itemexists.js";
+import {shuffle} from "../js/shuffle.js";
 import {router} from "../js/router.js";
 import Paginate from "../js/vendor/Paginate.js";
 
 const vcBreedSelector = () => import ('./vcBreedSelector.vue');
 const vcGalleryDisplay = () => import ('./vcGalleryDisplay.vue');
+const vcRandomDog = () => import ('./vcRandomDog.vue');
 export default {
   data () {
     return {   
       currentBreed: "",
       currentImages: "",
+
+      // random dog
+      randomDogBreed: "",
+      randomDogImage: "",
 
       // paginator 
       pager: "",
@@ -49,7 +60,8 @@ export default {
   },
   components: {
     vcBreedSelector: vcBreedSelector,
-    vcGalleryDisplay: vcGalleryDisplay
+    vcGalleryDisplay: vcGalleryDisplay,
+    vcRandomDog: vcRandomDog
   },
   watch: {
     $route: function () {
@@ -91,6 +103,9 @@ export default {
         .then(function () {
           self.totalPages = self.pager.totalPages;
           self.pagerButtons = true;
+
+          // show random dog 
+          self.showRandomDogImage();
         });
     },
     showPage: function(num) {
@@ -111,7 +126,21 @@ export default {
         this.currentImages = this.pager.page(this.pager.currentPage - 1);
       }
       this.currentPage = this.pager.currentPage;
-    }      
+    },
+    showRandomDogImage: function () {
+      this.randomDogBreed = shuffle(allbreeds);
+      // Returns an array of all the images from the breed
+      let url = "https://dog.ceo/api/breed/" + this.randomDogBreed[0] + "/images";
+      let self = this;
+      axios_get(url)
+        .then(function (response) {
+          let arr = Object.values(response);
+          self.randomDogImage = shuffle(arr[0].message);
+        })
+        .then(function () {
+        
+      });      
+    },      
   }
 }
 </script>

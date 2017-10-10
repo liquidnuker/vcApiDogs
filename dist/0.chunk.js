@@ -1846,7 +1846,34 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 38 */,
+/* 38 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return shuffle; });
+var shuffle = function shuffle(array) {
+  var currentIndex = array.length;
+  var temporaryValue = void 0;
+  var randomIndex = void 0;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  return array;
+};
+
+
+
+/***/ }),
 /* 39 */,
 /* 40 */,
 /* 41 */,
@@ -1859,9 +1886,10 @@ module.exports = function spread(callback) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_allbreeds_js__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_itemexists_js__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__js_router_js__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__js_vendor_Paginate_js__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__js_vendor_Paginate_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__js_vendor_Paginate_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__js_shuffle_js__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__js_router_js__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js__);
 //
 //
 //
@@ -1889,6 +1917,12 @@ module.exports = function spread(callback) {
 //
 //
 //
+//
+//
+//
+//
+//
+
 
 
 
@@ -1902,11 +1936,18 @@ var vcBreedSelector = function vcBreedSelector() {
 var vcGalleryDisplay = function vcGalleryDisplay() {
   return __webpack_require__.e/* import() */(3).then(__webpack_require__.bind(null, 50));
 };
+var vcRandomDog = function vcRandomDog() {
+  return __webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, 39));
+};
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
     return {
       currentBreed: "",
       currentImages: "",
+
+      // random dog
+      randomDogBreed: "",
+      randomDogImage: "",
 
       // paginator 
       pager: "",
@@ -1918,7 +1959,8 @@ var vcGalleryDisplay = function vcGalleryDisplay() {
 
   components: {
     vcBreedSelector: vcBreedSelector,
-    vcGalleryDisplay: vcGalleryDisplay
+    vcGalleryDisplay: vcGalleryDisplay,
+    vcRandomDog: vcRandomDog
   },
   watch: {
     $route: function $route() {
@@ -1936,7 +1978,7 @@ var vcGalleryDisplay = function vcGalleryDisplay() {
 
       if (!__WEBPACK_IMPORTED_MODULE_2__js_itemexists_js__["a" /* itemExists */](breedToCheck, __WEBPACK_IMPORTED_MODULE_1__js_allbreeds_js__["a" /* allbreeds */])) {
         // 404/default item
-        __WEBPACK_IMPORTED_MODULE_3__js_router_js__["a" /* router */].push({ path: "/gallery/bulldog" });
+        __WEBPACK_IMPORTED_MODULE_4__js_router_js__["a" /* router */].push({ path: "/gallery/bulldog" });
       } else {
         this.currentBreed = breedToCheck;
         this.displayBreedImages(this.currentBreed);
@@ -1948,7 +1990,7 @@ var vcGalleryDisplay = function vcGalleryDisplay() {
       var self = this;
       __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__["a" /* axios_get */](url).then(function (response) {
         var arr = Object.values(response);
-        self.pager = new __WEBPACK_IMPORTED_MODULE_4__js_vendor_Paginate_js___default.a(arr[0].message);
+        self.pager = new __WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js___default.a(arr[0].message);
 
         // default page
         self.currentImages = self.pager.page(0);
@@ -1956,6 +1998,9 @@ var vcGalleryDisplay = function vcGalleryDisplay() {
       }).then(function () {
         self.totalPages = self.pager.totalPages;
         self.pagerButtons = true;
+
+        // show random dog 
+        self.showRandomDogImage();
       });
     },
     showPage: function showPage(num) {
@@ -1976,6 +2021,16 @@ var vcGalleryDisplay = function vcGalleryDisplay() {
         this.currentImages = this.pager.page(this.pager.currentPage - 1);
       }
       this.currentPage = this.pager.currentPage;
+    },
+    showRandomDogImage: function showRandomDogImage() {
+      this.randomDogBreed = __WEBPACK_IMPORTED_MODULE_3__js_shuffle_js__["a" /* shuffle */](__WEBPACK_IMPORTED_MODULE_1__js_allbreeds_js__["a" /* allbreeds */]);
+      // Returns an array of all the images from the breed
+      var url = "https://dog.ceo/api/breed/" + this.randomDogBreed[0] + "/images";
+      var self = this;
+      __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__["a" /* axios_get */](url).then(function (response) {
+        var arr = Object.values(response);
+        self.randomDogImage = __WEBPACK_IMPORTED_MODULE_3__js_shuffle_js__["a" /* shuffle */](arr[0].message);
+      }).then(function () {});
     }
   }
 });
@@ -2109,7 +2164,12 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "pr-selected": _vm.currentBreed
     }
-  }), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('vcGalleryDisplay', {
+  }), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('vcRandomDog', {
+    attrs: {
+      "pr-random-breed": _vm.randomDogBreed,
+      "pr-random-image": _vm.randomDogImage
+    }
+  }), _vm._v(" "), _c('vcGalleryDisplay', {
     attrs: {
       "pr-current-images": _vm.currentImages
     }
