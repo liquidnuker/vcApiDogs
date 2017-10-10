@@ -8,11 +8,13 @@
 
   <!-- random dog -->
   <vcRandomDog
+  :pr-status="status.randomDog"
   :pr-random-breed="randomDogBreed"
   :pr-random-image="randomDogImage" />
 
   <!-- gallery display -->
   <vcGalleryDisplay 
+  :pr-status="status.galleryDisplay"
   :pr-current-images="currentImages" />
   <!-- end gallery display -->
 
@@ -55,7 +57,13 @@ export default {
       pager: "",
       currentPage: "",
       totalPages: "",
-      pagerButtons: false
+      pagerButtons: false,
+
+      // status
+      status: {
+        galleryDisplay: "",
+        randomDog: ""  
+      },
     }
   },
   components: {
@@ -88,24 +96,29 @@ export default {
       }
     },
     displayBreedImages: function (breedName) {
+      this.status.galleryDisplay = `fetching ${this.currentBreed} data`;
+
       // Returns an array of all the images from the breed
       let url = "https://dog.ceo/api/breed/" + breedName + "/images";
       let self = this;
       axios_get(url)
         .then(function (response) {
           let arr = Object.values(response);
-          self.pager = new Paginate(arr[0].message);          
+          self.pager = new Paginate(arr[0].message); 
+          self.status.galleryDisplay = "fetching images...";         
           
           // default page
           self.currentImages = self.pager.page(0);
           self.currentPage = self.pager.currentPage;          
         })
         .then(function () {
+          self.status.galleryDisplay = "";  
           self.totalPages = self.pager.totalPages;
           self.pagerButtons = true;
 
           // show random dog 
           self.showRandomDogImage();
+          self.status.randomDog = "loading random dog...";
         });
     },
     showPage: function(num) {
@@ -135,6 +148,7 @@ export default {
       axios_get(url)
         .then(function (response) {
           let arr = Object.values(response);
+          self.status.randomDog = "";
           self.randomDogImage = shuffle(arr[0].message);
         })
         .then(function () {

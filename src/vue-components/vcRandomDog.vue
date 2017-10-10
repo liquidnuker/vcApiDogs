@@ -1,6 +1,7 @@
 <template>
   <div>
-    <!-- random -->
+  {{ prStatus }}
+  <!-- random -->
   {{ prRandomBreed[0] }}
   <br>
   {{ prRandomImage[0] }}
@@ -14,6 +15,7 @@ export default {
     }
   },
   props: [
+    "prStatus",
     "prRandomBreed",
     "prRandomImage"
   ],

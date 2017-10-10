@@ -64,6 +64,7 @@ if (false) {(function () {
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
@@ -74,7 +75,7 @@ if (false) {(function () {
     // : function () {
     // }
   },
-  props: ["prCurrentImages"],
+  props: ["prStatus", "prCurrentImages"],
   components: {},
   mounted: function mounted() {},
   methods: {}
@@ -87,13 +88,13 @@ if (false) {(function () {
 
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', _vm._l((_vm.prCurrentImages), function(i) {
+  return _c('div', [_vm._v("\r\n  " + _vm._s(_vm.prStatus) + "\r\n  "), _vm._l((_vm.prCurrentImages), function(i) {
     return _c('ul', [_c('li', [_c('img', {
       attrs: {
         "src": i
       }
     })])])
-  }))
+  })], 2)
 }
 var staticRenderFns = []
 render._withStripped = true

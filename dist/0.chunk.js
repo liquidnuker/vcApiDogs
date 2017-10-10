@@ -1922,6 +1922,8 @@ var shuffle = function shuffle(array) {
 //
 //
 //
+//
+//
 
 
 
@@ -1953,7 +1955,13 @@ var vcRandomDog = function vcRandomDog() {
       pager: "",
       currentPage: "",
       totalPages: "",
-      pagerButtons: false
+      pagerButtons: false,
+
+      // status
+      status: {
+        galleryDisplay: "",
+        randomDog: ""
+      }
     };
   },
 
@@ -1985,22 +1993,27 @@ var vcRandomDog = function vcRandomDog() {
       }
     },
     displayBreedImages: function displayBreedImages(breedName) {
+      this.status.galleryDisplay = "fetching " + this.currentBreed + " data";
+
       // Returns an array of all the images from the breed
       var url = "https://dog.ceo/api/breed/" + breedName + "/images";
       var self = this;
       __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__["a" /* axios_get */](url).then(function (response) {
         var arr = Object.values(response);
         self.pager = new __WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js___default.a(arr[0].message);
+        self.status.galleryDisplay = "fetching images...";
 
         // default page
         self.currentImages = self.pager.page(0);
         self.currentPage = self.pager.currentPage;
       }).then(function () {
+        self.status.galleryDisplay = "";
         self.totalPages = self.pager.totalPages;
         self.pagerButtons = true;
 
         // show random dog 
         self.showRandomDogImage();
+        self.status.randomDog = "loading random dog...";
       });
     },
     showPage: function showPage(num) {
@@ -2029,6 +2042,7 @@ var vcRandomDog = function vcRandomDog() {
       var self = this;
       __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__["a" /* axios_get */](url).then(function (response) {
         var arr = Object.values(response);
+        self.status.randomDog = "";
         self.randomDogImage = __WEBPACK_IMPORTED_MODULE_3__js_shuffle_js__["a" /* shuffle */](arr[0].message);
       }).then(function () {});
     }
@@ -2166,11 +2180,13 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   }), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('vcRandomDog', {
     attrs: {
+      "pr-status": _vm.status.randomDog,
       "pr-random-breed": _vm.randomDogBreed,
       "pr-random-image": _vm.randomDogImage
     }
   }), _vm._v(" "), _c('vcGalleryDisplay', {
     attrs: {
+      "pr-status": _vm.status.galleryDisplay,
       "pr-current-images": _vm.currentImages
     }
   }), _vm._v(" "), (_vm.pagerButtons) ? _c('span', [_c('button', {

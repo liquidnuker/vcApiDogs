@@ -1,5 +1,6 @@
 <template>
 <div>
+  {{ prStatus }}
   <ul v-for="i in prCurrentImages">
     <li>
       <img :src="i" />
@@ -19,6 +20,7 @@ export default {
   // }
   },
   props: [
+    "prStatus",
     "prCurrentImages"
   ],
   components: {
