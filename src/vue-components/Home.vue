@@ -1,33 +1,37 @@
 <template>
-  <div>
-    <vcRandomDog 
-    :pr-random-breed="randomDogBreed"
-    :pr-random-image="randomDogImage" />
-    
-    <br>
-    <br>
+<div>
+  <vcRandomDog
+  :pr-random-breed="randomDogBreed"
+  :pr-random-image="randomDogImage" />
+  
+  <br>
+  <br>
 
-    <vcBreedSelector />
+  <select>
+    <option value="">Choose Breed...</option>
+    <option v-for="i in options"
+    @click="switchBreed(i)" :value="i">{{ i }}</option>
+  </select>
 
-    
-
-    <!-- all breed names -->
-    <!-- <ul v-for="i in allBreedNames">
-      <li>{{ i }}</li>
-    </ul> -->
-  </div>
+  <!-- all breed names -->
+  <!-- <ul v-for="i in allBreedNames">
+    <li>{{ i }}</li>
+  </ul> -->
+</div>
 </template>
 <script>
 import {axios_get} from "../js/axios_get.js";
 import {shuffle} from "../js/shuffle.js";
 import {allbreeds} from "../js/allbreeds.js";
+import {router} from "../js/router.js";
 
-const vcBreedSelector = () => import ('./vcBreedSelector.vue');
 const vcRandomDog = () => import ('./vcRandomDog.vue');
 export default {
   data() {
     return {
       allBreedNames: "",
+
+      options: allbreeds.sort(),
       
       // random dog
       randomDogBreed: "",
@@ -43,7 +47,6 @@ export default {
   },
   components: {
     vcRandomDog: vcRandomDog,
-    vcBreedSelector: vcBreedSelector
   },
   mounted: function () {
     this.listAllBreedNames();
@@ -66,7 +69,7 @@ export default {
           // }
         })
         .then(function () {
-          self.showRandomDogImage();
+          // self.showRandomDogImage();
       });
     },
     showRandomDogImage: function () {
@@ -82,7 +85,10 @@ export default {
         .then(function () {
         
       });      
-    }
+    },
+    switchBreed: function(breed) {
+      router.push({path: "/gallery/" + breed});
+    } 
   }
 }
 </script>
