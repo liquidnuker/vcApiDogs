@@ -15,6 +15,7 @@
   <!-- gallery display -->
   <vcGalleryDisplay 
   :pr-status="status.galleryDisplay"
+  :pr-current-breed="currentBreed"
   :pr-current-images="currentImages" />
   <!-- end gallery display -->
 

@@ -1,7 +1,7 @@
 <template>
 <div>
-  <div v-if="favCount > 0">
-    Favorites: {{ favCount }}
+  <div v-if="favorites.length > 0">
+    Favorites: {{ favorites.length }}
   </div>
 </div>
 </template>
@@ -10,20 +10,14 @@ import {store} from "../js/store.js";
 export default {
   data () {
     return {   
-      favCount: store.favorites.length
+      favorites: store.favorites
     }
   },
   watch: {
   // : function () {
   // }
   },
-  props: [
-    "prName1"
-  ],
-  components: {
-  },
   mounted: function () {
-    
   },
   methods: {        
   }

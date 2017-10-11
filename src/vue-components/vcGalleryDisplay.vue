@@ -8,7 +8,7 @@
   <ul v-for="i in prCurrentImages">
     <li>
       <img :src="i" 
-      @click="insertLastViewed(i)" /><br>
+      @click="insertLastViewed(i); insertFavorites(i, prCurrentBreed)" /><br>
     </li>
   </ul>
 
@@ -19,6 +19,7 @@
 </template>
 <script>
 import {store} from "../js/store.js";
+import {extractFileName} from "../js/extractfilename.js";
 const vcLastViewed = () => import ('./vcLastViewed.vue');
 const vcFavoriteCount = () => import ('./vcFavoriteCount.vue');
 export default {
@@ -33,7 +34,8 @@ export default {
   },
   props: [
     "prStatus",
-    "prCurrentImages"
+    "prCurrentImages",
+    "prCurrentBreed"
   ],
   components: {
     vcLastViewed: vcLastViewed,
@@ -42,13 +44,29 @@ export default {
   mounted: function () {
   },
   methods: {   
-    insertLastViewed: function(item) {
+    insertLastViewed: function(imgSrc) {
       if (store.lastViewed.length < 4) {
-        store.lastViewed.unshift(item);
+        store.lastViewed.unshift(imgSrc);
       } else {
-        store.lastViewed.unshift(item);
+        store.lastViewed.unshift(imgSrc);
         store.lastViewed.pop();
       }
+      console.log(store.lastViewed);
+    },
+    insertFavorites: function(imgSrc, breed) {
+      let name = extractFileName(imgSrc, false);
+
+      // todo: add check if item already exists
+      store.favorites.push({
+        name: name,
+        imgSrc: imgSrc,
+        breed: breed,
+        notes: "",
+        edit: false
+      });
+
+      console.log(store.favorites);
+
     }     
   }
 }

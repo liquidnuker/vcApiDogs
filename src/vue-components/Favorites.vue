@@ -4,6 +4,8 @@
 
     <ul>
       <li v-for="(i, index) in favorites">
+      {{ i.breed }}<br>
+      {{ i.imgSrc }}<br>
       <div v-show = "i.edit == false">
         <label>{{ i.name }}</label>
         <button v-show = "i.edit == false" @click="i.edit = true;">edit</button>
@@ -47,7 +49,7 @@ export default {
       store.favorites[index].name = newNote;
     },
     cancel: function() {
-    }        
+    },
   }
 }
 </script>
