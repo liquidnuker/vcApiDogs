@@ -7,7 +7,7 @@
   {{ prStatus }}
   <ul v-for="i in prCurrentImages">
     <li>
-      <p @click="insertLastViewed(i, prCurrentBreed); insertFavorites(i, prCurrentBreed)">{{ i }}
+      <p @click="insertLastViewed(i, prCurrentBreed); addToFavorites(i, prCurrentBreed)">{{ i }}
       </p>
       <br>
     </li>
@@ -48,18 +48,34 @@ export default {
   },
   methods: {   
     insertLastViewed: function(imgSrc, breed) {
-      if (store.lastViewed.length < 4) {
-        store.lastViewed.unshift(imgSrc);
+      let name = extractFileName(imgSrc, false);
+      let pushItems = function() {
+        store.lastViewed.unshift({
+          name: name,
+          imgSrc: imgSrc,
+          breed: breed,
+        });
+      };
+
+      // check before pushing
+      if (nameExists(name, store.lastViewed) !== undefined) {
+        console.log("already in lastviewed");
       } else {
-        store.lastViewed.unshift(imgSrc);
-        store.lastViewed.pop();
-      }
-      console.log(store.lastViewed);
+        // lastViewed limit
+        if (store.lastViewed.length < 4) {
+          pushItems();
+        } else {
+          pushItems();
+          store.lastViewed.pop();
+        }
+      }      
+      console.log(store.lastViewed.length);
     },
-    insertFavorites: function(imgSrc, breed) {
+    addToFavorites: function(imgSrc, breed) {
       let name = extractFileName(imgSrc, false);
 
-      if (nameExists(name) !== undefined) {
+      // check before pushing
+      if (nameExists(name, store.favorites) !== undefined) {
         console.log("already in favorites");
       } else {
       store.favorites.push({

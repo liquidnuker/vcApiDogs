@@ -65,6 +65,7 @@ if (false) {(function () {
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -92,7 +93,7 @@ if (false) {(function () {
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', _vm._l((_vm.lastViewed), function(i) {
-    return _c('ul', [_c('li', [_vm._v("\r\n      " + _vm._s(i) + "\r\n    ")])])
+    return _c('ul', [_c('li', [_vm._v("\r\n      " + _vm._s(i.name) + " " + _vm._s(i.breed) + "\r\n      ")])])
   }))
 }
 var staticRenderFns = []

@@ -2,7 +2,8 @@
 <div>
   <ul v-for="i in lastViewed">
     <li>
-      {{ i }}
+      {{ i.name }} {{ i.breed }}
+      <!-- {{ i.imgSrc }} -->
     </li>
   </ul>
 </div>

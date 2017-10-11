@@ -83,7 +83,7 @@ if (false) {(function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_store_js__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_extractfilename_js__ = __webpack_require__(60);
-throw new Error("Cannot find module \"../js/nameexists.js\"");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_nameexists_js__ = __webpack_require__(61);
 //
 //
 //
@@ -132,18 +132,34 @@ var vcFavoriteCount = function vcFavoriteCount() {
   mounted: function mounted() {},
   methods: {
     insertLastViewed: function insertLastViewed(imgSrc, breed) {
-      if (__WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].lastViewed.length < 4) {
-        __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].lastViewed.unshift(imgSrc);
+      var name = __WEBPACK_IMPORTED_MODULE_1__js_extractfilename_js__["a" /* extractFileName */](imgSrc, false);
+      var pushItems = function pushItems() {
+        __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].lastViewed.unshift({
+          name: name,
+          imgSrc: imgSrc,
+          breed: breed
+        });
+      };
+
+      // check before pushing
+      if (__WEBPACK_IMPORTED_MODULE_2__js_nameexists_js__["a" /* nameExists */](name, __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].lastViewed) !== undefined) {
+        console.log("already in lastviewed");
       } else {
-        __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].lastViewed.unshift(imgSrc);
-        __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].lastViewed.pop();
+        // lastViewed limit
+        if (__WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].lastViewed.length < 4) {
+          pushItems();
+        } else {
+          pushItems();
+          __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].lastViewed.pop();
+        }
       }
-      console.log(__WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].lastViewed);
+      console.log(__WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].lastViewed.length);
     },
-    insertFavorites: function insertFavorites(imgSrc, breed) {
+    addToFavorites: function addToFavorites(imgSrc, breed) {
       var name = __WEBPACK_IMPORTED_MODULE_1__js_extractfilename_js__["a" /* extractFileName */](imgSrc, false);
 
-      if (__WEBPACK_IMPORTED_MODULE_2__js_nameexists_js__["nameExists"](name) !== undefined) {
+      // check before pushing
+      if (__WEBPACK_IMPORTED_MODULE_2__js_nameexists_js__["a" /* nameExists */](name, __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].favorites) !== undefined) {
         console.log("already in favorites");
       } else {
         __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].favorites.push({
@@ -182,6 +198,27 @@ var extractFileName = function extractFileName(url, ext) {
 
 /***/ }),
 
+/***/ 61:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return nameExists; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__store_js__ = __webpack_require__(11);
+
+
+// ret index; else undefined
+var nameExists = function nameExists(value, storeCategory) {
+  for (var key = 0; key < storeCategory.length; key++) {
+    if (storeCategory[key].name == value) {
+      return key;
+    }
+  }
+};
+
+
+
+/***/ }),
+
 /***/ 62:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -191,8 +228,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     return _c('ul', [_c('li', [_c('p', {
       on: {
         "click": function($event) {
-          _vm.insertLastViewed(i);
-          _vm.insertFavorites(i, _vm.prCurrentBreed)
+          _vm.insertLastViewed(i, _vm.prCurrentBreed);
+          _vm.addToFavorites(i, _vm.prCurrentBreed)
         }
       }
     }, [_vm._v(_vm._s(i) + "\r\n      ")]), _vm._v(" "), _c('br')])])
