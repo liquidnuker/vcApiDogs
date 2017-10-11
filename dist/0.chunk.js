@@ -13,7 +13,7 @@ webpackJsonp([0],[
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Gallery_vue__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_46c817f9_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Gallery_vue__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_46c817f9_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Gallery_vue__ = __webpack_require__(63);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -1945,7 +1945,7 @@ var vcBreedSelector = function vcBreedSelector() {
   return __webpack_require__.e/* import() */(9).then(__webpack_require__.bind(null, 55));
 };
 var vcGalleryDisplay = function vcGalleryDisplay() {
-  return __webpack_require__.e/* import() */(6).then(__webpack_require__.bind(null, 58));
+  return __webpack_require__.e/* import() */(5).then(__webpack_require__.bind(null, 58));
 };
 var vcRandomDog = function vcRandomDog() {
   return __webpack_require__.e/* import() */(3).then(__webpack_require__.bind(null, 47));
@@ -2177,7 +2177,9 @@ if (true) module.exports = Paginate;
 /* 58 */,
 /* 59 */,
 /* 60 */,
-/* 61 */
+/* 61 */,
+/* 62 */,
+/* 63 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

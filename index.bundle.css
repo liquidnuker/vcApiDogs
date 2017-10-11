@@ -6,7 +6,7 @@ template,[hidden] {
   display: none;
 }
 
-input,select,html,body,div,span,object,p,img,sub,i,ul,li,form,label,button,input [type="button"],[type="reset"],[type="submit"] {
+input,select,html,body,div,span,object,p,sub,i,ul,li,form,label,button,input [type="button"],[type="reset"],[type="submit"] {
   margin: 0;
   padding: 0;
 }
@@ -26,7 +26,7 @@ input,select {
    License: none (public domain)
 */
 
-html,body,div,span,object,p,img,sub,i,ul,li,form,label {
+html,body,div,span,object,p,sub,i,ul,li,form,label {
   border: 0;
   font-size: 100%;
   font: inherit;
@@ -58,10 +58,6 @@ sub {
 
 sub {
   bottom: -0.25em;
-}
-
-img {
-  border-style: none;
 }
 
 button,input,select {

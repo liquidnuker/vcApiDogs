@@ -1935,7 +1935,7 @@ var vcRandomDog = function vcRandomDog() {
   return __webpack_require__.e/* import() */(3/* duplicate */).then(__webpack_require__.bind(null, 47));
 };
 var vcLastViewed = function vcLastViewed() {
-  return __webpack_require__.e/* import() */(5).then(__webpack_require__.bind(null, 42));
+  return __webpack_require__.e/* import() */(6).then(__webpack_require__.bind(null, 42));
 };
 var vcFavoriteCount = function vcFavoriteCount() {
   return __webpack_require__.e/* import() */(7).then(__webpack_require__.bind(null, 20));
