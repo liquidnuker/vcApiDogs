@@ -1,8 +1,14 @@
 const store = {
   lastViewed: [],
   favorites: [
-    "test1",
-    "test2"
+    {
+      'name':'name1',
+      'edit':false
+    },
+    {
+      'name':'name2',
+      'edit':false
+    },
   ]
 };
 

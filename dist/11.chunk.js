@@ -1,4 +1,4 @@
-webpackJsonp([7],[
+webpackJsonp([11],[
 /* 0 */,
 /* 1 */,
 /* 2 */,
@@ -6,14 +6,13 @@ webpackJsonp([7],[
 /* 4 */,
 /* 5 */,
 /* 6 */,
-/* 7 */,
-/* 8 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Gallery_vue__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_46c817f9_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Gallery_vue__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Home_vue__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_19b7a970_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Home_vue__ = __webpack_require__(44);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -27,15 +26,15 @@ var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
-  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Gallery_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_46c817f9_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Gallery_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Home_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_19b7a970_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Home_vue__["a" /* default */],
   __vue_styles__,
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "vue-components\\Gallery.vue"
+Component.options.__file = "vue-components\\Home.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Gallery.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] Home.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -44,9 +43,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-46c817f9", Component.options)
+    hotAPI.createRecord("data-v-19b7a970", Component.options)
   } else {
-    hotAPI.reload("data-v-46c817f9", Component.options)
+    hotAPI.reload("data-v-19b7a970", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -57,6 +56,7 @@ if (false) {(function () {
 
 
 /***/ }),
+/* 8 */,
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1876,21 +1876,14 @@ var shuffle = function shuffle(array) {
 /***/ }),
 /* 39 */,
 /* 40 */,
-/* 41 */,
-/* 42 */,
-/* 43 */,
-/* 44 */,
-/* 45 */
+/* 41 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_allbreeds_js__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_itemexists_js__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__js_shuffle_js__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__js_router_js__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_shuffle_js__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_allbreeds_js__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__js_router_js__ = __webpack_require__(1);
 //
 //
 //
@@ -1931,309 +1924,114 @@ var shuffle = function shuffle(array) {
 
 
 
-
-
-var vcBreedSelector = function vcBreedSelector() {
-  return __webpack_require__.e/* import() */(5).then(__webpack_require__.bind(null, 48));
-};
-var vcGalleryDisplay = function vcGalleryDisplay() {
-  return __webpack_require__.e/* import() */(3).then(__webpack_require__.bind(null, 51));
-};
 var vcRandomDog = function vcRandomDog() {
-  return __webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, 39));
+  return __webpack_require__.e/* import() */(2/* duplicate */).then(__webpack_require__.bind(null, 39));
+};
+var vcLastViewed = function vcLastViewed() {
+  return __webpack_require__.e/* import() */(4).then(__webpack_require__.bind(null, 53));
+};
+var vcFavoriteCount = function vcFavoriteCount() {
+  return __webpack_require__.e/* import() */(0/* duplicate */).then(__webpack_require__.bind(null, 59));
 };
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
     return {
-      currentBreed: "",
-      currentImages: "",
+      allBreedNames: "",
+
+      options: __WEBPACK_IMPORTED_MODULE_2__js_allbreeds_js__["a" /* allbreeds */].sort(),
 
       // random dog
       randomDogBreed: "",
       randomDogImage: "",
 
-      // paginator 
-      pager: "",
-      currentPage: "",
-      totalPages: "",
-      pagerButtons: false,
-
-      // status
       status: {
-        galleryDisplay: "",
         randomDog: ""
-      }
+      },
+
+      // api urls
+      // List all breed names including sub breeds.
+      // url for api mode:
+      // url_allBreedNames: "https://dog.ceo/api/breeds/list/all",
+      // url for local list
+      url_allBreedNames: "./src/js/ajax/allbreeds.json"
     };
   },
 
   components: {
-    vcBreedSelector: vcBreedSelector,
-    vcGalleryDisplay: vcGalleryDisplay,
-    vcRandomDog: vcRandomDog
-  },
-  watch: {
-    $route: function $route() {
-      this.checkCategory();
-    }
+    vcRandomDog: vcRandomDog,
+    vcLastViewed: vcLastViewed,
+    vcFavoriteCount: vcFavoriteCount
   },
   mounted: function mounted() {
-    this.checkCategory();
+    this.listAllBreedNames();
   },
   methods: {
-    checkCategory: function checkCategory() {
-      // check if category exists before loading json
-      var breedToCheck = this.$route.params.breedname.toLowerCase();
-
-      if (!__WEBPACK_IMPORTED_MODULE_2__js_itemexists_js__["a" /* itemExists */](breedToCheck, __WEBPACK_IMPORTED_MODULE_1__js_allbreeds_js__["a" /* allbreeds */])) {
-        // 404/default item
-        __WEBPACK_IMPORTED_MODULE_4__js_router_js__["a" /* router */].push({ path: "/gallery/bulldog" });
-      } else {
-        this.currentBreed = breedToCheck;
-        this.displayBreedImages(this.currentBreed);
-      }
-    },
-    displayBreedImages: function displayBreedImages(breedName) {
-      this.status.galleryDisplay = "fetching " + this.currentBreed + " data";
-
-      // Returns an array of all the images from the breed
-      var url = "https://dog.ceo/api/breed/" + breedName + "/images";
+    listAllBreedNames: function listAllBreedNames() {
       var self = this;
-      __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__["a" /* axios_get */](url).then(function (response) {
-        var arr = Object.values(response);
-        self.pager = new __WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js___default.a(arr[0].message);
-        self.status.galleryDisplay = "fetching images...";
+      __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__["a" /* axios_get */](self.url_allBreedNames).then(function (response) {
+        // for local list
+        self.allBreedNames = response.data.allbreeds;
 
-        // default page
-        self.currentImages = self.pager.page(0);
-        self.currentPage = self.pager.currentPage;
+        // for api mode
+        // let arr = Object.values(response);
+        // let arr2 = arr[0].message;
+
+        // for (let i in arr2) {
+        //   self.allBreedNames.push(i);
+        // }
       }).then(function () {
-        self.status.galleryDisplay = "";
-        self.totalPages = self.pager.totalPages;
-        self.pagerButtons = true;
-
-        // show random dog 
         self.showRandomDogImage();
-        self.status.randomDog = "loading random dog...";
       });
     },
-    showPage: function showPage(num) {
-      this.currentImages = this.pager.page(num);
-    },
-    nextPage: function nextPage() {
-      if (!this.pager.hasNext()) {
-        this.currentImages = this.pager.page(0);
-      } else {
-        this.currentImages = this.pager.page(this.pager.currentPage + 1);
-      }
-      this.currentPage = this.pager.currentPage;
-    },
-    prevPage: function prevPage() {
-      if (this.pager.currentPage === 1) {
-        this.currentImages = this.pager.page(this.pager.totalPages);
-      } else {
-        this.currentImages = this.pager.page(this.pager.currentPage - 1);
-      }
-      this.currentPage = this.pager.currentPage;
-    },
     showRandomDogImage: function showRandomDogImage() {
-      this.randomDogBreed = __WEBPACK_IMPORTED_MODULE_3__js_shuffle_js__["a" /* shuffle */](__WEBPACK_IMPORTED_MODULE_1__js_allbreeds_js__["a" /* allbreeds */]);
+      this.randomDogBreed = __WEBPACK_IMPORTED_MODULE_1__js_shuffle_js__["a" /* shuffle */](__WEBPACK_IMPORTED_MODULE_2__js_allbreeds_js__["a" /* allbreeds */]);
+      this.status.randomDog = "loading " + this.randomDogBreed[0];
+
       // Returns an array of all the images from the breed
       var url = "https://dog.ceo/api/breed/" + this.randomDogBreed[0] + "/images";
       var self = this;
       __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__["a" /* axios_get */](url).then(function (response) {
         var arr = Object.values(response);
         self.status.randomDog = "";
-        self.randomDogImage = __WEBPACK_IMPORTED_MODULE_3__js_shuffle_js__["a" /* shuffle */](arr[0].message);
+        self.randomDogImage = __WEBPACK_IMPORTED_MODULE_1__js_shuffle_js__["a" /* shuffle */](arr[0].message);
       }).then(function () {});
+    },
+    switchBreed: function switchBreed(breed) {
+      __WEBPACK_IMPORTED_MODULE_3__js_router_js__["a" /* router */].push({ path: "/gallery/" + breed });
     }
   }
 });
 
 /***/ }),
-/* 46 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return itemExists; });
-// for single arrays
-var itemExists = function itemExists(item, array) {
-  return array.indexOf(item) > -1;
-};
-
-
-
-/***/ }),
-/* 47 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * Creates a new `Paginate` form a givin `Array`,
- * optionally with a specific `Number` of items per page.
- *
- * @param {Array} data
- * @param {Number} [perPage=10]
- * @constructor
- * @api public
- */
-
-function Paginate(data, perPage) {
-
-  if (!data) throw new Error('Required Argument Missing');
-  if (!(data instanceof Array)) throw new Error('Invalid Argument Type');
-
-  this.data = data;
-  this.perPage = perPage || 8;
-  this.currentPage = 0;
-  this.totalPages = Math.ceil(this.data.length / this.perPage);
-}
-
-/**
- * Calculates the offset.
- *
- * @return {Number}
- * @api private
- */
-
-Paginate.prototype.offset = function () {
-
-  return (this.currentPage - 1) * this.perPage;
-};
-
-/**
- * Returns the specified `page`.
- *
- * @param {Number} pageNum
- * @return {Array}
- * @api public
- */
-
-Paginate.prototype.page = function (pageNum) {
-
-  if (pageNum < 1) pageNum = 1;
-  if (pageNum > this.totalPages) pageNum = this.totalPages;
-
-  this.currentPage = pageNum;
-
-  var start = this.offset(),
-      end = start + this.perPage;
-
-  return this.data.slice(start, end);
-};
-
-/**
- * Returns the next `page`.
- *
- * @return {Array}
- * @api public
- */
-
-Paginate.prototype.next = function () {
-
-  return this.page(this.currentPage + 1);
-};
-
-/**
- * Returns the previous `page`.
- *
- * @return {Array}
- * @api public
- */
-
-Paginate.prototype.prev = function () {
-
-  return this.page(this.currentPage - 1);
-};
-
-/**
- * Checks if there is a next `page`.
- *
- * @return {Boolean}
- * @api public
- */
-
-Paginate.prototype.hasNext = function () {
-
-  return this.currentPage < this.totalPages;
-};
-
-/**
- * Expose `Paginate`
- */
-
-if (true) module.exports = Paginate;
-
-/***/ }),
-/* 48 */,
-/* 49 */,
-/* 50 */,
-/* 51 */,
-/* 52 */,
-/* 53 */,
-/* 54 */,
-/* 55 */,
-/* 56 */,
-/* 57 */
+/* 42 */,
+/* 43 */,
+/* 44 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('vcBreedSelector', {
-    attrs: {
-      "pr-selected": _vm.currentBreed
-    }
-  }), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('vcRandomDog', {
+  return _c('div', [_c('vcFavoriteCount'), _vm._v(" "), _c('vcRandomDog', {
     attrs: {
       "pr-status": _vm.status.randomDog,
       "pr-random-breed": _vm.randomDogBreed,
       "pr-random-image": _vm.randomDogImage
     }
-  }), _vm._v(" "), _c('vcGalleryDisplay', {
+  }), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('select', [_c('option', {
     attrs: {
-      "pr-status": _vm.status.galleryDisplay,
-      "pr-current-images": _vm.currentImages
+      "value": ""
     }
-  }), _vm._v(" "), (_vm.pagerButtons) ? _c('span', [_c('button', {
-    on: {
-      "click": function($event) {
-        _vm.prevPage()
-      }
-    }
-  }, [_vm._v("<previous")]), _vm._v("\r\n  page\r\n  "), _c('select', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.currentPage),
-      expression: "currentPage"
-    }],
-    on: {
-      "change": function($event) {
-        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
-          return o.selected
-        }).map(function(o) {
-          var val = "_value" in o ? o._value : o.value;
-          return val
-        });
-        _vm.currentPage = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-      }
-    }
-  }, _vm._l((_vm.totalPages), function(i) {
+  }, [_vm._v("Choose Breed...")]), _vm._v(" "), _vm._l((_vm.options), function(i) {
     return _c('option', {
       domProps: {
         "value": i
       },
       on: {
         "click": function($event) {
-          _vm.showPage(i)
+          _vm.switchBreed(i)
         }
       }
     }, [_vm._v(_vm._s(i))])
-  })), _vm._v(" of " + _vm._s(_vm.totalPages) + "\r\n  "), _c('button', {
-    on: {
-      "click": function($event) {
-        _vm.nextPage()
-      }
-    }
-  }, [_vm._v("next>")])]) : _vm._e()], 1)
+  })], 2), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('vcLastViewed')], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -2242,7 +2040,7 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-46c817f9", esExports)
+     require("vue-hot-reload-api").rerender("data-v-19b7a970", esExports)
   }
 }
 

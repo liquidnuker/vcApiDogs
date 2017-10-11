@@ -7,7 +7,13 @@ webpackJsonp([4,8],{
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return store; });
 var store = {
   lastViewed: [],
-  favorites: ["test1", "test2"]
+  favorites: [{
+    'name': 'name1',
+    'edit': false
+  }, {
+    'name': 'name2',
+    'edit': false
+  }]
 };
 
 

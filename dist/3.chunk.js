@@ -7,7 +7,13 @@ webpackJsonp([3],{
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return store; });
 var store = {
   lastViewed: [],
-  favorites: ["test1", "test2"]
+  favorites: [{
+    'name': 'name1',
+    'edit': false
+  }, {
+    'name': 'name2',
+    'edit': false
+  }]
 };
 
 
@@ -95,7 +101,7 @@ var vcLastViewed = function vcLastViewed() {
   return __webpack_require__.e/* import() */(8).then(__webpack_require__.bind(null, 53));
 };
 var vcFavoriteCount = function vcFavoriteCount() {
-  return __webpack_require__.e/* import() */(9).then(__webpack_require__.bind(null, 59));
+  return __webpack_require__.e/* import() */(10/* duplicate */).then(__webpack_require__.bind(null, 59));
 };
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {

@@ -8,6 +8,7 @@ Vue.use(VueRouter);
 // const vcHome = (resolve) => import("../vue-components/Home.vue").then(resolve);
 const vcHome = () => import('../vue-components/Home.vue');
 const vcGallery = () => import('../vue-components/Gallery.vue');
+const vcFavorites = () => import('../vue-components/Favorites.vue');
 
 const routes = [
   {
@@ -16,6 +17,10 @@ const routes = [
   },  {
     path: "/gallery/:breedname",
     component: vcGallery
+  },
+  {
+    path: "/favorites",
+    component: vcFavorites
   }
 ];
 
