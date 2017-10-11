@@ -1,5 +1,9 @@
 <template>
 <div>
+
+  <!-- favorite count -->
+  <vcFavoriteCount />
+
   <!-- random dog -->
   <vcRandomDog
   :pr-status="status.randomDog"
@@ -36,6 +40,7 @@ import {router} from "../js/router.js";
 
 const vcRandomDog = () => import ('./vcRandomDog.vue');
 const vcLastViewed = () => import ('./vcLastViewed.vue');
+const vcFavoriteCount = () => import ('./vcFavoriteCount.vue');
 export default {
   data() {
     return {
@@ -61,7 +66,8 @@ export default {
   },
   components: {
     vcRandomDog: vcRandomDog,
-    vcLastViewed: vcLastViewed
+    vcLastViewed: vcLastViewed,
+    vcFavoriteCount: vcFavoriteCount
   },
   mounted: function () {
     this.listAllBreedNames();

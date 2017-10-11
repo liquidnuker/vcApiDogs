@@ -1,5 +1,9 @@
 const store = {
-  lastViewed: []
+  lastViewed: [],
+  favorites: [
+    "test1",
+    "test2"
+  ]
 };
 
 export {store};

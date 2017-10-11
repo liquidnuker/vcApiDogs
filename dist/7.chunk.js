@@ -1,4 +1,4 @@
-webpackJsonp([7,4],{
+webpackJsonp([7,8],{
 
 /***/ 40:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -6,7 +6,8 @@ webpackJsonp([7,4],{
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return store; });
 var store = {
-  lastViewed: []
+  lastViewed: [],
+  favorites: ["test1", "test2"]
 };
 
 

@@ -6,7 +6,8 @@ webpackJsonp([3],{
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return store; });
 var store = {
-  lastViewed: []
+  lastViewed: [],
+  favorites: ["test1", "test2"]
 };
 
 
@@ -84,10 +85,17 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
 
 
 var vcLastViewed = function vcLastViewed() {
-  return __webpack_require__.e/* import() */(4).then(__webpack_require__.bind(null, 53));
+  return __webpack_require__.e/* import() */(8).then(__webpack_require__.bind(null, 53));
+};
+var vcFavoriteCount = function vcFavoriteCount() {
+  return __webpack_require__.e/* import() */(9).then(__webpack_require__.bind(null, 59));
 };
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
@@ -100,7 +108,8 @@ var vcLastViewed = function vcLastViewed() {
   },
   props: ["prStatus", "prCurrentImages"],
   components: {
-    vcLastViewed: vcLastViewed
+    vcLastViewed: vcLastViewed,
+    vcFavoriteCount: vcFavoriteCount
   },
   mounted: function mounted() {},
   methods: {
@@ -122,7 +131,7 @@ var vcLastViewed = function vcLastViewed() {
 
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_vm._v("\r\n  " + _vm._s(_vm.prStatus) + "\r\n  "), _vm._l((_vm.prCurrentImages), function(i) {
+  return _c('div', [_c('vcFavoriteCount'), _vm._v("\r\n\r\n  " + _vm._s(_vm.prStatus) + "\r\n  "), _vm._l((_vm.prCurrentImages), function(i) {
     return _c('ul', [_c('li', [_c('img', {
       attrs: {
         "src": i

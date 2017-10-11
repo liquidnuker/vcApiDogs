@@ -1,5 +1,9 @@
 <template>
 <div>
+
+<!-- favorite count -->
+<vcFavoriteCount />
+
   {{ prStatus }}
   <ul v-for="i in prCurrentImages">
     <li>
@@ -16,6 +20,7 @@
 <script>
 import {store} from "../js/store.js";
 const vcLastViewed = () => import ('./vcLastViewed.vue');
+const vcFavoriteCount = () => import ('./vcFavoriteCount.vue');
 export default {
   data () {
     return {   
@@ -31,7 +36,8 @@ export default {
     "prCurrentImages"
   ],
   components: {
-    vcLastViewed: vcLastViewed
+    vcLastViewed: vcLastViewed,
+    vcFavoriteCount: vcFavoriteCount
   },
   mounted: function () {
   },

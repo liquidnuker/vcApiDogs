@@ -1914,6 +1914,10 @@ var shuffle = function shuffle(array) {
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -1924,7 +1928,10 @@ var vcRandomDog = function vcRandomDog() {
   return __webpack_require__.e/* import() */(2/* duplicate */).then(__webpack_require__.bind(null, 39));
 };
 var vcLastViewed = function vcLastViewed() {
-  return __webpack_require__.e/* import() */(7).then(__webpack_require__.bind(null, 53));
+  return __webpack_require__.e/* import() */(4).then(__webpack_require__.bind(null, 53));
+};
+var vcFavoriteCount = function vcFavoriteCount() {
+  return __webpack_require__.e/* import() */(10).then(__webpack_require__.bind(null, 59));
 };
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
@@ -1952,7 +1959,8 @@ var vcLastViewed = function vcLastViewed() {
 
   components: {
     vcRandomDog: vcRandomDog,
-    vcLastViewed: vcLastViewed
+    vcLastViewed: vcLastViewed,
+    vcFavoriteCount: vcFavoriteCount
   },
   mounted: function mounted() {
     this.listAllBreedNames();
@@ -2002,7 +2010,7 @@ var vcLastViewed = function vcLastViewed() {
 
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('vcRandomDog', {
+  return _c('div', [_c('vcFavoriteCount'), _vm._v(" "), _c('vcRandomDog', {
     attrs: {
       "pr-status": _vm.status.randomDog,
       "pr-random-breed": _vm.randomDogBreed,
