@@ -16,6 +16,12 @@
     @click="switchBreed(i)" :value="i">{{ i }}</option>
   </select>
 
+  <br>
+  <br>
+
+  <!-- temp location for lastViewed -->
+  <vcLastViewed />
+
   <!-- all breed names -->
   <!-- <ul v-for="i in allBreedNames">
     <li>{{ i }}</li>
@@ -29,6 +35,7 @@ import {allbreeds} from "../js/allbreeds.js";
 import {router} from "../js/router.js";
 
 const vcRandomDog = () => import ('./vcRandomDog.vue');
+const vcLastViewed = () => import ('./vcLastViewed.vue');
 export default {
   data() {
     return {
@@ -54,6 +61,7 @@ export default {
   },
   components: {
     vcRandomDog: vcRandomDog,
+    vcLastViewed: vcLastViewed
   },
   mounted: function () {
     this.listAllBreedNames();

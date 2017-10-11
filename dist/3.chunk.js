@@ -1,12 +1,25 @@
 webpackJsonp([3],{
 
-/***/ 50:
+/***/ 40:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return store; });
+var store = {
+  lastViewed: []
+};
+
+
+
+/***/ }),
+
+/***/ 51:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_vcGalleryDisplay_vue__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_ee2dba34_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_vcGalleryDisplay_vue__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_vcGalleryDisplay_vue__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_ee2dba34_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_vcGalleryDisplay_vue__ = __webpack_require__(56);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -51,14 +64,11 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 51:
+/***/ 52:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_store_js__ = __webpack_require__(56);
-//
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_store_js__ = __webpack_require__(40);
 //
 //
 //
@@ -76,11 +86,12 @@ if (false) {(function () {
 //
 
 
+var vcLastViewed = function vcLastViewed() {
+  return __webpack_require__.e/* import() */(4).then(__webpack_require__.bind(null, 53));
+};
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
-    return {
-      lastViewed: ""
-    };
+    return {};
   },
 
   watch: {
@@ -88,7 +99,9 @@ if (false) {(function () {
     // }
   },
   props: ["prStatus", "prCurrentImages"],
-  components: {},
+  components: {
+    vcLastViewed: vcLastViewed
+  },
   mounted: function mounted() {},
   methods: {
     insertLastViewed: function insertLastViewed(item) {
@@ -98,14 +111,13 @@ if (false) {(function () {
         __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].lastViewed.unshift(item);
         __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].lastViewed.pop();
       }
-      this.lastViewed = __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].lastViewed;
     }
   }
 });
 
 /***/ }),
 
-/***/ 52:
+/***/ 56:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -121,9 +133,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         }
       }
     }), _c('br')])])
-  }), _vm._v(" "), _vm._l((_vm.lastViewed), function(i) {
-    return _c('ul', [_c('li', [_vm._v("\r\n      " + _vm._s(i) + "\r\n    ")])])
-  })], 2)
+  }), _vm._v(" "), _c('vcLastViewed')], 2)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -135,19 +145,6 @@ if (false) {
      require("vue-hot-reload-api").rerender("data-v-ee2dba34", esExports)
   }
 }
-
-/***/ }),
-
-/***/ 56:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return store; });
-var store = {
-  lastViewed: []
-};
-
-
 
 /***/ })
 

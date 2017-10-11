@@ -8,21 +8,18 @@
     </li>
   </ul>
 
-  <!-- temp last viewed -->
-  <ul v-for="i in lastViewed">
-    <li>
-      {{ i }}
-    </li>
-  </ul>
+  <!-- temp location for lastViewed -->
+  <vcLastViewed />
+  
 </div>
 </template>
 <script>
 import {store} from "../js/store.js";
+const vcLastViewed = () => import ('./vcLastViewed.vue');
 export default {
   data () {
     return {   
-      // just hook to props of lastViewed component
-      lastViewed: ""
+      
     }
   },
   watch: {
@@ -34,6 +31,7 @@ export default {
     "prCurrentImages"
   ],
   components: {
+    vcLastViewed: vcLastViewed
   },
   mounted: function () {
   },
@@ -45,7 +43,6 @@ export default {
         store.lastViewed.unshift(item);
         store.lastViewed.pop();
       }
-      this.lastViewed = store.lastViewed;
     }     
   }
 }

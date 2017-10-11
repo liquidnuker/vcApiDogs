@@ -11,8 +11,8 @@ webpackJsonp([1],[
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Home_vue__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_19b7a970_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Home_vue__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Home_vue__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_19b7a970_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Home_vue__ = __webpack_require__(44);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -1875,7 +1875,8 @@ var shuffle = function shuffle(array) {
 
 /***/ }),
 /* 39 */,
-/* 40 */
+/* 40 */,
+/* 41 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1883,6 +1884,12 @@ var shuffle = function shuffle(array) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_shuffle_js__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_allbreeds_js__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__js_router_js__ = __webpack_require__(1);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1916,6 +1923,9 @@ var shuffle = function shuffle(array) {
 var vcRandomDog = function vcRandomDog() {
   return __webpack_require__.e/* import() */(2/* duplicate */).then(__webpack_require__.bind(null, 39));
 };
+var vcLastViewed = function vcLastViewed() {
+  return __webpack_require__.e/* import() */(7).then(__webpack_require__.bind(null, 53));
+};
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
     return {
@@ -1941,7 +1951,8 @@ var vcRandomDog = function vcRandomDog() {
   },
 
   components: {
-    vcRandomDog: vcRandomDog
+    vcRandomDog: vcRandomDog,
+    vcLastViewed: vcLastViewed
   },
   mounted: function mounted() {
     this.listAllBreedNames();
@@ -1984,9 +1995,9 @@ var vcRandomDog = function vcRandomDog() {
 });
 
 /***/ }),
-/* 41 */,
 /* 42 */,
-/* 43 */
+/* 43 */,
+/* 44 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2012,7 +2023,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         }
       }
     }, [_vm._v(_vm._s(i))])
-  })], 2)], 1)
+  })], 2), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('vcLastViewed')], 1)
 }
 var staticRenderFns = []
 render._withStripped = true

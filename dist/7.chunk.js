@@ -1,4 +1,17 @@
-webpackJsonp([4],{
+webpackJsonp([7,4],{
+
+/***/ 40:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return store; });
+var store = {
+  lastViewed: []
+};
+
+
+
+/***/ }),
 
 /***/ 53:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
