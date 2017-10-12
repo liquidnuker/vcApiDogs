@@ -49,27 +49,21 @@ export default {
   methods: {   
     insertLastViewed: function(imgSrc, breed) {
       let name = extractFileName(imgSrc, false);
-      let pushItems = function() {
+      
+      // check before pushing
+      if (nameExists(name, store.lastViewed) !== undefined) {
+        return;
+      } else {
+        // lastViewed limit
+        if (store.lastViewed.length === 4) {
+          store.lastViewed.pop();
+        } 
         store.lastViewed.unshift({
           name: name,
           imgSrc: imgSrc,
           breed: breed,
         });
-      };
-
-      // check before pushing
-      if (nameExists(name, store.lastViewed) !== undefined) {
-        console.log("already in lastviewed");
-      } else {
-        // lastViewed limit
-        if (store.lastViewed.length < 4) {
-          pushItems();
-        } else {
-          pushItems();
-          store.lastViewed.pop();
-        }
       }      
-      console.log(store.lastViewed.length);
     },
     addToFavorites: function(imgSrc, breed) {
       let name = extractFileName(imgSrc, false);
@@ -77,6 +71,7 @@ export default {
       // check before pushing
       if (nameExists(name, store.favorites) !== undefined) {
         console.log("already in favorites");
+        return;
       } else {
       store.favorites.push({
         name: name,

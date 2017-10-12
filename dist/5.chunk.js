@@ -133,27 +133,21 @@ var vcFavoriteCount = function vcFavoriteCount() {
   methods: {
     insertLastViewed: function insertLastViewed(imgSrc, breed) {
       var name = __WEBPACK_IMPORTED_MODULE_1__js_extractfilename_js__["a" /* extractFileName */](imgSrc, false);
-      var pushItems = function pushItems() {
+
+      // check before pushing
+      if (__WEBPACK_IMPORTED_MODULE_2__js_nameexists_js__["a" /* nameExists */](name, __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].lastViewed) !== undefined) {
+        return;
+      } else {
+        // lastViewed limit
+        if (__WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].lastViewed.length === 4) {
+          __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].lastViewed.pop();
+        }
         __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].lastViewed.unshift({
           name: name,
           imgSrc: imgSrc,
           breed: breed
         });
-      };
-
-      // check before pushing
-      if (__WEBPACK_IMPORTED_MODULE_2__js_nameexists_js__["a" /* nameExists */](name, __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].lastViewed) !== undefined) {
-        console.log("already in lastviewed");
-      } else {
-        // lastViewed limit
-        if (__WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].lastViewed.length < 4) {
-          pushItems();
-        } else {
-          pushItems();
-          __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].lastViewed.pop();
-        }
       }
-      console.log(__WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].lastViewed.length);
     },
     addToFavorites: function addToFavorites(imgSrc, breed) {
       var name = __WEBPACK_IMPORTED_MODULE_1__js_extractfilename_js__["a" /* extractFileName */](imgSrc, false);
@@ -161,6 +155,7 @@ var vcFavoriteCount = function vcFavoriteCount() {
       // check before pushing
       if (__WEBPACK_IMPORTED_MODULE_2__js_nameexists_js__["a" /* nameExists */](name, __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].favorites) !== undefined) {
         console.log("already in favorites");
+        return;
       } else {
         __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].favorites.push({
           name: name,
