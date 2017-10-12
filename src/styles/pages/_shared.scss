@@ -1,0 +1,35 @@
+body {
+  @extend %system_normal--300;
+
+}
+
+.container-fluid--h {
+  background-color: #999;
+}
+
+.container-fluid--m {
+  // background-color: #eee;
+}
+
+.container-fluid--f {
+  background-color: #999;
+}
+
+.main-header {
+  background-color: #000;
+}
+
+.main-items {
+  background-color: #666;
+}
+
+.main-footer {
+  background-color: #000;
+}
+
+main > .container {
+  @extend %padd--4;
+}
+
+
+

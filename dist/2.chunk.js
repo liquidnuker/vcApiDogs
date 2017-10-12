@@ -38,7 +38,7 @@ var store = {
 
 /***/ }),
 
-/***/ 19:
+/***/ 13:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49,7 +49,7 @@ var allbreeds = ["affenpinscher", "african", "airedale", "akita", "appenzeller",
 
 /***/ }),
 
-/***/ 54:
+/***/ 47:
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -150,7 +150,7 @@ if (true) module.exports = Paginate;
 
 /***/ }),
 
-/***/ 61:
+/***/ 48:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -175,11 +175,43 @@ var nameExists = function nameExists(value, storeCategory) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_allbreeds_js__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_allbreeds_js__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_store_js__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_nameexists_js__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__js_vendor_Paginate_js__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_nameexists_js__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__js_vendor_Paginate_js__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__js_vendor_Paginate_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__js_vendor_Paginate_js__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -330,7 +362,7 @@ var vcFavoriteCount = function vcFavoriteCount() {
 
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('vcFavoriteCount'), _vm._v(" "), _c('ul', _vm._l((_vm.currentFavorites), function(i, index) {
+  return _c('div', [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('vcFavoriteCount'), _vm._v(" "), _c('ul', _vm._l((_vm.currentFavorites), function(i, index) {
     return _c('li', [_vm._v("\r\n      " + _vm._s(i.breed) + " " + _vm._s(i.name) + "\r\n      \r\n      "), _c('button', {
       on: {
         "click": function($event) {
@@ -464,7 +496,41 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   }, [_vm._v("next>")])]) : _vm._e()], 1)
 }
-var staticRenderFns = []
+var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('header', {
+    staticClass: "row container-fluid--h"
+  }, [_c('div', {
+    staticClass: "row container main-header"
+  }, [_c('div', {
+    staticClass: "col-sm-4"
+  }, [_vm._v("logo")]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-8"
+  }, [_vm._v("favorites")])])])
+},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('main', {
+    staticClass: "row container-fluid--m"
+  }, [_c('div', {
+    staticClass: "row container main-items"
+  }, [_c('div', {
+    staticClass: "col-sm-4"
+  }, [_vm._v("dropdown")]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-8"
+  }, [_vm._v("carousel")]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-4"
+  }, [_vm._v("randog")]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-8"
+  }, [_vm._v("favorites display")]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-4"
+  }, [_vm._v("lastviewed")])])])
+},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('footer', {
+    staticClass: "row container-fluid--f"
+  }, [_c('div', {
+    staticClass: "row container main-footer"
+  }, [_c('div', {
+    staticClass: "col-sm-12"
+  }, [_vm._v("\r\n        footer\r\n      ")])])])
+}]
 render._withStripped = true
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);

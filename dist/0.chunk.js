@@ -12,7 +12,7 @@ webpackJsonp([0],[
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Gallery_vue__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Gallery_vue__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_46c817f9_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Gallery_vue__ = __webpack_require__(63);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
@@ -64,7 +64,7 @@ if (false) {(function () {
 "use strict";
 
 
-var bind = __webpack_require__(13);
+var bind = __webpack_require__(14);
 var isBuffer = __webpack_require__(24);
 
 /*global toString:true*/
@@ -392,10 +392,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(15);
+    adapter = __webpack_require__(16);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(15);
+    adapter = __webpack_require__(16);
   }
   return adapter;
 }
@@ -466,10 +466,20 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
 
 /***/ }),
 /* 13 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return allbreeds; });
+var allbreeds = ["affenpinscher", "african", "airedale", "akita", "appenzeller", "basenji", "beagle", "bluetick", "borzoi", "bouvier", "boxer", "brabancon", "briard", "bulldog", "bullterrier", "cairn", "chihuahua", "chow", "clumber", "collie", "coonhound", "corgi", "dachshund", "dane", "deerhound", "dhole", "dingo", "doberman", "elkhound", "entlebucher", "eskimo", "germanshepherd", "greyhound", "groenendael", "hound", "husky", "keeshond", "kelpie", "komondor", "kuvasz", "labrador", "leonberg", "lhasa", "malamute", "malinois", "maltese", "mastiff", "mexicanhairless", "mountain", "newfoundland", "otterhound", "papillon", "pekinese", "pembroke", "pinscher", "pointer", "pomeranian", "poodle", "pug", "pyrenees", "redbone", "retriever", "ridgeback", "rottweiler", "saluki", "samoyed", "schipperke", "schnauzer", "setter", "sheepdog", "shiba", "shihtzu", "spaniel", "springer", "stbernard", "terrier", "vizsla", "weimaraner", "whippet", "wolfhound"];
+
+
+
+/***/ }),
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -487,7 +497,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -677,7 +687,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -688,7 +698,7 @@ var settle = __webpack_require__(27);
 var buildURL = __webpack_require__(29);
 var parseHeaders = __webpack_require__(30);
 var isURLSameOrigin = __webpack_require__(31);
-var createError = __webpack_require__(16);
+var createError = __webpack_require__(17);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(32);
 
 module.exports = function xhrAdapter(config) {
@@ -862,10 +872,10 @@ module.exports = function xhrAdapter(config) {
   });
 };
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -890,7 +900,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -902,7 +912,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -925,16 +935,6 @@ Cancel.prototype.toString = function toString() {
 Cancel.prototype.__CANCEL__ = true;
 
 module.exports = Cancel;
-
-
-/***/ }),
-/* 19 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return allbreeds; });
-var allbreeds = ["affenpinscher", "african", "airedale", "akita", "appenzeller", "basenji", "beagle", "bluetick", "borzoi", "bouvier", "boxer", "brabancon", "briard", "bulldog", "bullterrier", "cairn", "chihuahua", "chow", "clumber", "collie", "coonhound", "corgi", "dachshund", "dane", "deerhound", "dhole", "dingo", "doberman", "elkhound", "entlebucher", "eskimo", "germanshepherd", "greyhound", "groenendael", "hound", "husky", "keeshond", "kelpie", "komondor", "kuvasz", "labrador", "leonberg", "lhasa", "malamute", "malinois", "maltese", "mastiff", "mexicanhairless", "mountain", "newfoundland", "otterhound", "papillon", "pekinese", "pembroke", "pinscher", "pointer", "pomeranian", "poodle", "pug", "pyrenees", "redbone", "retriever", "ridgeback", "rottweiler", "saluki", "samoyed", "schipperke", "schnauzer", "setter", "sheepdog", "shiba", "shihtzu", "spaniel", "springer", "stbernard", "terrier", "vizsla", "weimaraner", "whippet", "wolfhound"];
-
 
 
 /***/ }),
@@ -988,7 +988,7 @@ module.exports = __webpack_require__(23);
 
 
 var utils = __webpack_require__(10);
-var bind = __webpack_require__(13);
+var bind = __webpack_require__(14);
 var Axios = __webpack_require__(25);
 var defaults = __webpack_require__(12);
 
@@ -1023,9 +1023,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(18);
+axios.Cancel = __webpack_require__(19);
 axios.CancelToken = __webpack_require__(39);
-axios.isCancel = __webpack_require__(17);
+axios.isCancel = __webpack_require__(18);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -1185,7 +1185,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(16);
+var createError = __webpack_require__(17);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -1604,7 +1604,7 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(10);
 var transformData = __webpack_require__(36);
-var isCancel = __webpack_require__(17);
+var isCancel = __webpack_require__(18);
 var defaults = __webpack_require__(12);
 
 /**
@@ -1757,7 +1757,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(18);
+var Cancel = __webpack_require__(19);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -1882,196 +1882,7 @@ var shuffle = function shuffle(array) {
 /* 44 */,
 /* 45 */,
 /* 46 */,
-/* 47 */,
-/* 48 */,
-/* 49 */,
-/* 50 */,
-/* 51 */,
-/* 52 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_allbreeds_js__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_itemexists_js__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__js_shuffle_js__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__js_router_js__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-
-
-
-
-var vcBreedSelector = function vcBreedSelector() {
-  return __webpack_require__.e/* import() */(9).then(__webpack_require__.bind(null, 55));
-};
-var vcGalleryDisplay = function vcGalleryDisplay() {
-  return __webpack_require__.e/* import() */(5).then(__webpack_require__.bind(null, 58));
-};
-var vcRandomDog = function vcRandomDog() {
-  return __webpack_require__.e/* import() */(3).then(__webpack_require__.bind(null, 47));
-};
-/* harmony default export */ __webpack_exports__["a"] = ({
-  data: function data() {
-    return {
-      currentBreed: "",
-      currentImages: "",
-
-      // random dog
-      randomDogBreed: "",
-      randomDogImage: "",
-
-      // paginator 
-      pager: "",
-      currentPage: "",
-      totalPages: "",
-      pagerButtons: false,
-
-      // status
-      status: {
-        galleryDisplay: "",
-        randomDog: ""
-      }
-    };
-  },
-
-  components: {
-    vcBreedSelector: vcBreedSelector,
-    vcGalleryDisplay: vcGalleryDisplay,
-    vcRandomDog: vcRandomDog
-  },
-  watch: {
-    $route: function $route() {
-      this.checkCategory();
-    }
-  },
-  mounted: function mounted() {
-    this.checkCategory();
-  },
-  methods: {
-    checkCategory: function checkCategory() {
-      // check if category exists before loading json
-      var breedToCheck = this.$route.params.breedname.toLowerCase();
-
-      if (!__WEBPACK_IMPORTED_MODULE_2__js_itemexists_js__["a" /* itemExists */](breedToCheck, __WEBPACK_IMPORTED_MODULE_1__js_allbreeds_js__["a" /* allbreeds */])) {
-        // 404/default item
-        __WEBPACK_IMPORTED_MODULE_4__js_router_js__["a" /* router */].push({ path: "/gallery/bulldog" });
-      } else {
-        this.currentBreed = breedToCheck;
-        this.displayBreedImages(this.currentBreed);
-      }
-    },
-    displayBreedImages: function displayBreedImages(breedName) {
-      this.status.galleryDisplay = "fetching " + this.currentBreed + " data";
-
-      // Returns an array of all the images from the breed
-      var url = "https://dog.ceo/api/breed/" + breedName + "/images";
-      var self = this;
-      __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__["a" /* axios_get */](url).then(function (response) {
-        var arr = Object.values(response);
-        self.pager = new __WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js___default.a(arr[0].message);
-        self.status.galleryDisplay = "fetching images...";
-
-        // default page
-        self.currentImages = self.pager.page(0);
-        self.currentPage = self.pager.currentPage;
-      }).then(function () {
-        self.status.galleryDisplay = "";
-        self.totalPages = self.pager.totalPages;
-        self.pagerButtons = true;
-
-        // show random dog 
-        self.showRandomDogImage();
-        self.status.randomDog = "loading random dog...";
-      });
-    },
-    showPage: function showPage(num) {
-      this.currentImages = this.pager.page(num);
-    },
-    nextPage: function nextPage() {
-      if (!this.pager.hasNext()) {
-        this.currentImages = this.pager.page(0);
-      } else {
-        this.currentImages = this.pager.page(this.pager.currentPage + 1);
-      }
-      this.currentPage = this.pager.currentPage;
-    },
-    prevPage: function prevPage() {
-      if (this.pager.currentPage === 1) {
-        this.currentImages = this.pager.page(this.pager.totalPages);
-      } else {
-        this.currentImages = this.pager.page(this.pager.currentPage - 1);
-      }
-      this.currentPage = this.pager.currentPage;
-    },
-    showRandomDogImage: function showRandomDogImage() {
-      this.randomDogBreed = __WEBPACK_IMPORTED_MODULE_3__js_shuffle_js__["a" /* shuffle */](__WEBPACK_IMPORTED_MODULE_1__js_allbreeds_js__["a" /* allbreeds */]);
-      // Returns an array of all the images from the breed
-      var url = "https://dog.ceo/api/breed/" + this.randomDogBreed[0] + "/images";
-      var self = this;
-      __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__["a" /* axios_get */](url).then(function (response) {
-        var arr = Object.values(response);
-        self.status.randomDog = "";
-        self.randomDogImage = __WEBPACK_IMPORTED_MODULE_3__js_shuffle_js__["a" /* shuffle */](arr[0].message);
-      }).then(function () {});
-    }
-  }
-});
-
-/***/ }),
-/* 53 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return itemExists; });
-// for single arrays
-var itemExists = function itemExists(item, array) {
-  return array.indexOf(item) > -1;
-};
-
-
-
-/***/ }),
-/* 54 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -2171,7 +1982,227 @@ Paginate.prototype.hasNext = function () {
 if (true) module.exports = Paginate;
 
 /***/ }),
-/* 55 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_allbreeds_js__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_itemexists_js__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__js_shuffle_js__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__js_router_js__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+
+var vcBreedSelector = function vcBreedSelector() {
+  return __webpack_require__.e/* import() */(9).then(__webpack_require__.bind(null, 56));
+};
+var vcGalleryDisplay = function vcGalleryDisplay() {
+  return __webpack_require__.e/* import() */(5).then(__webpack_require__.bind(null, 59));
+};
+var vcRandomDog = function vcRandomDog() {
+  return __webpack_require__.e/* import() */(3).then(__webpack_require__.bind(null, 49));
+};
+/* harmony default export */ __webpack_exports__["a"] = ({
+  data: function data() {
+    return {
+      currentBreed: "",
+      currentImages: "",
+
+      // random dog
+      randomDogBreed: "",
+      randomDogImage: "",
+
+      // paginator 
+      pager: "",
+      currentPage: "",
+      totalPages: "",
+      pagerButtons: false,
+
+      // status
+      status: {
+        galleryDisplay: "",
+        randomDog: ""
+      }
+    };
+  },
+
+  components: {
+    vcBreedSelector: vcBreedSelector,
+    vcGalleryDisplay: vcGalleryDisplay,
+    vcRandomDog: vcRandomDog
+  },
+  watch: {
+    $route: function $route() {
+      this.checkCategory();
+    }
+  },
+  mounted: function mounted() {
+    // this.checkCategory();
+  },
+  methods: {
+    checkCategory: function checkCategory() {
+      // check if category exists before loading json
+      var breedToCheck = this.$route.params.breedname.toLowerCase();
+
+      if (!__WEBPACK_IMPORTED_MODULE_2__js_itemexists_js__["a" /* itemExists */](breedToCheck, __WEBPACK_IMPORTED_MODULE_1__js_allbreeds_js__["a" /* allbreeds */])) {
+        // 404/default item
+        __WEBPACK_IMPORTED_MODULE_4__js_router_js__["a" /* router */].push({ path: "/gallery/bulldog" });
+      } else {
+        this.currentBreed = breedToCheck;
+        this.displayBreedImages(this.currentBreed);
+      }
+    },
+    displayBreedImages: function displayBreedImages(breedName) {
+      this.status.galleryDisplay = "fetching " + this.currentBreed + " data";
+
+      // Returns an array of all the images from the breed
+      var url = "https://dog.ceo/api/breed/" + breedName + "/images";
+      var self = this;
+      __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__["a" /* axios_get */](url).then(function (response) {
+        var arr = Object.values(response);
+        self.pager = new __WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js___default.a(arr[0].message);
+        self.status.galleryDisplay = "fetching images...";
+
+        // default page
+        self.currentImages = self.pager.page(0);
+        self.currentPage = self.pager.currentPage;
+      }).then(function () {
+        self.status.galleryDisplay = "";
+        self.totalPages = self.pager.totalPages;
+        self.pagerButtons = true;
+
+        // show random dog 
+        self.showRandomDogImage();
+        self.status.randomDog = "loading random dog...";
+      });
+    },
+    showPage: function showPage(num) {
+      this.currentImages = this.pager.page(num);
+    },
+    nextPage: function nextPage() {
+      if (!this.pager.hasNext()) {
+        this.currentImages = this.pager.page(0);
+      } else {
+        this.currentImages = this.pager.page(this.pager.currentPage + 1);
+      }
+      this.currentPage = this.pager.currentPage;
+    },
+    prevPage: function prevPage() {
+      if (this.pager.currentPage === 1) {
+        this.currentImages = this.pager.page(this.pager.totalPages);
+      } else {
+        this.currentImages = this.pager.page(this.pager.currentPage - 1);
+      }
+      this.currentPage = this.pager.currentPage;
+    },
+    showRandomDogImage: function showRandomDogImage() {
+      this.randomDogBreed = __WEBPACK_IMPORTED_MODULE_3__js_shuffle_js__["a" /* shuffle */](__WEBPACK_IMPORTED_MODULE_1__js_allbreeds_js__["a" /* allbreeds */]);
+      // Returns an array of all the images from the breed
+      var url = "https://dog.ceo/api/breed/" + this.randomDogBreed[0] + "/images";
+      var self = this;
+      __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__["a" /* axios_get */](url).then(function (response) {
+        var arr = Object.values(response);
+        self.status.randomDog = "";
+        self.randomDogImage = __WEBPACK_IMPORTED_MODULE_3__js_shuffle_js__["a" /* shuffle */](arr[0].message);
+      }).then(function () {});
+    }
+  }
+});
+
+/***/ }),
+/* 55 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return itemExists; });
+// for single arrays
+var itemExists = function itemExists(item, array) {
+  return array.indexOf(item) > -1;
+};
+
+
+
+/***/ }),
 /* 56 */,
 /* 57 */,
 /* 58 */,
@@ -2184,7 +2215,7 @@ if (true) module.exports = Paginate;
 
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('vcBreedSelector', {
+  return _c('div', [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('vcBreedSelector', {
     attrs: {
       "pr-selected": _vm.currentBreed
     }
@@ -2243,7 +2274,41 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   }, [_vm._v("next>")])]) : _vm._e()], 1)
 }
-var staticRenderFns = []
+var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('header', {
+    staticClass: "row container-fluid--h"
+  }, [_c('div', {
+    staticClass: "row container main-header"
+  }, [_c('div', {
+    staticClass: "col-sm-4"
+  }, [_vm._v("logo")]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-8"
+  }, [_vm._v("favorites")])])])
+},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('main', {
+    staticClass: "row container-fluid--m"
+  }, [_c('div', {
+    staticClass: "row container main-items"
+  }, [_c('div', {
+    staticClass: "col-sm-4"
+  }, [_vm._v("dropdown")]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-8"
+  }, [_vm._v("carousel")]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-4"
+  }, [_vm._v("randog")]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-8"
+  }, [_vm._v("gallery display")]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-4"
+  }, [_vm._v("lastviewed")])])])
+},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('footer', {
+    staticClass: "row container-fluid--f"
+  }, [_c('div', {
+    staticClass: "row container main-footer"
+  }, [_c('div', {
+    staticClass: "col-sm-12"
+  }, [_vm._v("\r\n        footer\r\n      ")])])])
+}]
 render._withStripped = true
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
