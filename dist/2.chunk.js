@@ -26,6 +26,107 @@ var store = {
 
 /***/ }),
 
+/***/ 54:
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Creates a new `Paginate` form a givin `Array`,
+ * optionally with a specific `Number` of items per page.
+ *
+ * @param {Array} data
+ * @param {Number} [perPage=10]
+ * @constructor
+ * @api public
+ */
+
+function Paginate(data, perPage) {
+
+  if (!data) throw new Error('Required Argument Missing');
+  if (!(data instanceof Array)) throw new Error('Invalid Argument Type');
+
+  this.data = data;
+  this.perPage = perPage || 8;
+  this.currentPage = 0;
+  this.totalPages = Math.ceil(this.data.length / this.perPage);
+}
+
+/**
+ * Calculates the offset.
+ *
+ * @return {Number}
+ * @api private
+ */
+
+Paginate.prototype.offset = function () {
+
+  return (this.currentPage - 1) * this.perPage;
+};
+
+/**
+ * Returns the specified `page`.
+ *
+ * @param {Number} pageNum
+ * @return {Array}
+ * @api public
+ */
+
+Paginate.prototype.page = function (pageNum) {
+
+  if (pageNum < 1) pageNum = 1;
+  if (pageNum > this.totalPages) pageNum = this.totalPages;
+
+  this.currentPage = pageNum;
+
+  var start = this.offset(),
+      end = start + this.perPage;
+
+  return this.data.slice(start, end);
+};
+
+/**
+ * Returns the next `page`.
+ *
+ * @return {Array}
+ * @api public
+ */
+
+Paginate.prototype.next = function () {
+
+  return this.page(this.currentPage + 1);
+};
+
+/**
+ * Returns the previous `page`.
+ *
+ * @return {Array}
+ * @api public
+ */
+
+Paginate.prototype.prev = function () {
+
+  return this.page(this.currentPage - 1);
+};
+
+/**
+ * Checks if there is a next `page`.
+ *
+ * @return {Boolean}
+ * @api public
+ */
+
+Paginate.prototype.hasNext = function () {
+
+  return this.currentPage < this.totalPages;
+};
+
+/**
+ * Expose `Paginate`
+ */
+
+if (true) module.exports = Paginate;
+
+/***/ }),
+
 /***/ 61:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -53,6 +154,8 @@ var nameExists = function nameExists(value, storeCategory) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_store_js__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_nameexists_js__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_vendor_Paginate_js__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_vendor_Paginate_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__js_vendor_Paginate_js__);
 //
 //
 //
@@ -76,6 +179,17 @@ var nameExists = function nameExists(value, storeCategory) {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -86,7 +200,15 @@ var vcFavoriteCount = function vcFavoriteCount() {
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
     return {
-      favorites: __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].favorites
+      currentFavorites: "",
+
+      // paginator 
+      pager: null,
+      currentPage: "",
+      totalPages: "",
+      pagerButtons: false,
+
+      editNoteCache: null
     };
   },
 
@@ -97,19 +219,51 @@ var vcFavoriteCount = function vcFavoriteCount() {
   components: {
     vcFavoriteCount: vcFavoriteCount
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    this.activatePager();
+  },
   methods: {
-    edit: function edit(tempnote, index) {},
-    update: function update(newNote, index) {
-      // temp update only
-      // index changes when filtered, so use findIndex later
-      __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].favorites[index].name = newNote;
+    activatePager: function activatePager() {
+      this.pager = null;
+      this.pager = new __WEBPACK_IMPORTED_MODULE_2__js_vendor_Paginate_js___default.a(__WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].favorites);
+      this.currentFavorites = this.pager.page(0);
+      this.currentPage = this.pager.currentPage;
+      this.totalPages = this.pager.totalPages;
+      this.pagerButtons = true;
     },
-    cancel: function cancel() {},
+    showPage: function showPage(num) {
+      this.currentImages = this.pager.page(num);
+    },
+    nextPage: function nextPage() {
+      if (!this.pager.hasNext()) {
+        this.currentImages = this.pager.page(0);
+      } else {
+        this.currentImages = this.pager.page(this.pager.currentPage + 1);
+      }
+      this.currentPage = this.pager.currentPage;
+    },
+    prevPage: function prevPage() {
+      if (this.pager.currentPage === 1) {
+        this.currentImages = this.pager.page(this.pager.totalPages);
+      } else {
+        this.currentImages = this.pager.page(this.pager.currentPage - 1);
+      }
+      this.currentPage = this.pager.currentPage;
+    },
+    edit: function edit(tempnote) {
+      // todo
+    },
+    update: function update(newNote, name) {
+      var itemIndex = __WEBPACK_IMPORTED_MODULE_1__js_nameexists_js__["a" /* nameExists */](name, __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].favorites);
+      __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].favorites[itemIndex].notes = newNote;
+    },
+    cancel: function cancel() {
+      // todo
+    },
     removeItem: function removeItem(name) {
       var itemIndex = __WEBPACK_IMPORTED_MODULE_1__js_nameexists_js__["a" /* nameExists */](name, __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].favorites);
       __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].favorites.splice(itemIndex, 1);
-      // this.currentItems = this.allItems;
+      this.activatePager();
     }
   }
 });
@@ -121,8 +275,8 @@ var vcFavoriteCount = function vcFavoriteCount() {
 
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('vcFavoriteCount'), _vm._v(" "), _c('ul', _vm._l((_vm.favorites), function(i, index) {
-    return _c('li', [_vm._v("\n    " + _vm._s(i.breed)), _c('br'), _vm._v("\n    " + _vm._s(i.imgSrc)), _c('br'), _vm._v(" "), _c('button', {
+  return _c('div', [_c('vcFavoriteCount'), _vm._v(" "), _c('ul', _vm._l((_vm.currentFavorites), function(i, index) {
+    return _c('li', [_vm._v("\r\n      " + _vm._s(i.breed) + " " + _vm._s(i.name) + "\r\n      \r\n      "), _c('button', {
       on: {
         "click": function($event) {
           _vm.removeItem(i.name)
@@ -135,7 +289,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         value: (i.edit == false),
         expression: "i.edit == false"
       }]
-    }, [_c('label', [_vm._v(_vm._s(i.name))]), _vm._v(" "), _c('button', {
+    }, [_c('label', [_vm._v(_vm._s(i.notes))]), _vm._v(" "), _c('button', {
       directives: [{
         name: "show",
         rawName: "v-show",
@@ -145,6 +299,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       on: {
         "click": function($event) {
           i.edit = true;
+          _vm.edit()
         }
       }
     }, [_vm._v("edit")])]), _vm._v(" "), _c('input', {
@@ -156,11 +311,11 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       }, {
         name: "model",
         rawName: "v-model",
-        value: (i.name),
-        expression: "i.name"
+        value: (i.notes),
+        expression: "i.notes"
       }],
       domProps: {
-        "value": (i.name)
+        "value": (i.notes)
       },
       on: {
         "blur": function($event) {
@@ -169,11 +324,11 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         "keyup": function($event) {
           if (!('button' in $event) && _vm._k($event.keyCode, "enter", 13)) { return null; }
           i.edit = false;
-          _vm.update(i.name, index)
+          _vm.update(i.notes, i.name)
         },
         "input": function($event) {
           if ($event.target.composing) { return; }
-          i.name = $event.target.value
+          i.notes = $event.target.value
         }
       }
     }), _vm._v(" "), _c('button', {
@@ -186,11 +341,52 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       on: {
         "click": function($event) {
           i.edit = false;
-          _vm.cancel(index)
+          _vm.cancel()
         }
       }
     }, [_vm._v("cancel")])])
-  }))], 1)
+  })), _vm._v(" "), (_vm.pagerButtons) ? _c('span', [_c('button', {
+    on: {
+      "click": function($event) {
+        _vm.prevPage()
+      }
+    }
+  }, [_vm._v("<previous")]), _vm._v("\r\n    page\r\n    "), _c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.currentPage),
+      expression: "currentPage"
+    }],
+    on: {
+      "change": function($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        });
+        _vm.currentPage = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+      }
+    }
+  }, _vm._l((_vm.totalPages), function(i) {
+    return _c('option', {
+      domProps: {
+        "value": i
+      },
+      on: {
+        "click": function($event) {
+          _vm.showPage(i)
+        }
+      }
+    }, [_vm._v(_vm._s(i))])
+  })), _vm._v(" of " + _vm._s(_vm.totalPages) + "\r\n    "), _c('button', {
+    on: {
+      "click": function($event) {
+        _vm.nextPage()
+      }
+    }
+  }, [_vm._v("next>")])]) : _vm._e()], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
