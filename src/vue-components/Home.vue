@@ -4,23 +4,52 @@
   <header class="row container-fluid--h">
     <div class="row container main-header">
       <div class="col-sm-4">logo</div>
-      <div class="col-sm-8">favorites</div>
+      <div class="col-sm-8">
+        <!-- favoriteCount -->
+        <vcFavoriteCount />
+        <!-- /favoriteCount -->
+      </div>
     </div>
   </header>
   <!-- /header -->
-
   <!-- main -->
   <main class="row container-fluid--m">
-    <div class="row container main-items">
-      <div class="col-sm-4">dropdown</div>
-      <div class="col-sm-8">carousel</div>
-      <div class="col-sm-4">randog</div>
-      <div class="col-sm-8">doglistmain</div>
-      <div class="col-sm-4">lastviewed</div>
+  <div class="row container main-items">
+    <div class="col-sm-4">
+      <!-- leftside -->      
+      <!-- breed selector -->
+      <div>
+        <select>
+          <option value="">Choose Breed...</option>
+          <option v-for="i in options"
+          @click="switchBreed(i)" :value="i">{{ i }}</option>
+        </select>
+      </div>
+      <!-- /breed selector -->      
+      <!-- randog -->
+      <div>
+        <vcRandomDog
+        :pr-status="status.randomDog"
+        :pr-random-breed="randomDogBreed"
+        :pr-random-image="randomDogImage" />
+      </div>
+      <!-- /randog -->         
+      <!-- lastViewed -->
+      <div>
+      lastviewed
+        <vcLastViewed />
+      </div>
+      <!-- /lastViewed -->      
+      <!-- /leftside -->
     </div>
+    <div class="col-sm-8">
+      <!-- rightside -->
+      right
+      <!-- /rightside -->
+    </div>
+  </div>
   </main>
   <!-- /main -->
-
   <!-- footer -->
   <footer class="row container-fluid--f">
     <div class="row container main-footer">
@@ -30,28 +59,12 @@
     </div>
   </footer>
   <!-- /footer -->
-
-
   <!-- favorite count -->
-  <vcFavoriteCount />
-  <!-- random dog -->
-  <vcRandomDog
-  :pr-status="status.randomDog"
-  :pr-random-breed="randomDogBreed"
-  :pr-random-image="randomDogImage" />
   
-  <br>
-  <br>
-  <!-- breed selector -->
-  <select>
-    <option value="">Choose Breed...</option>
-    <option v-for="i in options"
-    @click="switchBreed(i)" :value="i">{{ i }}</option>
-  </select>
-  <br>
-  <br>
-  <!-- temp location for lastViewed -->
-  <vcLastViewed />
+  
+  
+  
+  
   <!-- all breed names -->
   <!-- <ul v-for="i in allBreedNames">
     <li>{{ i }}</li>
@@ -116,7 +129,7 @@ export default {
           // }
         })
         .then(function () {
-          // self.showRandomDogImage();
+          self.showRandomDogImage();
       });
     },
     showRandomDogImage: function () {

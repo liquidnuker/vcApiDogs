@@ -260,7 +260,7 @@ var nameExists = function nameExists(value, storeCategory) {
 
 
 var vcFavoriteCount = function vcFavoriteCount() {
-  return __webpack_require__.e/* import() */(4).then(__webpack_require__.bind(null, 20));
+  return __webpack_require__.e/* import() */(6).then(__webpack_require__.bind(null, 20));
 };
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {

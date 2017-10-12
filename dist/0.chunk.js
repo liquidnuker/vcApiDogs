@@ -65,7 +65,7 @@ if (false) {(function () {
 
 
 var bind = __webpack_require__(14);
-var isBuffer = __webpack_require__(24);
+var isBuffer = __webpack_require__(25);
 
 /*global toString:true*/
 
@@ -376,7 +376,7 @@ module.exports = {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(10);
-var normalizeHeaderName = __webpack_require__(26);
+var normalizeHeaderName = __webpack_require__(27);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -694,12 +694,12 @@ process.umask = function() { return 0; };
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(10);
-var settle = __webpack_require__(27);
-var buildURL = __webpack_require__(29);
-var parseHeaders = __webpack_require__(30);
-var isURLSameOrigin = __webpack_require__(31);
+var settle = __webpack_require__(28);
+var buildURL = __webpack_require__(30);
+var parseHeaders = __webpack_require__(31);
+var isURLSameOrigin = __webpack_require__(32);
 var createError = __webpack_require__(17);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(32);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(33);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -796,7 +796,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(33);
+      var cookies = __webpack_require__(34);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -881,7 +881,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(28);
+var enhanceError = __webpack_require__(29);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -939,12 +939,13 @@ module.exports = Cancel;
 
 /***/ }),
 /* 20 */,
-/* 21 */
+/* 21 */,
+/* 22 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return axios_get; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 
 
@@ -975,13 +976,13 @@ var axios_get = function axios_get(url) {
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(23);
+module.exports = __webpack_require__(24);
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -989,7 +990,7 @@ module.exports = __webpack_require__(23);
 
 var utils = __webpack_require__(10);
 var bind = __webpack_require__(14);
-var Axios = __webpack_require__(25);
+var Axios = __webpack_require__(26);
 var defaults = __webpack_require__(12);
 
 /**
@@ -1024,14 +1025,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(19);
-axios.CancelToken = __webpack_require__(39);
+axios.CancelToken = __webpack_require__(40);
 axios.isCancel = __webpack_require__(18);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(40);
+axios.spread = __webpack_require__(41);
 
 module.exports = axios;
 
@@ -1040,7 +1041,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports) {
 
 /*!
@@ -1067,7 +1068,7 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1075,10 +1076,10 @@ function isSlowBuffer (obj) {
 
 var defaults = __webpack_require__(12);
 var utils = __webpack_require__(10);
-var InterceptorManager = __webpack_require__(34);
-var dispatchRequest = __webpack_require__(35);
-var isAbsoluteURL = __webpack_require__(37);
-var combineURLs = __webpack_require__(38);
+var InterceptorManager = __webpack_require__(35);
+var dispatchRequest = __webpack_require__(36);
+var isAbsoluteURL = __webpack_require__(38);
+var combineURLs = __webpack_require__(39);
 
 /**
  * Create a new instance of Axios
@@ -1160,7 +1161,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1179,7 +1180,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1212,7 +1213,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1240,7 +1241,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1315,7 +1316,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1359,7 +1360,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1434,7 +1435,7 @@ module.exports = (
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1477,7 +1478,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1537,7 +1538,7 @@ module.exports = (
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1596,14 +1597,14 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(10);
-var transformData = __webpack_require__(36);
+var transformData = __webpack_require__(37);
 var isCancel = __webpack_require__(18);
 var defaults = __webpack_require__(12);
 
@@ -1682,7 +1683,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1709,7 +1710,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1730,7 +1731,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1751,7 +1752,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1815,7 +1816,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1849,7 +1850,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1877,7 +1878,6 @@ var shuffle = function shuffle(array) {
 
 
 /***/ }),
-/* 42 */,
 /* 43 */,
 /* 44 */,
 /* 45 */,
@@ -1992,13 +1992,36 @@ if (true) module.exports = Paginate;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_allbreeds_js__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_itemexists_js__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__js_shuffle_js__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__js_shuffle_js__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__js_router_js__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2077,10 +2100,16 @@ var vcBreedSelector = function vcBreedSelector() {
   return __webpack_require__.e/* import() */(9).then(__webpack_require__.bind(null, 56));
 };
 var vcGalleryDisplay = function vcGalleryDisplay() {
-  return __webpack_require__.e/* import() */(5).then(__webpack_require__.bind(null, 59));
+  return __webpack_require__.e/* import() */(7).then(__webpack_require__.bind(null, 59));
 };
 var vcRandomDog = function vcRandomDog() {
-  return __webpack_require__.e/* import() */(3).then(__webpack_require__.bind(null, 49));
+  return __webpack_require__.e/* import() */(5).then(__webpack_require__.bind(null, 49));
+};
+var vcLastViewed = function vcLastViewed() {
+  return __webpack_require__.e/* import() */(3).then(__webpack_require__.bind(null, 21));
+};
+var vcFavoriteCount = function vcFavoriteCount() {
+  return __webpack_require__.e/* import() */(4).then(__webpack_require__.bind(null, 20));
 };
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
@@ -2109,7 +2138,9 @@ var vcRandomDog = function vcRandomDog() {
   components: {
     vcBreedSelector: vcBreedSelector,
     vcGalleryDisplay: vcGalleryDisplay,
-    vcRandomDog: vcRandomDog
+    vcRandomDog: vcRandomDog,
+    vcFavoriteCount: vcFavoriteCount,
+    vcLastViewed: vcLastViewed
   },
   watch: {
     $route: function $route() {
@@ -2117,7 +2148,7 @@ var vcRandomDog = function vcRandomDog() {
     }
   },
   mounted: function mounted() {
-    // this.checkCategory();
+    this.checkCategory();
   },
   methods: {
     checkCategory: function checkCategory() {
@@ -2215,29 +2246,41 @@ var itemExists = function itemExists(item, array) {
 
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('vcBreedSelector', {
+  return _c('div', [_c('header', {
+    staticClass: "row container-fluid--h"
+  }, [_c('div', {
+    staticClass: "row container main-header"
+  }, [_c('div', {
+    staticClass: "col-sm-4"
+  }, [_vm._v("logo")]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-8"
+  }, [_c('vcFavoriteCount')], 1)])]), _vm._v(" "), _c('main', {
+    staticClass: "row container-fluid--m"
+  }, [_c('div', {
+    staticClass: "row container main-items"
+  }, [_c('div', {
+    staticClass: "col-sm-12"
+  }, [_vm._v("\r\n      breadcrumb\r\n    ")]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-4"
+  }, [_c('div', [_c('vcBreedSelector', {
     attrs: {
       "pr-selected": _vm.currentBreed
     }
-  }), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('vcRandomDog', {
+  })], 1), _vm._v(" "), _c('div', [_c('vcRandomDog', {
     attrs: {
       "pr-status": _vm.status.randomDog,
       "pr-random-breed": _vm.randomDogBreed,
       "pr-random-image": _vm.randomDogImage
     }
-  }), _vm._v(" "), _c('vcGalleryDisplay', {
-    attrs: {
-      "pr-status": _vm.status.galleryDisplay,
-      "pr-current-breed": _vm.currentBreed,
-      "pr-current-images": _vm.currentImages
-    }
-  }), _vm._v(" "), (_vm.pagerButtons) ? _c('span', [_c('button', {
+  })], 1), _vm._v(" "), _c('div', [_vm._v("\r\n        lastviewed\r\n        "), _c('vcLastViewed')], 1)]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-8"
+  }, [_c('div', [_vm._v("\r\n        stage\r\n      ")]), _vm._v(" "), _c('div', [(_vm.pagerButtons) ? _c('span', [_c('button', {
     on: {
       "click": function($event) {
         _vm.prevPage()
       }
     }
-  }, [_vm._v("<previous")]), _vm._v("\r\n  page\r\n  "), _c('select', {
+  }, [_vm._v("<previous")]), _vm._v("\r\n          page\r\n          "), _c('select', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -2266,41 +2309,21 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         }
       }
     }, [_vm._v(_vm._s(i))])
-  })), _vm._v(" of " + _vm._s(_vm.totalPages) + "\r\n  "), _c('button', {
+  })), _vm._v(" of " + _vm._s(_vm.totalPages) + "\r\n          "), _c('button', {
     on: {
       "click": function($event) {
         _vm.nextPage()
       }
     }
-  }, [_vm._v("next>")])]) : _vm._e()], 1)
+  }, [_vm._v("next>")])]) : _vm._e()]), _vm._v(" "), _c('div', [_c('vcGalleryDisplay', {
+    attrs: {
+      "pr-status": _vm.status.galleryDisplay,
+      "pr-current-breed": _vm.currentBreed,
+      "pr-current-images": _vm.currentImages
+    }
+  })], 1)])])]), _vm._v(" "), _vm._m(0)])
 }
 var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('header', {
-    staticClass: "row container-fluid--h"
-  }, [_c('div', {
-    staticClass: "row container main-header"
-  }, [_c('div', {
-    staticClass: "col-sm-4"
-  }, [_vm._v("logo")]), _vm._v(" "), _c('div', {
-    staticClass: "col-sm-8"
-  }, [_vm._v("favorites")])])])
-},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('main', {
-    staticClass: "row container-fluid--m"
-  }, [_c('div', {
-    staticClass: "row container main-items"
-  }, [_c('div', {
-    staticClass: "col-sm-4"
-  }, [_vm._v("dropdown")]), _vm._v(" "), _c('div', {
-    staticClass: "col-sm-8"
-  }, [_vm._v("carousel")]), _vm._v(" "), _c('div', {
-    staticClass: "col-sm-4"
-  }, [_vm._v("randog")]), _vm._v(" "), _c('div', {
-    staticClass: "col-sm-8"
-  }, [_vm._v("gallery display")]), _vm._v(" "), _c('div', {
-    staticClass: "col-sm-4"
-  }, [_vm._v("lastviewed")])])])
-},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('footer', {
     staticClass: "row container-fluid--f"
   }, [_c('div', {

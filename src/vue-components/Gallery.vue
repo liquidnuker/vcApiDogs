@@ -4,23 +4,77 @@
   <header class="row container-fluid--h">
     <div class="row container main-header">
       <div class="col-sm-4">logo</div>
-      <div class="col-sm-8">favorites</div>
+      <div class="col-sm-8">
+        <!-- favoriteCount -->
+        <vcFavoriteCount />
+        <!-- /favoriteCount -->
+      </div>
     </div>
   </header>
   <!-- /header -->
-
   <!-- main -->
   <main class="row container-fluid--m">
-    <div class="row container main-items">
-      <div class="col-sm-4">dropdown</div>
-      <div class="col-sm-8">carousel</div>
-      <div class="col-sm-4">randog</div>
-      <div class="col-sm-8">gallery display</div>
-      <div class="col-sm-4">lastviewed</div>
+  <div class="row container main-items">
+    <div class="col-sm-12">
+      breadcrumb
     </div>
+    <div class="col-sm-4">
+      <!-- leftside -->
+      <!-- breed selector -->
+      <div>
+        <vcBreedSelector
+        :pr-selected="currentBreed" />
+      </div>
+      <!-- /breed selector -->
+      <!-- randog -->
+      <div>
+        <vcRandomDog
+        :pr-status="status.randomDog"
+        :pr-random-breed="randomDogBreed"
+        :pr-random-image="randomDogImage" />
+      </div>
+      <!-- /randog -->
+      <!-- lastViewed -->
+      <div>
+        lastviewed
+        <vcLastViewed />
+      </div>
+      <!-- /lastViewed -->
+      <!-- /leftside -->
+    </div>
+    <div class="col-sm-8">
+      <!-- rightside -->
+      <!-- stage -->
+      <div>
+        stage
+      </div>
+      <!-- /stage -->
+      <!-- page controls -->
+      <div>
+        <span v-if="pagerButtons">
+          <button @click="prevPage()">&lt;previous</button>
+          page
+          <select v-model="currentPage">
+            <option v-for="i in totalPages" :value="i"
+            @click="showPage(i)">{{ i }}</option>
+          </select> of {{ totalPages }}
+          <button @click="nextPage()">next&gt;</button>
+        </span>
+      </div>
+      <!-- /page controls -->
+      <!-- gallery display -->
+      <div>
+        <vcGalleryDisplay
+        :pr-status="status.galleryDisplay"
+        :pr-current-breed="currentBreed"
+        :pr-current-images="currentImages" />
+      </div>
+      <!-- /gallery display -->
+      <!-- /rightside -->
+    </div>
+  </div>
   </main>
   <!-- /main -->
-
   <!-- footer -->
   <footer class="row container-fluid--f">
     <div class="row container main-footer">
@@ -30,37 +84,6 @@
     </div>
   </footer>
   <!-- /footer -->
-
-  <vcBreedSelector 
-  :pr-selected="currentBreed" />
-
-  <br>
-  <br>
-
-  <!-- random dog -->
-  <vcRandomDog
-  :pr-status="status.randomDog"
-  :pr-random-breed="randomDogBreed"
-  :pr-random-image="randomDogImage" />
-
-  <!-- gallery display -->
-  <vcGalleryDisplay 
-  :pr-status="status.galleryDisplay"
-  :pr-current-breed="currentBreed"
-  :pr-current-images="currentImages" />
-  <!-- end gallery display -->
-
-  <!-- page controls -->
-  <span v-if="pagerButtons">
-  <button @click="prevPage()">&lt;previous</button>
-  page
-  <select v-model="currentPage">
-    <option v-for="i in totalPages" :value="i" 
-    @click="showPage(i)">{{ i }}</option>
-  </select> of {{ totalPages }}
-  <button @click="nextPage()">next&gt;</button>
-  </span>
-  <!-- end page controls -->  
   
 </div>
 </template>
@@ -75,6 +98,8 @@ import Paginate from "../js/vendor/Paginate.js";
 const vcBreedSelector = () => import ('./vcBreedSelector.vue');
 const vcGalleryDisplay = () => import ('./vcGalleryDisplay.vue');
 const vcRandomDog = () => import ('./vcRandomDog.vue');
+const vcLastViewed = () => import ('./vcLastViewed.vue');
+const vcFavoriteCount = () => import ('./vcFavoriteCount.vue');
 export default {
   data () {
     return {   
@@ -101,7 +126,9 @@ export default {
   components: {
     vcBreedSelector: vcBreedSelector,
     vcGalleryDisplay: vcGalleryDisplay,
-    vcRandomDog: vcRandomDog
+    vcRandomDog: vcRandomDog,
+    vcFavoriteCount: vcFavoriteCount,
+    vcLastViewed: vcLastViewed
   },
   watch: {
     $route: function () {
@@ -109,7 +136,7 @@ export default {
       }
   },
   mounted: function () {
-    // this.checkCategory();
+    this.checkCategory();
   },
   methods: {  
     checkCategory: function () {
