@@ -26,11 +26,33 @@ var store = {
 
 /***/ }),
 
+/***/ 61:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return nameExists; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__store_js__ = __webpack_require__(11);
+
+
+// ret index; else undefined
+var nameExists = function nameExists(value, storeCategory) {
+  for (var key = 0; key < storeCategory.length; key++) {
+    if (storeCategory[key].name == value) {
+      return key;
+    }
+  }
+};
+
+
+
+/***/ }),
+
 /***/ 64:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_store_js__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_nameexists_js__ = __webpack_require__(61);
 //
 //
 //
@@ -53,6 +75,9 @@ var store = {
 //
 //
 //
+//
+
+
 
 
 var vcFavoriteCount = function vcFavoriteCount() {
@@ -80,7 +105,12 @@ var vcFavoriteCount = function vcFavoriteCount() {
       // index changes when filtered, so use findIndex later
       __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].favorites[index].name = newNote;
     },
-    cancel: function cancel() {}
+    cancel: function cancel() {},
+    removeItem: function removeItem(name) {
+      var itemIndex = __WEBPACK_IMPORTED_MODULE_1__js_nameexists_js__["a" /* nameExists */](name, __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].favorites);
+      __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].favorites.splice(itemIndex, 1);
+      // this.currentItems = this.allItems;
+    }
   }
 });
 
@@ -92,7 +122,13 @@ var vcFavoriteCount = function vcFavoriteCount() {
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('vcFavoriteCount'), _vm._v(" "), _c('ul', _vm._l((_vm.favorites), function(i, index) {
-    return _c('li', [_vm._v("\n    " + _vm._s(i.breed)), _c('br'), _vm._v("\n    " + _vm._s(i.imgSrc)), _c('br'), _vm._v(" "), _c('div', {
+    return _c('li', [_vm._v("\n    " + _vm._s(i.breed)), _c('br'), _vm._v("\n    " + _vm._s(i.imgSrc)), _c('br'), _vm._v(" "), _c('button', {
+      on: {
+        "click": function($event) {
+          _vm.removeItem(i.name)
+        }
+      }
+    }, [_vm._v("remove")]), _vm._v(" "), _c('div', {
       directives: [{
         name: "show",
         rawName: "v-show",
