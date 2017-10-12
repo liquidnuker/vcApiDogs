@@ -19,8 +19,31 @@ var store = {
     breed: 'african',
     notes: "note2",
     edit: false
+  }, {
+    name: 'name3',
+    imgSrc: 'imgsrc3.jpg',
+    breed: 'bulldog',
+    notes: "note3",
+    edit: false
+  }, {
+    name: 'name4',
+    imgSrc: 'imgsrc4.jpg',
+    breed: 'bulldog',
+    notes: "note4",
+    edit: false
   }]
 };
+
+
+
+/***/ }),
+
+/***/ 19:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return allbreeds; });
+var allbreeds = ["affenpinscher", "african", "airedale", "akita", "appenzeller", "basenji", "beagle", "bluetick", "borzoi", "bouvier", "boxer", "brabancon", "briard", "bulldog", "bullterrier", "cairn", "chihuahua", "chow", "clumber", "collie", "coonhound", "corgi", "dachshund", "dane", "deerhound", "dhole", "dingo", "doberman", "elkhound", "entlebucher", "eskimo", "germanshepherd", "greyhound", "groenendael", "hound", "husky", "keeshond", "kelpie", "komondor", "kuvasz", "labrador", "leonberg", "lhasa", "malamute", "malinois", "maltese", "mastiff", "mexicanhairless", "mountain", "newfoundland", "otterhound", "papillon", "pekinese", "pembroke", "pinscher", "pointer", "pomeranian", "poodle", "pug", "pyrenees", "redbone", "retriever", "ridgeback", "rottweiler", "saluki", "samoyed", "schipperke", "schnauzer", "setter", "sheepdog", "shiba", "shihtzu", "spaniel", "springer", "stbernard", "terrier", "vizsla", "weimaraner", "whippet", "wolfhound"];
 
 
 
@@ -152,10 +175,11 @@ var nameExists = function nameExists(value, storeCategory) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_store_js__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_nameexists_js__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_vendor_Paginate_js__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_vendor_Paginate_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__js_vendor_Paginate_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_allbreeds_js__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_store_js__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_nameexists_js__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__js_vendor_Paginate_js__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__js_vendor_Paginate_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__js_vendor_Paginate_js__);
 //
 //
 //
@@ -189,6 +213,15 @@ var nameExists = function nameExists(value, storeCategory) {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -202,13 +235,17 @@ var vcFavoriteCount = function vcFavoriteCount() {
     return {
       currentFavorites: "",
 
+      options: __WEBPACK_IMPORTED_MODULE_0__js_allbreeds_js__["a" /* allbreeds */].sort(),
+
       // paginator 
       pager: null,
       currentPage: "",
       totalPages: "",
       pagerButtons: false,
 
-      editNoteCache: null
+      editNoteCache: null,
+
+      filterItem: null
     };
   },
 
@@ -220,33 +257,33 @@ var vcFavoriteCount = function vcFavoriteCount() {
     vcFavoriteCount: vcFavoriteCount
   },
   mounted: function mounted() {
-    this.activatePager();
+    this.activatePager(__WEBPACK_IMPORTED_MODULE_1__js_store_js__["a" /* store */].favorites);
   },
   methods: {
-    activatePager: function activatePager() {
+    activatePager: function activatePager(data) {
       this.pager = null;
-      this.pager = new __WEBPACK_IMPORTED_MODULE_2__js_vendor_Paginate_js___default.a(__WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].favorites);
+      this.pager = new __WEBPACK_IMPORTED_MODULE_3__js_vendor_Paginate_js___default.a(data);
       this.currentFavorites = this.pager.page(0);
       this.currentPage = this.pager.currentPage;
       this.totalPages = this.pager.totalPages;
       this.pagerButtons = true;
     },
     showPage: function showPage(num) {
-      this.currentImages = this.pager.page(num);
+      this.currentFavorites = this.pager.page(num);
     },
     nextPage: function nextPage() {
       if (!this.pager.hasNext()) {
-        this.currentImages = this.pager.page(0);
+        this.currentFavorites = this.pager.page(0);
       } else {
-        this.currentImages = this.pager.page(this.pager.currentPage + 1);
+        this.currentFavorites = this.pager.page(this.pager.currentPage + 1);
       }
       this.currentPage = this.pager.currentPage;
     },
     prevPage: function prevPage() {
       if (this.pager.currentPage === 1) {
-        this.currentImages = this.pager.page(this.pager.totalPages);
+        this.currentFavorites = this.pager.page(this.pager.totalPages);
       } else {
-        this.currentImages = this.pager.page(this.pager.currentPage - 1);
+        this.currentFavorites = this.pager.page(this.pager.currentPage - 1);
       }
       this.currentPage = this.pager.currentPage;
     },
@@ -254,16 +291,34 @@ var vcFavoriteCount = function vcFavoriteCount() {
       // todo
     },
     update: function update(newNote, name) {
-      var itemIndex = __WEBPACK_IMPORTED_MODULE_1__js_nameexists_js__["a" /* nameExists */](name, __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].favorites);
-      __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].favorites[itemIndex].notes = newNote;
+      var itemIndex = __WEBPACK_IMPORTED_MODULE_2__js_nameexists_js__["a" /* nameExists */](name, __WEBPACK_IMPORTED_MODULE_1__js_store_js__["a" /* store */].favorites);
+      __WEBPACK_IMPORTED_MODULE_1__js_store_js__["a" /* store */].favorites[itemIndex].notes = newNote;
     },
     cancel: function cancel() {
       // todo
     },
     removeItem: function removeItem(name) {
-      var itemIndex = __WEBPACK_IMPORTED_MODULE_1__js_nameexists_js__["a" /* nameExists */](name, __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].favorites);
-      __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].favorites.splice(itemIndex, 1);
-      this.activatePager();
+      var itemIndex = __WEBPACK_IMPORTED_MODULE_2__js_nameexists_js__["a" /* nameExists */](name, __WEBPACK_IMPORTED_MODULE_1__js_store_js__["a" /* store */].favorites);
+      __WEBPACK_IMPORTED_MODULE_1__js_store_js__["a" /* store */].favorites.splice(itemIndex, 1);
+
+      if (this.filterItem) {
+        // retain filtered view
+        this.filter(this.filterItem);
+      } else {
+        this.showAll();
+      }
+    },
+    filter: function filter(breed) {
+      this.filterItem = breed;
+
+      var filteredBreed = __WEBPACK_IMPORTED_MODULE_1__js_store_js__["a" /* store */].favorites.filter(function (el) {
+        return el.breed === breed;
+      });
+      this.activatePager(filteredBreed);
+    },
+    showAll: function showAll() {
+      this.filterItem = null;
+      this.activatePager(__WEBPACK_IMPORTED_MODULE_1__js_store_js__["a" /* store */].favorites);
     }
   }
 });
@@ -345,7 +400,28 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         }
       }
     }, [_vm._v("cancel")])])
-  })), _vm._v(" "), (_vm.pagerButtons) ? _c('span', [_c('button', {
+  })), _vm._v(" "), _c('button', {
+    on: {
+      "click": function($event) {
+        _vm.showAll()
+      }
+    }
+  }, [_vm._v("Show All")]), _vm._v(" "), _c('select', [_c('option', {
+    attrs: {
+      "value": ""
+    }
+  }, [_vm._v("Filter Breed...")]), _vm._v(" "), _vm._l((_vm.options), function(i) {
+    return _c('option', {
+      domProps: {
+        "value": i
+      },
+      on: {
+        "click": function($event) {
+          _vm.filter(i)
+        }
+      }
+    }, [_vm._v(_vm._s(i))])
+  })], 2), _vm._v(" "), (_vm.pagerButtons) ? _c('span', [_c('button', {
     on: {
       "click": function($event) {
         _vm.prevPage()

@@ -17,6 +17,14 @@
     </li>
   </ul>
 
+  <button @click="showAll()">Show All</button>
+  <!-- breed selector -->
+  <select>
+    <option value="">Filter Breed...</option>
+    <option v-for="i in options"
+    @click="filter(i)" :value="i">{{ i }}</option>
+  </select>
+
   <!-- page controls -->
   <span v-if="pagerButtons">
     <button @click="prevPage()">&lt;previous</button>
@@ -32,6 +40,7 @@
 </div>
 </template>
 <script>
+import {allbreeds} from "../js/allbreeds.js";
 import {store} from "../js/store.js";
 import {nameExists} from "../js/nameexists.js";
 import Paginate from "../js/vendor/Paginate.js";
@@ -42,13 +51,17 @@ export default {
     return {   
       currentFavorites: "",
 
+      options: allbreeds.sort(),
+
       // paginator 
       pager: null,
       currentPage: "",
       totalPages: "",
       pagerButtons: false,
 
-      editNoteCache: null
+      editNoteCache: null,
+
+      filterItem: null
       }
   },
   watch: {
@@ -59,33 +72,33 @@ export default {
     vcFavoriteCount: vcFavoriteCount
   },
   mounted: function () {
-    this.activatePager();
+    this.activatePager(store.favorites);
   },
   methods: {
-    activatePager: function() {
+    activatePager: function(data) {
       this.pager = null;
-      this.pager = new Paginate(store.favorites); 
+      this.pager = new Paginate(data); 
       this.currentFavorites = this.pager.page(0);
       this.currentPage = this.pager.currentPage; 
       this.totalPages = this.pager.totalPages;
       this.pagerButtons = true;
     },
     showPage: function(num) {
-      this.currentImages = this.pager.page(num);
+      this.currentFavorites = this.pager.page(num);
     },
     nextPage: function() {
       if (!this.pager.hasNext()) {
-        this.currentImages = this.pager.page(0);
+        this.currentFavorites = this.pager.page(0);
       } else {
-        this.currentImages = this.pager.page(this.pager.currentPage + 1);
+        this.currentFavorites = this.pager.page(this.pager.currentPage + 1);
       }
       this.currentPage = this.pager.currentPage;
     },
     prevPage: function() {
       if (this.pager.currentPage === 1) {
-        this.currentImages = this.pager.page(this.pager.totalPages);
+        this.currentFavorites = this.pager.page(this.pager.totalPages);
       } else {
-        this.currentImages = this.pager.page(this.pager.currentPage - 1);
+        this.currentFavorites = this.pager.page(this.pager.currentPage - 1);
       }
       this.currentPage = this.pager.currentPage;
     },
@@ -102,8 +115,26 @@ export default {
     removeItem: function(name) {
       let itemIndex = nameExists(name, store.favorites);
       store.favorites.splice(itemIndex, 1);
-      this.activatePager();
-    },  
+      
+      if (this.filterItem) {
+        // retain filtered view
+        this.filter(this.filterItem);
+      } else {
+        this.showAll();
+      }
+    },
+    filter: function(breed) {
+      this.filterItem = breed;
+
+      let filteredBreed = store.favorites.filter(function (el) {
+      return el.breed === breed; 
+      }); 
+      this.activatePager(filteredBreed);   
+    },
+    showAll: function() {
+      this.filterItem = null;
+      this.activatePager(store.favorites);
+    }  
   }
 }
 </script>
