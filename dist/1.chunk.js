@@ -2087,7 +2087,6 @@ if (true) module.exports = Paginate;
 //
 //
 //
-//
 
 
 
@@ -2272,7 +2271,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "pr-random-breed": _vm.randomDogBreed,
       "pr-random-image": _vm.randomDogImage
     }
-  })], 1), _vm._v(" "), _c('div', [_vm._v("\r\n        lastviewed\r\n        "), _c('vcLastViewed')], 1)]), _vm._v(" "), _c('div', {
+  })], 1), _vm._v(" "), _c('div', [_c('vcLastViewed')], 1)]), _vm._v(" "), _c('div', {
     staticClass: "col-sm-8"
   }, [_c('div', [_vm._v("\r\n        stage\r\n      ")]), _vm._v(" "), _c('div', [(_vm.pagerButtons) ? _c('span', [_c('button', {
     on: {

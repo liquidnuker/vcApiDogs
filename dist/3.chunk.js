@@ -65,6 +65,10 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
@@ -74,6 +78,7 @@ if (false) {(function () {
   props: ["prStatus", "prRandomBreed", "prRandomImage"],
   components: {},
   mounted: function mounted() {},
+  // todo: add extractfilename for {{ name }}
   methods: {}
 });
 
@@ -84,9 +89,25 @@ if (false) {(function () {
 
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_vm._v("\n" + _vm._s(_vm.prStatus) + "\n"), _c('br'), _vm._v(" "), _vm._v("\n" + _vm._s(_vm.prRandomBreed[0]) + "\n"), _c('br'), _vm._v("\n" + _vm._s(_vm.prRandomImage[0]) + "\n")])
+  return _c('div', [_vm._v("\r\n  " + _vm._s(_vm.prStatus) + "\r\n  "), _c('div', {
+    staticClass: "itemBox102"
+  }, [_c('h3', {
+    staticClass: "itemBox102_heading1"
+  }, [_vm._v("Random Dog")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('h4', {
+    staticClass: "itemBox102_heading2"
+  }, [_vm._v("Name")]), _vm._v(" "), _c('p', [_vm._v("Breed: " + _vm._s(_vm.prRandomBreed[0]))])])])
 }
-var staticRenderFns = []
+var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "itemBox102_img-holder"
+  }, [_c('img', {
+    attrs: {
+      "src": "img.jpg",
+      "alt": "img alt",
+      "title": "Image Title"
+    }
+  })])
+}]
 render._withStripped = true
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);

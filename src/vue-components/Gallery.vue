@@ -36,7 +36,6 @@
       <!-- /randog -->
       <!-- lastViewed -->
       <div>
-        lastviewed
         <vcLastViewed />
       </div>
       <!-- /lastViewed -->
