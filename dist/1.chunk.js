@@ -13,7 +13,7 @@ webpackJsonp([1],[
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Gallery_vue__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_46c817f9_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Gallery_vue__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_46c817f9_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Gallery_vue__ = __webpack_require__(66);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -2087,6 +2087,8 @@ if (true) module.exports = Paginate;
 //
 //
 //
+//
+//
 
 
 
@@ -2096,10 +2098,10 @@ if (true) module.exports = Paginate;
 
 
 var vcBreedSelector = function vcBreedSelector() {
-  return __webpack_require__.e/* import() */(9).then(__webpack_require__.bind(null, 56));
+  return __webpack_require__.e/* import() */(15).then(__webpack_require__.bind(null, 56));
 };
 var vcGalleryDisplay = function vcGalleryDisplay() {
-  return __webpack_require__.e/* import() */(6).then(__webpack_require__.bind(null, 59));
+  return __webpack_require__.e/* import() */(12).then(__webpack_require__.bind(null, 59));
 };
 var vcRandomDog = function vcRandomDog() {
   return __webpack_require__.e/* import() */(3/* duplicate */).then(__webpack_require__.bind(null, 43));
@@ -2109,6 +2111,12 @@ var vcLastViewed = function vcLastViewed() {
 };
 var vcFavoriteCount = function vcFavoriteCount() {
   return __webpack_require__.e/* import() */(5).then(__webpack_require__.bind(null, 42));
+};
+var vcBtnPagePrev = function vcBtnPagePrev() {
+  return __webpack_require__.e/* import() */(13/* duplicate */).then(__webpack_require__.bind(null, 63));
+};
+var vcBtnPageNext = function vcBtnPageNext() {
+  return __webpack_require__.e/* import() */(14/* duplicate */).then(__webpack_require__.bind(null, 70));
 };
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
@@ -2124,7 +2132,7 @@ var vcFavoriteCount = function vcFavoriteCount() {
       pager: "",
       currentPage: "",
       totalPages: "",
-      pagerButtons: false,
+      pagerButtons: true,
 
       // status
       status: {
@@ -2139,11 +2147,13 @@ var vcFavoriteCount = function vcFavoriteCount() {
     vcGalleryDisplay: vcGalleryDisplay,
     vcRandomDog: vcRandomDog,
     vcFavoriteCount: vcFavoriteCount,
-    vcLastViewed: vcLastViewed
+    vcLastViewed: vcLastViewed,
+    vcBtnPagePrev: vcBtnPagePrev,
+    vcBtnPageNext: vcBtnPageNext
   },
   watch: {
     $route: function $route() {
-      this.checkCategory();
+      // this.checkCategory();
     }
   },
   mounted: function mounted() {
@@ -2190,6 +2200,7 @@ var vcFavoriteCount = function vcFavoriteCount() {
       this.currentImages = this.pager.page(num);
     },
     nextPage: function nextPage() {
+      console.log("emit");
       if (!this.pager.hasNext()) {
         this.currentImages = this.pager.page(0);
       } else {
@@ -2240,7 +2251,10 @@ var itemExists = function itemExists(item, array) {
 /* 60 */,
 /* 61 */,
 /* 62 */,
-/* 63 */
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2273,13 +2287,15 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   })], 1), _vm._v(" "), _c('div', [_c('vcLastViewed')], 1)]), _vm._v(" "), _c('div', {
     staticClass: "col-sm-8"
-  }, [_c('div', [_vm._v("\r\n        stage\r\n      ")]), _vm._v(" "), _c('div', [(_vm.pagerButtons) ? _c('span', [_c('button', {
+  }, [_c('div', [_vm._v("\r\n        stage\r\n      ")]), _vm._v(" "), _c('div', [(_vm.pagerButtons) ? _c('span', [_c('vcBtnPagePrev', {
     on: {
-      "click": function($event) {
+      "prevPage": function($event) {
         _vm.prevPage()
       }
     }
-  }, [_vm._v("<previous")]), _vm._v("\r\n          page\r\n          "), _c('select', {
+  }), _vm._v("\r\n          page\r\n          "), _c('div', {
+    staticClass: "custom-select pg_totalpages"
+  }, [_c('select', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -2308,13 +2324,13 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         }
       }
     }, [_vm._v(_vm._s(i))])
-  })), _vm._v(" of " + _vm._s(_vm.totalPages) + "\r\n          "), _c('button', {
+  }))]), _vm._v(" of " + _vm._s(_vm.totalPages) + "\r\n          "), _c('vcBtnPageNext', {
     on: {
-      "click": function($event) {
+      "nextPage": function($event) {
         _vm.nextPage()
       }
     }
-  }, [_vm._v("next>")])]) : _vm._e()]), _vm._v(" "), _c('div', [_c('vcGalleryDisplay', {
+  })], 1) : _vm._e()]), _vm._v(" "), _c('div', [_c('vcGalleryDisplay', {
     attrs: {
       "pr-status": _vm.status.galleryDisplay,
       "pr-current-breed": _vm.currentBreed,

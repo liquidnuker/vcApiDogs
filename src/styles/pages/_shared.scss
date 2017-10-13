@@ -190,3 +190,32 @@ main > .container {
     width: 56%;
   }
 }
+
+// pager buttons
+// ==================================================/
+.btn_pager {
+  
+  button {
+    cursor: pointer;
+    border: 1px solid #000;
+
+    span {
+      vertical-align: middle;
+    }
+
+    svg {
+      @extend %display--inline-block;
+      vertical-align: middle;
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+.btn_pager_previous {
+  padding: 2px;
+}
+
+.btn_pager_next {
+  padding: 2px;
+} 

@@ -51,13 +51,15 @@
       <!-- page controls -->
       <div>
         <span v-if="pagerButtons">
-          <button @click="prevPage()">&lt;previous</button>
+          <vcBtnPagePrev @prevPage="prevPage()" />
           page
+          <div class="custom-select pg_totalpages">
           <select v-model="currentPage">
             <option v-for="i in totalPages" :value="i"
             @click="showPage(i)">{{ i }}</option>
-          </select> of {{ totalPages }}
-          <button @click="nextPage()">next&gt;</button>
+          </select>
+          </div> of {{ totalPages }}
+          <vcBtnPageNext @nextPage="nextPage()" />
         </span>
       </div>
       <!-- /page controls -->
@@ -99,6 +101,8 @@ const vcGalleryDisplay = () => import ('./vcGalleryDisplay.vue');
 const vcRandomDog = () => import ('./vcRandomDog.vue');
 const vcLastViewed = () => import ('./vcLastViewed.vue');
 const vcFavoriteCount = () => import ('./vcFavoriteCount.vue');
+const vcBtnPagePrev = () => import ('./vcBtnPagePrev.vue');
+const vcBtnPageNext = () => import ('./vcBtnPageNext.vue');
 export default {
   data () {
     return {   
@@ -113,7 +117,7 @@ export default {
       pager: "",
       currentPage: "",
       totalPages: "",
-      pagerButtons: false,
+      pagerButtons: true,
 
       // status
       status: {
@@ -127,11 +131,13 @@ export default {
     vcGalleryDisplay: vcGalleryDisplay,
     vcRandomDog: vcRandomDog,
     vcFavoriteCount: vcFavoriteCount,
-    vcLastViewed: vcLastViewed
+    vcLastViewed: vcLastViewed,
+    vcBtnPagePrev: vcBtnPagePrev,
+    vcBtnPageNext: vcBtnPageNext
   },
   watch: {
     $route: function () {
-        this.checkCategory();
+        // this.checkCategory();
       }
   },
   mounted: function () {
@@ -180,6 +186,7 @@ export default {
       this.currentImages = this.pager.page(num);
     },
     nextPage: function() {
+      console.log("emit");
       if (!this.pager.hasNext()) {
         this.currentImages = this.pager.page(0);
       } else {

@@ -54,7 +54,7 @@
       <!-- page controls -->
       <div>
         <span v-if="pagerButtons">
-          <button @click="prevPage()">&lt;previous</button>
+          <vcBtnPagePrev @prevPage="prevPage()" />
           page
           <div class="custom-select pg_totalpages">
           <select v-model="currentPage">
@@ -63,9 +63,10 @@
           </select>
           </div>
           of {{ totalPages }}
-          <button @click="nextPage()">next&gt;</button>
+          <vcBtnPageNext @nextPage="nextPage()" />
         </span>
-        <button @click="showAll()">Show All</button>
+        <button class="btn btn1-01" 
+        @click="showAll()">Show All</button>
         <!-- breed filter -->
         <div class="custom-select breed-filter">
         <select>
@@ -82,15 +83,18 @@
           <li v-for="(i, index) in currentFavorites">
             {{ i.breed }} {{ i.name }}
             
-            <button @click="removeItem(i.name)">remove</button>
+            <button class="btn btn1-01" 
+            @click="removeItem(i.name)">remove</button>
             <div v-show = "i.edit == false">
               <label>{{ i.notes }}</label>
-              <button v-show = "i.edit == false" @click="i.edit = true; edit()">edit</button>
+              <button class="btn btn1-01" 
+              v-show = "i.edit == false" @click="i.edit = true; edit()">edit</button>
             </div>
             <input v-show="i.edit == true" v-model="i.notes"
             v-on:blur= "i.edit = false"
             @keyup.enter = "i.edit = false; update(i.notes, i.name)">
-            <button v-show="i.edit == true" @click="i.edit = false; cancel()">cancel</button>
+            <button class="btn btn1-01" 
+            v-show="i.edit == true" @click="i.edit = false; cancel()">cancel</button>
           </li>
         </ul>
       </div>
@@ -123,6 +127,8 @@ import {router} from "../js/router.js";
 const vcFavoriteCount = () => import ('./vcFavoriteCount.vue');
 const vcRandomDog = () => import ('./vcRandomDog.vue');
 const vcLastViewed = () => import ('./vcLastViewed.vue');
+const vcBtnPagePrev = () => import ('./vcBtnPagePrev.vue');
+const vcBtnPageNext = () => import ('./vcBtnPageNext.vue');
 export default {
   data () {
     return {   
@@ -158,7 +164,9 @@ export default {
   components: {
     vcFavoriteCount: vcFavoriteCount,
     vcRandomDog: vcRandomDog,
-    vcLastViewed: vcLastViewed
+    vcLastViewed: vcLastViewed,
+    vcBtnPagePrev: vcBtnPagePrev,
+    vcBtnPageNext: vcBtnPageNext
   },
   mounted: function () {
     this.activatePager(store.favorites);

@@ -13,8 +13,8 @@ webpackJsonp([0],[
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Favorites_vue__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_abeb0e84_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Favorites_vue__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Favorites_vue__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_abeb0e84_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Favorites_vue__ = __webpack_require__(68);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -2065,7 +2065,10 @@ var nameExists = function nameExists(value, storeCategory) {
 /* 61 */,
 /* 62 */,
 /* 63 */,
-/* 64 */
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2190,6 +2193,10 @@ var nameExists = function nameExists(value, storeCategory) {
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -2200,13 +2207,19 @@ var nameExists = function nameExists(value, storeCategory) {
 
 
 var vcFavoriteCount = function vcFavoriteCount() {
-  return __webpack_require__.e/* import() */(8).then(__webpack_require__.bind(null, 42));
+  return __webpack_require__.e/* import() */(9).then(__webpack_require__.bind(null, 42));
 };
 var vcRandomDog = function vcRandomDog() {
   return __webpack_require__.e/* import() */(3).then(__webpack_require__.bind(null, 43));
 };
 var vcLastViewed = function vcLastViewed() {
-  return __webpack_require__.e/* import() */(7).then(__webpack_require__.bind(null, 41));
+  return __webpack_require__.e/* import() */(6).then(__webpack_require__.bind(null, 41));
+};
+var vcBtnPagePrev = function vcBtnPagePrev() {
+  return __webpack_require__.e/* import() */(13).then(__webpack_require__.bind(null, 63));
+};
+var vcBtnPageNext = function vcBtnPageNext() {
+  return __webpack_require__.e/* import() */(14).then(__webpack_require__.bind(null, 70));
 };
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
@@ -2244,7 +2257,9 @@ var vcLastViewed = function vcLastViewed() {
   components: {
     vcFavoriteCount: vcFavoriteCount,
     vcRandomDog: vcRandomDog,
-    vcLastViewed: vcLastViewed
+    vcLastViewed: vcLastViewed,
+    vcBtnPagePrev: vcBtnPagePrev,
+    vcBtnPageNext: vcBtnPageNext
   },
   mounted: function mounted() {
     this.activatePager(__WEBPACK_IMPORTED_MODULE_3__js_store_js__["a" /* store */].favorites);
@@ -2331,7 +2346,7 @@ var vcLastViewed = function vcLastViewed() {
 });
 
 /***/ }),
-/* 65 */
+/* 68 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2377,13 +2392,13 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   })], 1), _vm._v(" "), _c('div', [_c('vcLastViewed')], 1)]), _vm._v(" "), _c('div', {
     staticClass: "col-sm-8"
-  }, [_c('div', [_vm._v("\r\n        stage\r\n      ")]), _vm._v(" "), _c('div', [(_vm.pagerButtons) ? _c('span', [_c('button', {
+  }, [_c('div', [_vm._v("\r\n        stage\r\n      ")]), _vm._v(" "), _c('div', [(_vm.pagerButtons) ? _c('span', [_c('vcBtnPagePrev', {
     on: {
-      "click": function($event) {
+      "prevPage": function($event) {
         _vm.prevPage()
       }
     }
-  }, [_vm._v("<previous")]), _vm._v("\r\n          page\r\n          "), _c('div', {
+  }), _vm._v("\r\n          page\r\n          "), _c('div', {
     staticClass: "custom-select pg_totalpages"
   }, [_c('select', {
     directives: [{
@@ -2414,13 +2429,14 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         }
       }
     }, [_vm._v(_vm._s(i))])
-  }))]), _vm._v("\r\n          of " + _vm._s(_vm.totalPages) + "\r\n          "), _c('button', {
+  }))]), _vm._v("\r\n          of " + _vm._s(_vm.totalPages) + "\r\n          "), _c('vcBtnPageNext', {
     on: {
-      "click": function($event) {
+      "nextPage": function($event) {
         _vm.nextPage()
       }
     }
-  }, [_vm._v("next>")])]) : _vm._e(), _vm._v(" "), _c('button', {
+  })], 1) : _vm._e(), _vm._v(" "), _c('button', {
+    staticClass: "btn btn1-01",
     on: {
       "click": function($event) {
         _vm.showAll()
@@ -2445,6 +2461,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }, [_vm._v(_vm._s(i))])
   })], 2)])]), _vm._v(" "), _c('div', [_c('ul', _vm._l((_vm.currentFavorites), function(i, index) {
     return _c('li', [_vm._v("\r\n            " + _vm._s(i.breed) + " " + _vm._s(i.name) + "\r\n            \r\n            "), _c('button', {
+      staticClass: "btn btn1-01",
       on: {
         "click": function($event) {
           _vm.removeItem(i.name)
@@ -2464,6 +2481,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         value: (i.edit == false),
         expression: "i.edit == false"
       }],
+      staticClass: "btn btn1-01",
       on: {
         "click": function($event) {
           i.edit = true;
@@ -2506,6 +2524,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         value: (i.edit == true),
         expression: "i.edit == true"
       }],
+      staticClass: "btn btn1-01",
       on: {
         "click": function($event) {
           i.edit = false;
