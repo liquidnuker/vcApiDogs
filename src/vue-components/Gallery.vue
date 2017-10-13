@@ -135,7 +135,7 @@ export default {
       }
   },
   mounted: function () {
-    this.checkCategory();
+    // this.checkCategory();
   },
   methods: {  
     checkCategory: function () {

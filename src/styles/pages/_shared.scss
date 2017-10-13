@@ -167,3 +167,26 @@ main > .container {
     }
   }
 }
+
+// breed selector
+// ==================================================/
+// mobile portrait (320x480) 
+@include mq($from: mobile) {
+  .breed-selector {
+    width: 100%;
+  }
+}
+
+// *mobile landscape (480x320)
+@include mq($from: mobileLandscape) {
+  .breed-selector {
+    height: 30px;
+    vertical-align: text-bottom;
+    // width: 70%;  
+  }
+
+  .breed-selector {
+    margin-left: -1px;
+    width: 56%;
+  }
+}

@@ -2183,6 +2183,13 @@ var nameExists = function nameExists(value, storeCategory) {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2213,7 +2220,7 @@ var vcLastViewed = function vcLastViewed() {
       pager: null,
       currentPage: "",
       totalPages: "",
-      pagerButtons: false,
+      pagerButtons: true,
 
       editNoteCache: null,
 
@@ -2242,7 +2249,7 @@ var vcLastViewed = function vcLastViewed() {
   mounted: function mounted() {
     this.activatePager(__WEBPACK_IMPORTED_MODULE_3__js_store_js__["a" /* store */].favorites);
 
-    this.showRandomDogImage();
+    // this.showRandomDogImage();
     this.status.randomDog = "loading random dog...";
   },
   methods: {
@@ -2345,7 +2352,9 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "col-sm-12"
   }, [_vm._v("\r\n      breadcrumb\r\n    ")]), _vm._v(" "), _c('div', {
     staticClass: "col-sm-4"
-  }, [_c('div', [_c('select', [_c('option', {
+  }, [_c('div', [_c('div', {
+    staticClass: "custom-select breed-selector"
+  }, [_c('select', [_c('option', {
     attrs: {
       "value": ""
     }
@@ -2360,7 +2369,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         }
       }
     }, [_vm._v(_vm._s(i))])
-  })], 2)]), _vm._v(" "), _c('div', [_c('vcRandomDog', {
+  })], 2)])]), _vm._v(" "), _c('div', [_c('vcRandomDog', {
     attrs: {
       "pr-status": _vm.status.randomDog,
       "pr-random-breed": _vm.randomDogBreed,
@@ -2374,7 +2383,9 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         _vm.prevPage()
       }
     }
-  }, [_vm._v("<previous")]), _vm._v("\r\n          page\r\n          "), _c('select', {
+  }, [_vm._v("<previous")]), _vm._v("\r\n          page\r\n          "), _c('div', {
+    staticClass: "custom-select pg_totalpages"
+  }, [_c('select', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -2403,7 +2414,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         }
       }
     }, [_vm._v(_vm._s(i))])
-  })), _vm._v(" of " + _vm._s(_vm.totalPages) + "\r\n          "), _c('button', {
+  }))]), _vm._v("\r\n          of " + _vm._s(_vm.totalPages) + "\r\n          "), _c('button', {
     on: {
       "click": function($event) {
         _vm.nextPage()
@@ -2415,7 +2426,9 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         _vm.showAll()
       }
     }
-  }, [_vm._v("Show All")]), _vm._v(" "), _c('select', [_c('option', {
+  }, [_vm._v("Show All")]), _vm._v(" "), _c('div', {
+    staticClass: "custom-select breed-filter"
+  }, [_c('select', [_c('option', {
     attrs: {
       "value": ""
     }
@@ -2430,7 +2443,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         }
       }
     }, [_vm._v(_vm._s(i))])
-  })], 2)]), _vm._v(" "), _c('div', [_c('ul', _vm._l((_vm.currentFavorites), function(i, index) {
+  })], 2)])]), _vm._v(" "), _c('div', [_c('ul', _vm._l((_vm.currentFavorites), function(i, index) {
     return _c('li', [_vm._v("\r\n            " + _vm._s(i.breed) + " " + _vm._s(i.name) + "\r\n            \r\n            "), _c('button', {
       on: {
         "click": function($event) {

@@ -19,11 +19,13 @@
       <!-- leftside -->      
       <!-- breed selector -->
       <div>
+        <div class="custom-select breed-selector">
         <select>
           <option value="">Choose Breed...</option>
           <option v-for="i in options"
           @click="switchBreed(i)" :value="i">{{ i }}</option>
         </select>
+        </div>
       </div>
       <!-- /breed selector -->      
       <!-- randog -->
@@ -108,8 +110,7 @@ export default {
     vcFavoriteCount: vcFavoriteCount
   },
   mounted: function () {
-    this.listAllBreedNames();
-    
+    // this.listAllBreedNames();
   },
   methods: {
     listAllBreedNames: function () {

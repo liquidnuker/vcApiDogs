@@ -1,0 +1,44 @@
+// breed filter
+// ==================================================/
+// mobile portrait (320x480) 
+@include mq($from: mobile) {
+  .breed-filter {
+    width: 100%;
+  }
+}
+
+// *mobile landscape (480x320)
+@include mq($from: mobileLandscape) {
+  .breed-filter {
+    height: 30px;
+    vertical-align: text-bottom;
+    // width: 70%;  
+  }
+
+  .breed-filter {
+    margin-left: -1px;
+    width: 36%;
+  }
+}
+
+// pager total pages
+// ==================================================/
+// mobile portrait (320x480) 
+@include mq($from: mobile) {
+  .pg_totalpages {
+    width: 100%;
+  }
+}
+
+// *mobile landscape (480x320)
+@include mq($from: mobileLandscape) {
+  .pg_totalpages {
+    height: 30px;
+    vertical-align: text-bottom;
+    width: auto;  
+  }
+
+  .pg_totalpages {
+    margin-left: -1px;
+  }
+}

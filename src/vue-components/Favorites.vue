@@ -20,11 +20,13 @@
       <!-- leftside -->
       <!-- breed selector -->
       <div>
+        <div class="custom-select breed-selector">
         <select>
           <option value="">Choose Breed...</option>
           <option v-for="i in options"
           @click="switchBreed(i)" :value="i">{{ i }}</option>
         </select>
+        </div>
       </div>
       <!-- /breed selector -->
       <!-- randog -->
@@ -54,19 +56,24 @@
         <span v-if="pagerButtons">
           <button @click="prevPage()">&lt;previous</button>
           page
+          <div class="custom-select pg_totalpages">
           <select v-model="currentPage">
             <option v-for="i in totalPages" :value="i"
             @click="showPage(i)">{{ i }}</option>
-          </select> of {{ totalPages }}
+          </select>
+          </div>
+          of {{ totalPages }}
           <button @click="nextPage()">next&gt;</button>
         </span>
         <button @click="showAll()">Show All</button>
         <!-- breed filter -->
+        <div class="custom-select breed-filter">
         <select>
           <option value="">Filter Breed...</option>
           <option v-for="i in filterOptions"
           @click="filter(i)" :value="i">{{ i }}</option>
         </select>
+        </div>
       </div>
       <!-- /page controls -->
       <!-- favorites display -->
@@ -128,7 +135,7 @@ export default {
       pager: null,
       currentPage: "",
       totalPages: "",
-      pagerButtons: false,
+      pagerButtons: true,
 
       editNoteCache: null,
 
@@ -156,7 +163,7 @@ export default {
   mounted: function () {
     this.activatePager(store.favorites);
 
-    this.showRandomDogImage();
+    // this.showRandomDogImage();
     this.status.randomDog = "loading random dog...";
   },
   methods: {

@@ -1965,6 +1965,8 @@ var shuffle = function shuffle(array) {
 //
 //
 //
+//
+//
 
 
 
@@ -2010,7 +2012,7 @@ var vcFavoriteCount = function vcFavoriteCount() {
     vcFavoriteCount: vcFavoriteCount
   },
   mounted: function mounted() {
-    this.listAllBreedNames();
+    // this.listAllBreedNames();
   },
   methods: {
     listAllBreedNames: function listAllBreedNames() {
@@ -2071,7 +2073,9 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "row container main-items"
   }, [_c('div', {
     staticClass: "col-sm-4"
-  }, [_c('div', [_c('select', [_c('option', {
+  }, [_c('div', [_c('div', {
+    staticClass: "custom-select breed-selector"
+  }, [_c('select', [_c('option', {
     attrs: {
       "value": ""
     }
@@ -2086,7 +2090,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         }
       }
     }, [_vm._v(_vm._s(i))])
-  })], 2)]), _vm._v(" "), _c('div', [_c('vcRandomDog', {
+  })], 2)])]), _vm._v(" "), _c('div', [_c('vcRandomDog', {
     attrs: {
       "pr-status": _vm.status.randomDog,
       "pr-random-breed": _vm.randomDogBreed,

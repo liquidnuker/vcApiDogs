@@ -11,11 +11,23 @@
   clear: both;
 }
 
-footer,header,nav,main,.navSide103 a,.navSide103 .navSide103_img-holder,.itemBox102 .itemBox102_img-holder > img {
+.custom-select::after {
+  position: absolute;
+}
+
+.custom-select {
+  position: relative;
+}
+
+footer,header,nav,main,.custom-select::after,.navSide103 a,.navSide103 .navSide103_img-holder,.itemBox102 .itemBox102_img-holder > img {
   display: block;
 }
 
-template,[hidden] {
+.custom-select {
+  display: inline-block;
+}
+
+template,[hidden],.custom-select::after {
   display: none;
 }
 
@@ -361,6 +373,138 @@ button,input [type="button"],[type="reset"],[type="submit"] {
   }
 }
 
+.custom-select {
+  border: 1px solid #000;
+  background: #f3f3f3;
+  background: #ffffff;
+  background: -webkit-linear-gradient(top, #ffffff, #e5e5e5);
+  background: linear-gradient(to bottom, #ffffff, #e5e5e5);
+}
+
+.custom-select::after {
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 7px solid #666;
+  margin-top: -3px;
+}
+
+.custom-select:hover {
+  border-color: #888;
+}
+
+.custom-select select:focus {
+  color: #222;
+}
+
+@supports (box-shadow: none) {
+  .custom-select select:focus {
+    outline: none;
+  }
+}
+
+.custom-select {
+  background: #fff;
+}
+
+.custom-select select {
+  height: inherit;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  outline: none;
+  font-size: 16px;
+}
+
+.custom-select::after {
+  content: " ";
+  top: 50%;
+  right: 0.5em;
+  z-index: 2;
+  pointer-events: none;
+}
+
+@supports (-webkit-appearance: none) or (appearance: none) or ((-moz-appearance: none) and (mask-type: alpha)) {
+  .custom-select select {
+    padding-right: 2em;
+    background: none;
+    border: 1px solid transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  .custom-select select:focus {
+    border-color: #aaa;
+  }
+}
+
+@-moz-document url-prefix()  {
+  .custom-select {
+    overflow: hidden;
+  }
+
+  .custom-select::after {
+    display: block;
+  }
+
+  .custom-select select {
+    overflow: -moz-hidden-unscrollable;
+    padding-right: .4em;
+    border: 1px solid transparent;
+    min-width: 6em;
+    width: 130%;
+    min-width: -moz-calc(0em);
+    width: -moz-calc(100% + 2.4em);
+    min-width: calc(0em);
+    width: calc(100% + 2.4em);
+  }
+
+@supports (mask-type: alpha) {
+    .custom-select {
+      overflow: visible;
+    }
+
+    .custom-select select {
+      -moz-appearance: none;
+      width: 100%;
+      padding-right: 2em;
+    }
+}
+}
+
+.custom-select select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .custom-select select::-ms-expand {
+    display: none;
+  }
+
+  .custom-select select:focus {
+    border-color: #aaa;
+  }
+
+  .custom-select select:focus::-ms-value {
+    background: transparent;
+    color: #222;
+  }
+
+  .custom-select select {
+    padding-right: 2em;
+    background: none;
+    border: 1px solid transparent;
+  }
+
+  .custom-select::after {
+    display: block;
+  }
+}
+
 .container-fluid--h {
   background-color: #999;
 }
@@ -468,6 +612,60 @@ button,input [type="button"],[type="reset"],[type="submit"] {
 
 .itemBox102 .itemBox102_img-holder > img {
   margin-top: 4px;
+}
+
+@media (min-width: 20em) {
+  .breed-selector {
+    width: 100%;
+  }
+}
+
+@media (min-width: 30em) {
+  .breed-selector {
+    height: 30px;
+    vertical-align: text-bottom;
+  }
+
+  .breed-selector {
+    margin-left: -1px;
+    width: 56%;
+  }
+}
+
+@media (min-width: 20em) {
+  .breed-filter {
+    width: 100%;
+  }
+}
+
+@media (min-width: 30em) {
+  .breed-filter {
+    height: 30px;
+    vertical-align: text-bottom;
+  }
+
+  .breed-filter {
+    margin-left: -1px;
+    width: 36%;
+  }
+}
+
+@media (min-width: 20em) {
+  .pg_totalpages {
+    width: 100%;
+  }
+}
+
+@media (min-width: 30em) {
+  .pg_totalpages {
+    height: 30px;
+    vertical-align: text-bottom;
+    width: auto;
+  }
+
+  .pg_totalpages {
+    margin-left: -1px;
+  }
 }
 
 [class|="col"] {

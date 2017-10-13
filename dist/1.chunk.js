@@ -2147,7 +2147,7 @@ var vcFavoriteCount = function vcFavoriteCount() {
     }
   },
   mounted: function mounted() {
-    this.checkCategory();
+    // this.checkCategory();
   },
   methods: {
     checkCategory: function checkCategory() {

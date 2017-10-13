@@ -13,7 +13,10 @@
 @import "vendor/mq"; 
 @import "layout/grid";
 
+@import "vendor/select-css";
+
 @import "pages/shared";
+@import "pages/favorites";
 
 // show the active breakpoint (_mq.scss)
 // ==================================================/

@@ -101,7 +101,7 @@ if (false) {(function () {
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('form', [_vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "custom-select1_01"
+    staticClass: "custom-select breed-selector"
   }, [_c('select', {
     directives: [{
       name: "model",

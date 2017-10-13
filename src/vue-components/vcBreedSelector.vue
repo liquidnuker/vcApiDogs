@@ -5,7 +5,7 @@
       <p>Choose Breeds:</p>
     </span>
     <!-- vendor/select-css.scss -->
-    <div class="custom-select1_01">
+    <div class="custom-select breed-selector">
      <select v-model="prSelected">
         <option v-for="i in options" 
         @click="switchBreed(i)" :value="i">{{ i }}</option>
