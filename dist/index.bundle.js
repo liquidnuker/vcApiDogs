@@ -258,13 +258,13 @@ Vue.use(VueRouter);
 
 // const vcHome = (resolve) => import("../vue-components/Home.vue").then(resolve);
 var vcHome = function vcHome() {
-  return __webpack_require__.e/* import() */(1).then(__webpack_require__.bind(null, 7));
+  return __webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, 7));
 };
 var vcGallery = function vcGallery() {
-  return __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, 8));
+  return __webpack_require__.e/* import() */(1).then(__webpack_require__.bind(null, 8));
 };
 var vcFavorites = function vcFavorites() {
-  return __webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, 9));
+  return __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, 9));
 };
 
 var routes = [{

@@ -1,5 +1,21 @@
 const store = {
-  lastViewed: [],
+  lastViewed: [
+    {
+      name: 'name1',
+      imgSrc: '',
+      breed: 'breed1'
+    },
+    {
+      name: 'name2',
+      imgSrc: '',
+      breed: 'breed2'
+    },
+    {
+      name: 'name3',
+      imgSrc: '',
+      breed: 'breed3'
+    }
+  ],
   favorites: [
     {
       name: 'name1',

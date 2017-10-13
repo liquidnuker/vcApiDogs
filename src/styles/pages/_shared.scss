@@ -31,5 +31,90 @@ main > .container {
   @extend %padd--4;
 }
 
+// navSide103
+// vcLastViewed.vue
+// ==================================================/
+@mixin navSide103_theme() {
+  .navSide103 {
+    a {    
+      color: #fff;
+
+      &:hover {
+        color: #d5d5d5;
+      }
+    }
+
+    .navSide103_heading {
+      background-color: #f0f0f0;
+      color: #141416;
+    }
+
+    li {
+      background-color: #2c2d32;
+      border-bottom: 1px solid #5c5d60;    
+
+      &:nth-of-type(odd) {
+        background-color: #343437;
+      }
+
+      p {
+        color: #d5d5d5;
+      }
+    }
+
+    .navSide103_img-holder {
+      border: 1px solid #000;
+    }
+  } 
+}
+@include navSide103_theme();
+
+.navSide103 {
+  .navSide103_heading {
+    @extend %padd--4;
+  }
+
+  a {
+    @extend %display--block;
+    @extend %font--bold;
+    margin-bottom: 2px;
+
+    &:hover {
+      text-decoration: none;  
+    }
+  }
+
+  li {
+    @extend %padd--4;
+    @extend %clearfix;
+    
+    &:nth-of-type(odd) {
+      
+    }
+
+    &:first-of-type {
+     
+    }
+
+    &:last-of-type {
+      border-bottom: none;
+    }    
+  }
+
+  .navSide103_img-holder {
+    @extend %display--block;
+    @extend %padd--4;
+    @extend %margin-bottom--4;
+    float: left;
+    width: 50px;
+    height: 50px;
+    margin-right: 4px;
+        
+    > img {
+      height: 100%;
+    }
+  }
+} 
+
 
 
