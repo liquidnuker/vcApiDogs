@@ -664,6 +664,10 @@ button,input [type="button"],[type="reset"],[type="submit"],.btn {
   padding: 2px;
 }
 
+.btn_pager_next {
+  padding: 2px;
+}
+
 @media (min-width: 20em) {
   .breed-filter {
     width: 100%;

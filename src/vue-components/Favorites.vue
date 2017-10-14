@@ -132,7 +132,8 @@ const vcBtnPageNext = () => import ('./vcBtnPageNext.vue');
 export default {
   data () {
     return {   
-      currentFavorites: "",
+      filteredFavorites: "",
+      currentFavorites: "", // displayed items
 
       options: allbreeds.sort(),
       filterOptions: allbreeds.sort(),
@@ -143,9 +144,9 @@ export default {
       totalPages: "",
       pagerButtons: true,
 
-      editNoteCache: null,
-
       filterItem: null,
+
+      editNoteCache: null,
 
       // random dog
       randomDogBreed: "",
@@ -169,15 +170,16 @@ export default {
     vcBtnPageNext: vcBtnPageNext
   },
   mounted: function () {
-    this.activatePager(store.favorites);
+    this.filteredFavorites = store.favorites;
+    this.activatePager();
 
     // this.showRandomDogImage();
     this.status.randomDog = "loading random dog...";
   },
   methods: {
-    activatePager: function(data) {
+    activatePager: function() {
       this.pager = null;
-      this.pager = new Paginate(data); 
+      this.pager = new Paginate(this.filteredFavorites); 
       this.currentFavorites = this.pager.page(0);
       this.currentPage = this.pager.currentPage; 
       this.totalPages = this.pager.totalPages;
@@ -215,25 +217,27 @@ export default {
     removeItem: function(name) {
       let itemIndex = nameExists(name, store.favorites);
       store.favorites.splice(itemIndex, 1);
+      this.filteredFavorites = store.favorites;
       
+      // stay on filtered view
       if (this.filterItem) {
-        // retain filtered view
         this.filter(this.filterItem);
       } else {
         this.showAll();
-      }
+      }      
     },
     filter: function(breed) {
       this.filterItem = breed;
-
       let filteredBreed = store.favorites.filter(function (el) {
       return el.breed === breed; 
       }); 
-      this.activatePager(filteredBreed);   
+      this.filteredFavorites = filteredBreed;
+      this.activatePager();
     },
     showAll: function() {
       this.filterItem = null;
-      this.activatePager(store.favorites);
+      this.filteredFavorites = store.favorites;
+      this.activatePager();
     },
     showRandomDogImage: function () {
       this.randomDogBreed = shuffle(allbreeds);
