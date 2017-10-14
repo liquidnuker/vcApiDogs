@@ -107,7 +107,8 @@ export default {
   data () {
     return {   
       currentBreed: "",
-      currentImages: "",
+      cachedImages: "", // default unfiltered
+      currentImages: "", // displayed items
 
       // random dog
       randomDogBreed: "",
@@ -137,11 +138,11 @@ export default {
   },
   watch: {
     $route: function () {
-        // this.checkCategory();
+        this.checkCategory();
       }
   },
   mounted: function () {
-    // this.checkCategory();
+    this.checkCategory();
   },
   methods: {  
     checkCategory: function () {
@@ -160,33 +161,34 @@ export default {
       this.status.galleryDisplay = `fetching ${this.currentBreed} data`;
 
       // Returns an array of all the images from the breed
-      let url = "https://dog.ceo/api/breed/" + breedName + "/images";
+      let url = `https://dog.ceo/api/breed/${breedName}/images`;
       let self = this;
       axios_get(url)
         .then(function (response) {
           let arr = Object.values(response);
-          self.pager = new Paginate(arr[0].message); 
+          self.cachedImages = arr[0].message; 
           self.status.galleryDisplay = "fetching images...";         
-          
-          // default page
-          self.currentImages = self.pager.page(0);
-          self.currentPage = self.pager.currentPage;          
+          self.activatePager();
         })
         .then(function () {
           self.status.galleryDisplay = "";  
-          self.totalPages = self.pager.totalPages;
-          self.pagerButtons = true;
-
           // show random dog 
           self.showRandomDogImage();
           self.status.randomDog = "loading random dog...";
         });
     },
+    activatePager: function() {
+      this.pager = null;
+      this.pager = new Paginate(this.cachedImages); 
+      this.currentImages = this.pager.page(0);
+      this.currentPage = this.pager.currentPage; 
+      this.totalPages = this.pager.totalPages;
+      this.pagerButtons = true;
+    },
     showPage: function(num) {
       this.currentImages = this.pager.page(num);
     },
     nextPage: function() {
-      console.log("emit");
       if (!this.pager.hasNext()) {
         this.currentImages = this.pager.page(0);
       } else {

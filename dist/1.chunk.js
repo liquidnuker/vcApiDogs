@@ -2124,7 +2124,8 @@ var vcBtnPageNext = function vcBtnPageNext() {
   data: function data() {
     return {
       currentBreed: "",
-      currentImages: "",
+      cachedImages: "", // default unfiltered
+      currentImages: "", // displayed items
 
       // random dog
       randomDogBreed: "",
@@ -2155,11 +2156,11 @@ var vcBtnPageNext = function vcBtnPageNext() {
   },
   watch: {
     $route: function $route() {
-      // this.checkCategory();
+      this.checkCategory();
     }
   },
   mounted: function mounted() {
-    // this.checkCategory();
+    this.checkCategory();
   },
   methods: {
     checkCategory: function checkCategory() {
@@ -2182,27 +2183,28 @@ var vcBtnPageNext = function vcBtnPageNext() {
       var self = this;
       __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__["a" /* axios_get */](url).then(function (response) {
         var arr = Object.values(response);
-        self.pager = new __WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js___default.a(arr[0].message);
+        self.cachedImages = arr[0].message;
         self.status.galleryDisplay = "fetching images...";
-
-        // default page
-        self.currentImages = self.pager.page(0);
-        self.currentPage = self.pager.currentPage;
+        self.activatePager();
       }).then(function () {
         self.status.galleryDisplay = "";
-        self.totalPages = self.pager.totalPages;
-        self.pagerButtons = true;
-
         // show random dog 
         self.showRandomDogImage();
         self.status.randomDog = "loading random dog...";
       });
     },
+    activatePager: function activatePager() {
+      this.pager = null;
+      this.pager = new __WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js___default.a(this.cachedImages);
+      this.currentImages = this.pager.page(0);
+      this.currentPage = this.pager.currentPage;
+      this.totalPages = this.pager.totalPages;
+      this.pagerButtons = true;
+    },
     showPage: function showPage(num) {
       this.currentImages = this.pager.page(num);
     },
     nextPage: function nextPage() {
-      console.log("emit");
       if (!this.pager.hasNext()) {
         this.currentImages = this.pager.page(0);
       } else {
