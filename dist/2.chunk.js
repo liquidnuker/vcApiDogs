@@ -1968,7 +1968,6 @@ var shuffle = function shuffle(array) {
 //
 //
 //
-//
 
 
 
@@ -2077,7 +2076,13 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "col-sm-4"
   }, [_c('div', [_c('div', {
     staticClass: "custom-select breed-selector"
-  }, [_c('select', [_c('option', {
+  }, [_c('select', {
+    on: {
+      "change": function($event) {
+        _vm.switchBreed($event.target.value)
+      }
+    }
+  }, [_c('option', {
     attrs: {
       "value": ""
     }
@@ -2085,11 +2090,6 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     return _c('option', {
       domProps: {
         "value": i
-      },
-      on: {
-        "click": function($event) {
-          _vm.switchBreed(i)
-        }
       }
     }, [_vm._v(_vm._s(i))])
   })], 2)])]), _vm._v(" "), _c('div', [_c('vcRandomDog', {

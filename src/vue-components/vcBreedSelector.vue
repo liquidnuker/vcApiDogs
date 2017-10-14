@@ -6,9 +6,8 @@
     </span>
     <!-- vendor/select-css.scss -->
     <div class="custom-select breed-selector">
-     <select v-model="prSelected">
-        <option v-for="i in options" 
-        @click="switchBreed(i)" :value="i">{{ i }}</option>
+     <select @change="switchBreed($event.target.value)" v-model="prSelected">
+        <option v-for="i in options" :value="i">{{ i }}</option>
       </select>
     </div>
   </form>

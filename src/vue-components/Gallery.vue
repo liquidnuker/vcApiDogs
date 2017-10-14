@@ -54,9 +54,8 @@
           <vcBtnPagePrev @prevPage="prevPage()" />
           page
           <div class="custom-select pg_totalpages">
-          <select v-model="currentPage">
-            <option v-for="i in totalPages" :value="i"
-            @click="showPage(i)">{{ i }}</option>
+          <select @change="showPage($event.target.value)" v-model="currentPage">
+            <option v-for="i in totalPages" :value="i">{{ i }}</option>
           </select>
           </div> of {{ totalPages }}
           <vcBtnPageNext @nextPage="nextPage()" />

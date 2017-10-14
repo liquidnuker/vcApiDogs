@@ -20,10 +20,9 @@
       <!-- breed selector -->
       <div>
         <div class="custom-select breed-selector">
-        <select>
+        <select @change="switchBreed($event.target.value)">
           <option value="">Choose Breed...</option>
-          <option v-for="i in options"
-          @click="switchBreed(i)" :value="i">{{ i }}</option>
+          <option v-for="i in options" :value="i">{{ i }}</option>
         </select>
         </div>
       </div>

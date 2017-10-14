@@ -2090,7 +2090,6 @@ if (true) module.exports = Paginate;
 //
 //
 //
-//
 
 
 
@@ -2308,7 +2307,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       expression: "currentPage"
     }],
     on: {
-      "change": function($event) {
+      "change": [function($event) {
         var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
           return o.selected
         }).map(function(o) {
@@ -2316,17 +2315,14 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
           return val
         });
         _vm.currentPage = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-      }
+      }, function($event) {
+        _vm.showPage($event.target.value)
+      }]
     }
   }, _vm._l((_vm.totalPages), function(i) {
     return _c('option', {
       domProps: {
         "value": i
-      },
-      on: {
-        "click": function($event) {
-          _vm.showPage(i)
-        }
       }
     }, [_vm._v(_vm._s(i))])
   }))]), _vm._v(" of " + _vm._s(_vm.totalPages) + "\r\n          "), _c('vcBtnPageNext', {
