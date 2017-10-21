@@ -2269,7 +2269,7 @@ var vcBtnPageNext = function vcBtnPageNext() {
     this.filteredFavorites = __WEBPACK_IMPORTED_MODULE_3__js_store_js__["a" /* store */].favorites;
     this.activatePager();
 
-    // this.showRandomDogImage();
+    this.showRandomDogImage();
     this.status.randomDog = "loading random dog...";
   },
   methods: {
@@ -2515,13 +2515,13 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
           i.edit = false
         },
         "keyup": function($event) {
-          if (!('button' in $event) && _vm._k($event.keyCode, "enter", 13)) { return null; }
+          if (!('button' in $event) && _vm._k($event.keyCode, "enter", 13, $event.key)) { return null; }
           i.edit = false;
           _vm.update(i.notes, i.name)
         },
         "input": function($event) {
           if ($event.target.composing) { return; }
-          i.notes = $event.target.value
+          _vm.$set(i, "notes", $event.target.value)
         }
       }
     }), _vm._v(" "), _c('button', {

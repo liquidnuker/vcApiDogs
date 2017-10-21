@@ -173,7 +173,7 @@ export default {
     this.filteredFavorites = store.favorites;
     this.activatePager();
 
-    // this.showRandomDogImage();
+    this.showRandomDogImage();
     this.status.randomDog = "loading random dog...";
   },
   methods: {

@@ -2013,7 +2013,7 @@ var vcFavoriteCount = function vcFavoriteCount() {
     vcFavoriteCount: vcFavoriteCount
   },
   mounted: function mounted() {
-    // this.listAllBreedNames();
+    this.listAllBreedNames();
   },
   methods: {
     listAllBreedNames: function listAllBreedNames() {

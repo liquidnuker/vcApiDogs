@@ -109,7 +109,7 @@ export default {
     vcFavoriteCount: vcFavoriteCount
   },
   mounted: function () {
-    // this.listAllBreedNames();
+    this.listAllBreedNames();
   },
   methods: {
     listAllBreedNames: function () {
