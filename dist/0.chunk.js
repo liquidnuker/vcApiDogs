@@ -469,10 +469,14 @@ module.exports = defaults;
 
 /***/ }),
 /* 12 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return store; });
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 var store = {
   lastViewed: [{
     name: 'name1',
@@ -514,7 +518,7 @@ var store = {
   }]
 };
 
-
+exports.store = store;
 
 /***/ }),
 /* 13 */
@@ -977,26 +981,38 @@ module.exports = Cancel;
 
 /***/ }),
 /* 19 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return allbreeds; });
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 var allbreeds = ["affenpinscher", "african", "airedale", "akita", "appenzeller", "basenji", "beagle", "bluetick", "borzoi", "bouvier", "boxer", "brabancon", "briard", "bulldog", "bullterrier", "cairn", "chihuahua", "chow", "clumber", "collie", "coonhound", "corgi", "dachshund", "dane", "deerhound", "dhole", "dingo", "doberman", "elkhound", "entlebucher", "eskimo", "germanshepherd", "greyhound", "groenendael", "hound", "husky", "keeshond", "kelpie", "komondor", "kuvasz", "labrador", "leonberg", "lhasa", "malamute", "malinois", "maltese", "mastiff", "mexicanhairless", "mountain", "newfoundland", "otterhound", "papillon", "pekinese", "pembroke", "pinscher", "pointer", "pomeranian", "poodle", "pug", "pyrenees", "redbone", "retriever", "ridgeback", "rottweiler", "saluki", "samoyed", "schipperke", "schnauzer", "setter", "sheepdog", "shiba", "shihtzu", "spaniel", "springer", "stbernard", "terrier", "vizsla", "weimaraner", "whippet", "wolfhound"];
 
-
+exports.allbreeds = allbreeds;
 
 /***/ }),
 /* 20 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return axios_get; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.axios_get = undefined;
+
+var _axios = __webpack_require__(21);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var axios_get = function axios_get(url) {
-  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a({
+  return (0, _axios2.default)({
     method: "get",
     url: url
   }).catch(function (error) {
@@ -1019,7 +1035,7 @@ var axios_get = function axios_get(url) {
   });
 };
 
-
+exports.axios_get = axios_get;
 
 /***/ }),
 /* 21 */
@@ -1897,10 +1913,14 @@ module.exports = function spread(callback) {
 
 /***/ }),
 /* 40 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return shuffle; });
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 var shuffle = function shuffle(array) {
   var currentIndex = array.length;
   var temporaryValue = void 0;
@@ -1921,7 +1941,7 @@ var shuffle = function shuffle(array) {
   return array;
 };
 
-
+exports.shuffle = shuffle;
 
 /***/ }),
 /* 41 */,
@@ -1933,6 +1953,9 @@ var shuffle = function shuffle(array) {
 /* 47 */,
 /* 48 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 /**
  * Creates a new `Paginate` form a givin `Array`,
@@ -2032,12 +2055,17 @@ if (true) module.exports = Paginate;
 
 /***/ }),
 /* 49 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return nameExists; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__store_js__ = __webpack_require__(12);
 
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.nameExists = undefined;
+
+var _store = __webpack_require__(12);
 
 // ret index; else undefined
 var nameExists = function nameExists(value, storeCategory) {
@@ -2048,7 +2076,7 @@ var nameExists = function nameExists(value, storeCategory) {
   }
 };
 
-
+exports.nameExists = nameExists;
 
 /***/ }),
 /* 50 */,
@@ -2076,13 +2104,19 @@ var nameExists = function nameExists(value, storeCategory) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_allbreeds_js__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_allbreeds_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__js_allbreeds_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_shuffle_js__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_shuffle_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__js_shuffle_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__js_store_js__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__js_store_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__js_store_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__js_nameexists_js__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__js_nameexists_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__js_nameexists_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__js_router_js__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__js_router_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__js_router_js__);
 //
 //
 //
@@ -2230,8 +2264,8 @@ var vcBtnPageNext = function vcBtnPageNext() {
       filteredFavorites: "",
       currentFavorites: "", // displayed items
 
-      options: __WEBPACK_IMPORTED_MODULE_1__js_allbreeds_js__["a" /* allbreeds */].sort(),
-      filterOptions: __WEBPACK_IMPORTED_MODULE_1__js_allbreeds_js__["a" /* allbreeds */].sort(),
+      options: __WEBPACK_IMPORTED_MODULE_1__js_allbreeds_js__["allbreeds"].sort(),
+      filterOptions: __WEBPACK_IMPORTED_MODULE_1__js_allbreeds_js__["allbreeds"].sort(),
 
       // paginator 
       pager: null,
@@ -2266,7 +2300,7 @@ var vcBtnPageNext = function vcBtnPageNext() {
     vcBtnPageNext: vcBtnPageNext
   },
   mounted: function mounted() {
-    this.filteredFavorites = __WEBPACK_IMPORTED_MODULE_3__js_store_js__["a" /* store */].favorites;
+    this.filteredFavorites = __WEBPACK_IMPORTED_MODULE_3__js_store_js__["store"].favorites;
     this.activatePager();
 
     this.showRandomDogImage();
@@ -2304,16 +2338,16 @@ var vcBtnPageNext = function vcBtnPageNext() {
       // todo
     },
     update: function update(newNote, name) {
-      var itemIndex = __WEBPACK_IMPORTED_MODULE_4__js_nameexists_js__["a" /* nameExists */](name, __WEBPACK_IMPORTED_MODULE_3__js_store_js__["a" /* store */].favorites);
-      __WEBPACK_IMPORTED_MODULE_3__js_store_js__["a" /* store */].favorites[itemIndex].notes = newNote;
+      var itemIndex = Object(__WEBPACK_IMPORTED_MODULE_4__js_nameexists_js__["nameExists"])(name, __WEBPACK_IMPORTED_MODULE_3__js_store_js__["store"].favorites);
+      __WEBPACK_IMPORTED_MODULE_3__js_store_js__["store"].favorites[itemIndex].notes = newNote;
     },
     cancel: function cancel() {
       // todo
     },
     removeItem: function removeItem(name) {
-      var itemIndex = __WEBPACK_IMPORTED_MODULE_4__js_nameexists_js__["a" /* nameExists */](name, __WEBPACK_IMPORTED_MODULE_3__js_store_js__["a" /* store */].favorites);
-      __WEBPACK_IMPORTED_MODULE_3__js_store_js__["a" /* store */].favorites.splice(itemIndex, 1);
-      this.filteredFavorites = __WEBPACK_IMPORTED_MODULE_3__js_store_js__["a" /* store */].favorites;
+      var itemIndex = Object(__WEBPACK_IMPORTED_MODULE_4__js_nameexists_js__["nameExists"])(name, __WEBPACK_IMPORTED_MODULE_3__js_store_js__["store"].favorites);
+      __WEBPACK_IMPORTED_MODULE_3__js_store_js__["store"].favorites.splice(itemIndex, 1);
+      this.filteredFavorites = __WEBPACK_IMPORTED_MODULE_3__js_store_js__["store"].favorites;
 
       // stay on filtered view
       if (this.filterItem) {
@@ -2324,7 +2358,7 @@ var vcBtnPageNext = function vcBtnPageNext() {
     },
     filter: function filter(breed) {
       this.filterItem = breed;
-      var filteredBreed = __WEBPACK_IMPORTED_MODULE_3__js_store_js__["a" /* store */].favorites.filter(function (el) {
+      var filteredBreed = __WEBPACK_IMPORTED_MODULE_3__js_store_js__["store"].favorites.filter(function (el) {
         return el.breed === breed;
       });
       this.filteredFavorites = filteredBreed;
@@ -2332,22 +2366,22 @@ var vcBtnPageNext = function vcBtnPageNext() {
     },
     showAll: function showAll() {
       this.filterItem = null;
-      this.filteredFavorites = __WEBPACK_IMPORTED_MODULE_3__js_store_js__["a" /* store */].favorites;
+      this.filteredFavorites = __WEBPACK_IMPORTED_MODULE_3__js_store_js__["store"].favorites;
       this.activatePager();
     },
     showRandomDogImage: function showRandomDogImage() {
-      this.randomDogBreed = __WEBPACK_IMPORTED_MODULE_2__js_shuffle_js__["a" /* shuffle */](__WEBPACK_IMPORTED_MODULE_1__js_allbreeds_js__["a" /* allbreeds */]);
+      this.randomDogBreed = Object(__WEBPACK_IMPORTED_MODULE_2__js_shuffle_js__["shuffle"])(__WEBPACK_IMPORTED_MODULE_1__js_allbreeds_js__["allbreeds"]);
       // Returns an array of all the images from the breed
       var url = "https://dog.ceo/api/breed/" + this.randomDogBreed[0] + "/images";
       var self = this;
-      __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__["a" /* axios_get */](url).then(function (response) {
+      Object(__WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__["axios_get"])(url).then(function (response) {
         var arr = Object.values(response);
         self.status.randomDog = "";
-        self.randomDogImage = __WEBPACK_IMPORTED_MODULE_2__js_shuffle_js__["a" /* shuffle */](arr[0].message);
+        self.randomDogImage = Object(__WEBPACK_IMPORTED_MODULE_2__js_shuffle_js__["shuffle"])(arr[0].message);
       }).then(function () {});
     },
     switchBreed: function switchBreed(breed) {
-      __WEBPACK_IMPORTED_MODULE_6__js_router_js__["a" /* router */].push({ path: "/gallery/" + breed });
+      __WEBPACK_IMPORTED_MODULE_6__js_router_js__["router"].push({ path: "/gallery/" + breed });
     }
   }
 });

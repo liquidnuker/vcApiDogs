@@ -56,6 +56,7 @@ if (false) {(function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_store_js__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_store_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__js_store_js__);
 //
 //
 //
@@ -68,7 +69,7 @@ if (false) {(function () {
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
     return {
-      favorites: __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].favorites
+      favorites: __WEBPACK_IMPORTED_MODULE_0__js_store_js__["store"].favorites
     };
   },
 

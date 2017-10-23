@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-var Promise = require('es6-promise').Promise;
+const Promise = require('es6-promise').Promise;
 
 const glob = require('glob-all');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -54,6 +54,11 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
+        options: {
+          presets: ['env'],
+          plugins: ['syntax-dynamic-import']
+          // plugins: ['syntax-dynamic-import', 'transform-runtime']
+        },
         exclude: /node_modules/
       }
     ]

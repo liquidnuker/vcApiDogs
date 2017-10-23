@@ -56,7 +56,9 @@ if (false) {(function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_allbreeds_js__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_allbreeds_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__js_allbreeds_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_router_js__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_router_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__js_router_js__);
 //
 //
 //
@@ -79,7 +81,7 @@ if (false) {(function () {
   data: function data() {
     return {
       // selected: store.currentCategory,
-      options: __WEBPACK_IMPORTED_MODULE_0__js_allbreeds_js__["a" /* allbreeds */].sort()
+      options: __WEBPACK_IMPORTED_MODULE_0__js_allbreeds_js__["allbreeds"].sort()
     };
   },
 
@@ -87,7 +89,7 @@ if (false) {(function () {
   mounted: function mounted() {},
   methods: {
     switchBreed: function switchBreed(breed) {
-      __WEBPACK_IMPORTED_MODULE_1__js_router_js__["a" /* router */].push({ path: "/gallery/" + breed });
+      __WEBPACK_IMPORTED_MODULE_1__js_router_js__["router"].push({ path: "/gallery/" + breed });
     }
   }
 });

@@ -929,26 +929,38 @@ module.exports = Cancel;
 
 /***/ }),
 /* 19 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return allbreeds; });
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 var allbreeds = ["affenpinscher", "african", "airedale", "akita", "appenzeller", "basenji", "beagle", "bluetick", "borzoi", "bouvier", "boxer", "brabancon", "briard", "bulldog", "bullterrier", "cairn", "chihuahua", "chow", "clumber", "collie", "coonhound", "corgi", "dachshund", "dane", "deerhound", "dhole", "dingo", "doberman", "elkhound", "entlebucher", "eskimo", "germanshepherd", "greyhound", "groenendael", "hound", "husky", "keeshond", "kelpie", "komondor", "kuvasz", "labrador", "leonberg", "lhasa", "malamute", "malinois", "maltese", "mastiff", "mexicanhairless", "mountain", "newfoundland", "otterhound", "papillon", "pekinese", "pembroke", "pinscher", "pointer", "pomeranian", "poodle", "pug", "pyrenees", "redbone", "retriever", "ridgeback", "rottweiler", "saluki", "samoyed", "schipperke", "schnauzer", "setter", "sheepdog", "shiba", "shihtzu", "spaniel", "springer", "stbernard", "terrier", "vizsla", "weimaraner", "whippet", "wolfhound"];
 
-
+exports.allbreeds = allbreeds;
 
 /***/ }),
 /* 20 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return axios_get; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.axios_get = undefined;
+
+var _axios = __webpack_require__(21);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var axios_get = function axios_get(url) {
-  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a({
+  return (0, _axios2.default)({
     method: "get",
     url: url
   }).catch(function (error) {
@@ -971,7 +983,7 @@ var axios_get = function axios_get(url) {
   });
 };
 
-
+exports.axios_get = axios_get;
 
 /***/ }),
 /* 21 */
@@ -1849,10 +1861,14 @@ module.exports = function spread(callback) {
 
 /***/ }),
 /* 40 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return shuffle; });
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 var shuffle = function shuffle(array) {
   var currentIndex = array.length;
   var temporaryValue = void 0;
@@ -1873,7 +1889,7 @@ var shuffle = function shuffle(array) {
   return array;
 };
 
-
+exports.shuffle = shuffle;
 
 /***/ }),
 /* 41 */,
@@ -1892,9 +1908,13 @@ var shuffle = function shuffle(array) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_shuffle_js__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_shuffle_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__js_shuffle_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_allbreeds_js__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_allbreeds_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__js_allbreeds_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__js_router_js__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__js_router_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__js_router_js__);
 //
 //
 //
@@ -1988,7 +2008,7 @@ var vcFavoriteCount = function vcFavoriteCount() {
     return {
       allBreedNames: "",
 
-      options: __WEBPACK_IMPORTED_MODULE_2__js_allbreeds_js__["a" /* allbreeds */].sort(),
+      options: __WEBPACK_IMPORTED_MODULE_2__js_allbreeds_js__["allbreeds"].sort(),
 
       // random dog
       randomDogBreed: "",
@@ -2018,7 +2038,7 @@ var vcFavoriteCount = function vcFavoriteCount() {
   methods: {
     listAllBreedNames: function listAllBreedNames() {
       var self = this;
-      __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__["a" /* axios_get */](self.url_allBreedNames).then(function (response) {
+      Object(__WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__["axios_get"])(self.url_allBreedNames).then(function (response) {
         // for local list
         self.allBreedNames = response.data.allbreeds;
 
@@ -2034,20 +2054,20 @@ var vcFavoriteCount = function vcFavoriteCount() {
       });
     },
     showRandomDogImage: function showRandomDogImage() {
-      this.randomDogBreed = __WEBPACK_IMPORTED_MODULE_1__js_shuffle_js__["a" /* shuffle */](__WEBPACK_IMPORTED_MODULE_2__js_allbreeds_js__["a" /* allbreeds */]);
+      this.randomDogBreed = Object(__WEBPACK_IMPORTED_MODULE_1__js_shuffle_js__["shuffle"])(__WEBPACK_IMPORTED_MODULE_2__js_allbreeds_js__["allbreeds"]);
       this.status.randomDog = "loading " + this.randomDogBreed[0];
 
       // Returns an array of all the images from the breed
       var url = "https://dog.ceo/api/breed/" + this.randomDogBreed[0] + "/images";
       var self = this;
-      __WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__["a" /* axios_get */](url).then(function (response) {
+      Object(__WEBPACK_IMPORTED_MODULE_0__js_axios_get_js__["axios_get"])(url).then(function (response) {
         var arr = Object.values(response);
         self.status.randomDog = "";
-        self.randomDogImage = __WEBPACK_IMPORTED_MODULE_1__js_shuffle_js__["a" /* shuffle */](arr[0].message);
+        self.randomDogImage = Object(__WEBPACK_IMPORTED_MODULE_1__js_shuffle_js__["shuffle"])(arr[0].message);
       }).then(function () {});
     },
     switchBreed: function switchBreed(breed) {
-      __WEBPACK_IMPORTED_MODULE_3__js_router_js__["a" /* router */].push({ path: "/gallery/" + breed });
+      __WEBPACK_IMPORTED_MODULE_3__js_router_js__["router"].push({ path: "/gallery/" + breed });
     }
   }
 });

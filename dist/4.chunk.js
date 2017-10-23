@@ -1,10 +1,14 @@
 webpackJsonp([4,9],{
 
 /***/ 12:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return store; });
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 var store = {
   lastViewed: [{
     name: 'name1',
@@ -46,7 +50,7 @@ var store = {
   }]
 };
 
-
+exports.store = store;
 
 /***/ }),
 
@@ -106,6 +110,7 @@ if (false) {(function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_store_js__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_store_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__js_store_js__);
 //
 //
 //
@@ -132,7 +137,7 @@ if (false) {(function () {
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
     return {
-      lastViewed: __WEBPACK_IMPORTED_MODULE_0__js_store_js__["a" /* store */].lastViewed
+      lastViewed: __WEBPACK_IMPORTED_MODULE_0__js_store_js__["store"].lastViewed
     };
   },
 
