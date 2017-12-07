@@ -121,6 +121,7 @@ import {allbreeds} from "../js/allbreeds.js";
 import {shuffle} from "../js/shuffle.js";
 import {store} from "../js/store.js";
 import {nameExists} from "../js/nameexists.js";
+import {arr_extractUnique} from "../js/arr_extractUnique.js";
 import Paginate from "../js/vendor/Paginate.js";
 import {router} from "../js/router.js";
 
@@ -172,7 +173,9 @@ export default {
   mounted: function () {
     this.filteredFavorites = store.favorites;
     this.activatePager();
-    this.setFavoriteCategories();
+
+    // for favorites dropdown
+    this.setFavoriteCategories(store.favorites);
 
     this.showRandomDogImage();
     this.status.randomDog = "loading random dog...";
@@ -186,8 +189,13 @@ export default {
       this.totalPages = this.pager.totalPages;
       this.pagerButtons = true;
     },
-    setFavoriteCategories: function() {
-      console.log(store.favorites);
+    setFavoriteCategories: function(arr) {
+      let categoryTemp = arr_extractUnique(arr, "breed");
+      
+      for (let i in categoryTemp) {
+        this.favoriteCategories.push(categoryTemp[i]);
+      }
+      categoryTemp = null;
     },
     showPage: function(num) {
       this.currentFavorites = this.pager.page(num);

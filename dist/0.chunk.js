@@ -2113,10 +2113,12 @@ exports.nameExists = nameExists;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__js_store_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__js_store_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__js_nameexists_js__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__js_nameexists_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__js_nameexists_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__js_router_js__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__js_router_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__js_router_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__js_arr_extractUnique_js__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__js_arr_extractUnique_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__js_arr_extractUnique_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__js_vendor_Paginate_js__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__js_vendor_Paginate_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__js_vendor_Paginate_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__js_router_js__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__js_router_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__js_router_js__);
 //
 //
 //
@@ -2234,6 +2236,7 @@ exports.nameExists = nameExists;
 //
 //
 //
+
 
 
 
@@ -2302,7 +2305,9 @@ var vcBtnPageNext = function vcBtnPageNext() {
   mounted: function mounted() {
     this.filteredFavorites = __WEBPACK_IMPORTED_MODULE_3__js_store_js__["store"].favorites;
     this.activatePager();
-    this.setFavoriteCategories();
+
+    // for favorites dropdown
+    this.setFavoriteCategories(__WEBPACK_IMPORTED_MODULE_3__js_store_js__["store"].favorites);
 
     this.showRandomDogImage();
     this.status.randomDog = "loading random dog...";
@@ -2310,14 +2315,19 @@ var vcBtnPageNext = function vcBtnPageNext() {
   methods: {
     activatePager: function activatePager() {
       this.pager = null;
-      this.pager = new __WEBPACK_IMPORTED_MODULE_5__js_vendor_Paginate_js___default.a(this.filteredFavorites);
+      this.pager = new __WEBPACK_IMPORTED_MODULE_6__js_vendor_Paginate_js___default.a(this.filteredFavorites);
       this.currentFavorites = this.pager.page(0);
       this.currentPage = this.pager.currentPage;
       this.totalPages = this.pager.totalPages;
       this.pagerButtons = true;
     },
-    setFavoriteCategories: function setFavoriteCategories() {
-      console.log(__WEBPACK_IMPORTED_MODULE_3__js_store_js__["store"].favorites);
+    setFavoriteCategories: function setFavoriteCategories(arr) {
+      var categoryTemp = Object(__WEBPACK_IMPORTED_MODULE_5__js_arr_extractUnique_js__["arr_extractUnique"])(arr, "breed");
+
+      for (var i in categoryTemp) {
+        this.favoriteCategories.push(categoryTemp[i]);
+      }
+      categoryTemp = null;
     },
     showPage: function showPage(num) {
       this.currentFavorites = this.pager.page(num);
@@ -2385,7 +2395,7 @@ var vcBtnPageNext = function vcBtnPageNext() {
       }).then(function () {});
     },
     switchBreed: function switchBreed(breed) {
-      __WEBPACK_IMPORTED_MODULE_6__js_router_js__["router"].push({ path: "/gallery/" + breed });
+      __WEBPACK_IMPORTED_MODULE_7__js_router_js__["router"].push({ path: "/gallery/" + breed });
     }
   }
 });
@@ -2597,6 +2607,40 @@ if (false) {
      require("vue-hot-reload-api").rerender("data-v-abeb0e84", esExports)
   }
 }
+
+/***/ }),
+/* 72 */,
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+// ret array of unique key: val
+// "arr": [
+// { 
+//   "cat": "cat2"
+// },
+// { 
+//   "cat": "cat2" 
+// ...
+var arr_extractUnique = function arr_extractUnique(arr, cat) {
+  var o = {};
+  var temp = [];
+  for (var i = 0, l = arr.length; i < l; i++) {
+    if (!o[arr[i][cat]]) {
+      o[arr[i][cat]] = true;
+      temp.push(arr[i][cat]);
+      // temp.push(arr[i].Cat);
+    }
+  }
+  return temp;
+};
+
+exports.arr_extractUnique = arr_extractUnique;
 
 /***/ })
 ]);
