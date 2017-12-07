@@ -1,1 +1,123 @@
-webpackJsonp([3],{43:function(t,e,a){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=a(53),s=a(54),r=a(0),i=r(n.a,s.a,null,null,null);e.default=i.exports},53:function(t,e,a){"use strict";e.a={data:function(){return{}},props:["prStatus","prRandomBreed","prRandomImage"],components:{},mounted:function(){},methods:{}}},54:function(t,e,a){"use strict";var n=function(){var t=this,e=t.$createElement,a=t._self._c||e;return a("div",[t._v("\r\n  "+t._s(t.prStatus)+"\r\n  "),a("div",{staticClass:"itemBox102"},[a("h3",{staticClass:"itemBox102_heading1"},[t._v("Random Dog")]),t._v(" "),t._m(0),t._v(" "),a("h4",{staticClass:"itemBox102_heading2"},[t._v("Name")]),t._v(" "),a("p",[t._v("Breed: "+t._s(t.prRandomBreed[0]))])])])},s=[function(){var t=this,e=t.$createElement,a=t._self._c||e;return a("div",{staticClass:"itemBox102_img-holder"},[a("img",{attrs:{src:"img.jpg",alt:"img alt",title:"Image Title"}})])}],r={render:n,staticRenderFns:s};e.a=r}});
+webpackJsonp([3],{
+
+/***/ 43:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_vcRandomDog_vue__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_1f2264da_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_vcRandomDog_vue__ = __webpack_require__(54);
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+
+/* template */
+
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_vcRandomDog_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_1f2264da_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_vcRandomDog_vue__["a" /* default */],
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "vue-components\\vcRandomDog.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] vcRandomDog.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1f2264da", Component.options)
+  } else {
+    hotAPI.reload("data-v-1f2264da", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["default"] = (Component.exports);
+
+
+/***/ }),
+
+/***/ 53:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  data: function data() {
+    return {};
+  },
+
+  props: ["prStatus", "prRandomBreed", "prRandomImage"],
+  components: {},
+  mounted: function mounted() {},
+  // todo: add extractfilename for {{ name }}
+  methods: {}
+});
+
+/***/ }),
+
+/***/ 54:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_vm._v("\r\n  " + _vm._s(_vm.prStatus) + "\r\n  "), _c('div', {
+    staticClass: "itemBox102"
+  }, [_c('h3', {
+    staticClass: "itemBox102_heading1"
+  }, [_vm._v("Random Dog")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('h4', {
+    staticClass: "itemBox102_heading2"
+  }, [_vm._v("Name")]), _vm._v(" "), _c('p', [_vm._v("Breed: " + _vm._s(_vm.prRandomBreed[0]))])])])
+}
+var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "itemBox102_img-holder"
+  }, [_c('img', {
+    attrs: {
+      "src": "img.jpg",
+      "alt": "img alt",
+      "title": "Image Title"
+    }
+  })])
+}]
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1f2264da", esExports)
+  }
+}
+
+/***/ })
+
+});

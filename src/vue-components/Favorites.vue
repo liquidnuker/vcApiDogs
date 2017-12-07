@@ -71,7 +71,7 @@
         <div class="custom-select breed-filter">
         <select>
           <option value="">Filter Breed...</option>
-          <option v-for="i in filterOptions"
+          <option v-for="i in favoriteCategories"
           @click="filter(i)" :value="i">{{ i }}</option>
         </select>
         </div>
@@ -136,7 +136,7 @@ export default {
       currentFavorites: "", // displayed items
 
       options: allbreeds.sort(),
-      filterOptions: allbreeds.sort(),
+      favoriteCategories: [],
 
       // paginator 
       pager: null,
@@ -172,6 +172,7 @@ export default {
   mounted: function () {
     this.filteredFavorites = store.favorites;
     this.activatePager();
+    this.setFavoriteCategories();
 
     this.showRandomDogImage();
     this.status.randomDog = "loading random dog...";
@@ -184,6 +185,9 @@ export default {
       this.currentPage = this.pager.currentPage; 
       this.totalPages = this.pager.totalPages;
       this.pagerButtons = true;
+    },
+    setFavoriteCategories: function() {
+      console.log(store.favorites);
     },
     showPage: function(num) {
       this.currentFavorites = this.pager.page(num);
