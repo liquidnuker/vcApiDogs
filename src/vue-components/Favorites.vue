@@ -122,6 +122,7 @@ import {shuffle} from "../js/shuffle.js";
 import {store} from "../js/store.js";
 import {nameExists} from "../js/nameexists.js";
 import {arr_extractUnique} from "../js/arr_extractUnique.js";
+import {arr_filter} from "../js/arr_filter.js";
 import Paginate from "../js/vendor/Paginate.js";
 import {router} from "../js/router.js";
 
@@ -137,7 +138,7 @@ export default {
       currentFavorites: "", // displayed items
 
       options: allbreeds.sort(),
-      favoriteCategories: [],
+      favoriteCategories: "",
 
       // paginator 
       pager: null,
@@ -190,6 +191,7 @@ export default {
       this.pagerButtons = true;
     },
     setFavoriteCategories: function(arr) {
+      this.favoriteCategories = [];
       let categoryTemp = arr_extractUnique(arr, "breed");
       
       for (let i in categoryTemp) {
@@ -236,13 +238,15 @@ export default {
         this.filter(this.filterItem);
       } else {
         this.showAll();
-      }      
+      }
+
+      // update dropdown
+      this.setFavoriteCategories(store.favorites);
     },
     filter: function(breed) {
       this.filterItem = breed;
-      let filteredBreed = store.favorites.filter(function (el) {
-      return el.breed === breed; 
-      }); 
+      let filteredBreed = arr_filter(store.favorites, "breed", breed);
+
       this.filteredFavorites = filteredBreed;
       this.activatePager();
     },
