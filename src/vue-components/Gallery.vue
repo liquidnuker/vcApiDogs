@@ -51,14 +51,16 @@
       <!-- page controls -->
       <div>
         <span v-if="pagerButtons">
-          <vcBtnPagePrev @prevPage="prevPage()" />
+          <button class="btn btn1-01" tabindex="0"
+  @click="prevPage()">Prev</button>
           page
           <div class="custom-select pg_totalpages">
           <select @change="showPage($event.target.value)" v-model="currentPage">
             <option v-for="i in totalPages" :value="i">{{ i }}</option>
           </select>
           </div> of {{ totalPages }}
-          <vcBtnPageNext @nextPage="nextPage()" />
+          <button class="btn btn1-01" tabindex="0"
+  @click="nextPage()">Next</button>
         </span>
       </div>
       <!-- /page controls -->
@@ -100,8 +102,6 @@ const vcGalleryDisplay = () => import ('./vcGalleryDisplay.vue');
 const vcRandomDog = () => import ('./vcRandomDog.vue');
 const vcLastViewed = () => import ('./vcLastViewed.vue');
 const vcFavoriteCount = () => import ('./vcFavoriteCount.vue');
-const vcBtnPagePrev = () => import ('./vcBtnPagePrev.vue');
-const vcBtnPageNext = () => import ('./vcBtnPageNext.vue');
 export default {
   data () {
     return {   
@@ -132,8 +132,6 @@ export default {
     vcRandomDog: vcRandomDog,
     vcFavoriteCount: vcFavoriteCount,
     vcLastViewed: vcLastViewed,
-    vcBtnPagePrev: vcBtnPagePrev,
-    vcBtnPageNext: vcBtnPageNext
   },
   watch: {
     $route: function () {
@@ -191,7 +189,7 @@ export default {
       if (!this.pager.hasNext()) {
         this.currentImages = this.pager.page(0);
       } else {
-        this.currentImages = this.pager.page(this.pager.currentPage + 1);
+        this.currentImages = this.pager.next();
       }
       this.currentPage = this.pager.currentPage;
     },
@@ -199,7 +197,7 @@ export default {
       if (this.pager.currentPage === 1) {
         this.currentImages = this.pager.page(this.pager.totalPages);
       } else {
-        this.currentImages = this.pager.page(this.pager.currentPage - 1);
+        this.currentImages = this.pager.prev();
       }
       this.currentPage = this.pager.currentPage;
     },
