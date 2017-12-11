@@ -53,7 +53,7 @@
       <!-- /stage -->
       <!-- page controls -->
       <div>
-        <span v-if="pagerButtons">
+        <span class="pg_holder" v-if="pagerButtons">
           <button class="btn btn1-01" tabindex="0"
   @click="prevPage()">Prev</button>
           page

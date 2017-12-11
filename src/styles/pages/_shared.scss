@@ -191,5 +191,68 @@ main > .container {
   }
 }
 
-// pager buttons
+// pager controls
 // ==================================================/
+// mobile portrait (320x480) 
+@include mq($from: mobile) {
+  .pg_container {
+    padding-left: 0;
+  }
+
+  .pg_totalpages {
+    width: 20%;
+  }
+
+  .pg_itemsperpage {
+    width: 20%;
+  }
+}
+
+// *mobile landscape (480x320)
+@include mq($from: mobileLandscape) {
+  .pg_container {
+    padding-left: 4px;
+  }
+
+  .pg_totalpages {
+    height: 30px;
+    vertical-align: baseline;
+    width: auto;  
+  }
+
+  .pg_totalpages {
+    margin-left: -1px;
+  }
+
+  .pg_itemsperpage {
+    height: 30px;
+    // vertical-align: text-bottom;
+    width: auto;  
+  }
+
+  .pg_itemsperpage {
+    margin-left: -1px;
+  }
+}
+// end breakpoints
+
+.pg_holder {
+  @extend %display--inline-block;
+  @extend %padd--4;
+  background-color: #ccc;
+  
+  .custom-select {
+    vertical-align: middle;
+    border: 1px solid #2c2d32;
+  }
+
+  .btn {
+    height: 30px;
+    vertical-align: middle;
+  }
+
+  p {
+    @extend %display--inline-block;
+    vertical-align: middle;
+  }
+}
