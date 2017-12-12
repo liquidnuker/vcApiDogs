@@ -41,9 +41,11 @@
       <!-- /lastViewed -->
       <!-- /leftside -->
     </div>
-    <div class="col-sm-8">
-      <!-- rightside -->
-      <!-- stage -->
+    <!-- rightside -->
+    <div class="col-sm-8 rightside">
+      <!-- rightside_contents -->
+      <div class="row col-sm-12 rightside_contents">
+        <!-- stage -->
       <div>
         stage
       </div>
@@ -72,8 +74,10 @@
         :pr-current-images="currentImages" />
       </div>
       <!-- /gallery display -->
-      <!-- /rightside -->
+      </div>
+      <!-- /rightside_contents -->
     </div>
+    <!-- rightside -->
   </div>
   </main>
   <!-- /main -->

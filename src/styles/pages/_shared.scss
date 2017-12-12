@@ -256,3 +256,34 @@ main > .container {
     vertical-align: middle;
   }
 }
+
+// rightside
+// ==================================================/
+.rightside {
+  padding-left: 4px;
+}
+
+.rightside_contents {
+  background-color: #ccc;
+}
+
+// gallery
+// ==================================================/
+.gallery_display {
+  > li {
+    @extend %padd--4;
+    @extend %margin-bottom--4;
+  }
+
+  .gallery_display_img-holder {
+    @extend %pos--relative;
+    padding: 4px;
+    height: 314px;
+    background-color: #eee;
+
+    > img {
+      @include center-both();
+      @extend %img--responsive;
+    }
+  }
+}

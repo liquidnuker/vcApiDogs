@@ -3,11 +3,17 @@
 
 
   {{ prStatus }}
-  <ul v-for="i in prCurrentImages">
-    <li>
-      <p @click="insertLastViewed(i, prCurrentBreed); addToFavorites(i, prCurrentBreed)">{{ i }}
-      </p>
-      <br>
+  <ul class="gallery_display" v-for="i in prCurrentImages">
+    <li class="col-xs-6 col-sm-3">
+      <div class="gallery_display_img-holder">
+        <img :src="i" :alt="prCurrentBreed + ' image'"
+        :title="prCurrentBreed + ' image'" 
+        @click="insertLastViewed(i, prCurrentBreed); addToFavorites(i, prCurrentBreed)" />
+      
+
+        <!-- <p @click="insertLastViewed(i, prCurrentBreed); addToFavorites(i, prCurrentBreed)">{{ i }}
+      </p> -->
+      </div>
     </li>
   </ul>
 
