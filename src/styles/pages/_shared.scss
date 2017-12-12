@@ -162,8 +162,8 @@ main > .container {
   .itemBox102_img-holder {
     @extend %padd--4;
     > img {
-      @extend %display--block;
-      margin-top: 4px;
+      @extend %img--responsive;
+      // margin-top: 4px;
     }
   }
 }

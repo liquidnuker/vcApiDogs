@@ -4,7 +4,8 @@
   <div class="itemBox102">
     <h3 class="itemBox102_heading1">Random Dog</h3>
     <div class="itemBox102_img-holder">
-      <img src="img.jpg" alt="img alt" title="Image Title">
+      <img :src="prRandomImage[0]" :alt="'random' + ' ' + prRandomBreed[0] + ' ' + 'image'" 
+      :title="'random' + ' ' + prRandomBreed[0] + ' ' + 'image'">
       <!-- {{ prRandomImage[0] }} -->
     </div>
     <h4 class="itemBox102_heading2">Name</h4>
