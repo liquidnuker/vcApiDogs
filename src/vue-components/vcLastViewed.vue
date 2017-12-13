@@ -6,7 +6,7 @@
     <ul>
       <li v-for="i in lastViewed">
         <div class="navSide103_img-holder">
-          <img src="img.jpg" alt="img alt" title="img title">
+          <img :src="i.imgSrc" :alt="i.breed + ' image'" :title="i.breed + ' image'">
           <!-- {{ i.imgSrc }} -->
         </div>
         <a href="" tabindex="0" aria-setsize="3" aria-posinset="1">

@@ -102,6 +102,7 @@ main > .container {
   }
 
   .navSide103_img-holder {
+    @extend %pos--relative;
     @extend %display--block;
     @extend %padd--4;
     @extend %margin-bottom--4;
@@ -111,7 +112,8 @@ main > .container {
     margin-right: 4px;
         
     > img {
-      height: 100%;
+      @include center-both();
+      @extend %img--responsive;
     }
   }
 } 
