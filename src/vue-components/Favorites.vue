@@ -44,65 +44,69 @@
       <!-- /lastViewed -->
       <!-- /leftside -->
     </div>
-    <div class="col-sm-8">
-      <!-- rightside -->
+    <!-- rightside -->
+    <div class="col-sm-8 rightside">
+      <!-- rightside_contents -->
+      <div class="row col-sm-12 rightside_contents">
       <!-- stage -->
-      <div>
-        stage
-      </div>
-      <!-- /stage -->
-      <!-- page controls -->
-      <div>
-        <span class="pg_holder" v-if="pagerButtons">
-          <button class="btn btn1-01" tabindex="0"
-  @click="prevPage()">Prev</button>
-          page
-          <div class="custom-select pg_totalpages">
-          <select v-model="currentPage">
-            <option v-for="i in totalPages" :value="i"
-            @click="showPage(i)">{{ i }}</option>
-          </select>
-          </div>
-          of {{ totalPages }}
-          <button class="btn btn1-01" tabindex="0"
-  @click="nextPage()">Next</button>
-        </span>
-        <button class="btn btn1-01" 
-        @click="showAll()">Show All</button>
-        <!-- breed filter -->
-        <div class="custom-select breed-filter">
-        <select>
-          <option value="">Filter Breed...</option>
-          <option v-for="i in favoriteCategories"
-          @click="filter(i)" :value="i">{{ i }}</option>
-        </select>
-        </div>
-      </div>
-      <!-- /page controls -->
-      <!-- favorites display -->
-      <div>
-        <ul>
-          <li v-for="(i, index) in currentFavorites">
-            {{ i.breed }} {{ i.name }}
-            
-            <button class="btn btn1-01" 
-            @click="removeItem(i.name)">remove</button>
-            <div v-show = "i.edit == false">
-              <label>{{ i.notes }}</label>
-              <button class="btn btn1-01" 
-              v-show = "i.edit == false" @click="i.edit = true; edit()">edit</button>
-            </div>
-            <input v-show="i.edit == true" v-model="i.notes"
-            v-on:blur= "i.edit = false"
-            @keyup.enter = "i.edit = false; update(i.notes, i.name)">
-            <button class="btn btn1-01" 
-            v-show="i.edit == true" @click="i.edit = false; cancel()">cancel</button>
-          </li>
-        </ul>
-      </div>
-      <!-- /favorites display -->
-      <!-- /rightside -->
+<div>
+  stage
+</div>
+<!-- /stage -->
+<!-- page controls -->
+<div>
+  <span class="pg_holder" v-if="pagerButtons">
+    <button class="btn btn1-01" tabindex="0"
+    @click="prevPage()">Prev</button>
+    page
+    <div class="custom-select pg_totalpages">
+      <select v-model="currentPage">
+        <option v-for="i in totalPages" :value="i"
+        @click="showPage(i)">{{ i }}</option>
+      </select>
     </div>
+    of {{ totalPages }}
+    <button class="btn btn1-01" tabindex="0"
+    @click="nextPage()">Next</button>
+  </span>
+  <button class="btn btn1-01"
+  @click="showAll()">Show All</button>
+  <!-- breed filter -->
+  <div class="custom-select breed-filter">
+    <select>
+      <option value="">Filter Breed...</option>
+      <option v-for="i in favoriteCategories"
+      @click="filter(i)" :value="i">{{ i }}</option>
+    </select>
+  </div>
+</div>
+<!-- /page controls -->
+<!-- favorites display -->
+<div>
+  <ul>
+    <li v-for="(i, index) in currentFavorites">
+      {{ i.breed }} {{ i.name }}
+      
+      <button class="btn btn1-01"
+      @click="removeItem(i.name)">remove</button>
+      <div v-show = "i.edit == false">
+        <label>{{ i.notes }}</label>
+        <button class="btn btn1-01"
+        v-show = "i.edit == false" @click="i.edit = true; edit()">edit</button>
+      </div>
+      <input v-show="i.edit == true" v-model="i.notes"
+      v-on:blur= "i.edit = false"
+      @keyup.enter = "i.edit = false; update(i.notes, i.name)">
+      <button class="btn btn1-01"
+      v-show="i.edit == true" @click="i.edit = false; cancel()">cancel</button>
+    </li>
+  </ul>
+</div>
+<!-- /favorites display -->
+      </div>
+      <!-- rightside_contents -->
+    </div>
+    <!-- /rightside -->
   </div>
   </main>
   <!-- /main -->
