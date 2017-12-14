@@ -16,17 +16,17 @@
   <main class="row container-fluid--m">
   <div class="row container main-items">
     <div class="col-sm-4">
-      <!-- leftside -->      
+      <!-- leftside -->
       <!-- breed selector -->
       <div>
         <div class="custom-select breed-selector">
-        <select @change="switchBreed($event.target.value)">
-          <option value="">Choose Breed...</option>
-          <option v-for="i in options" :value="i">{{ i }}</option>
-        </select>
+          <select @change="switchBreed($event.target.value)">
+            <option value="">Choose Breed...</option>
+            <option v-for="i in options" :value="i">{{ i }}</option>
+          </select>
         </div>
       </div>
-      <!-- /breed selector -->      
+      <!-- /breed selector -->
       <!-- randog -->
       <div>
         <vcRandomDog
@@ -34,19 +34,27 @@
         :pr-random-breed="randomDogBreed"
         :pr-random-image="randomDogImage" />
       </div>
-      <!-- /randog -->         
+      <!-- /randog -->
       <!-- lastViewed -->
       <div>
         <vcLastViewed />
       </div>
-      <!-- /lastViewed -->      
+      <!-- /lastViewed -->
       <!-- /leftside -->
     </div>
-    <div class="col-sm-8">
-      <!-- rightside -->
-      right
-      <!-- /rightside -->
+    <!-- rightside -->
+    <div class="col-sm-8 rightside">
+      <!-- rightside_contents -->
+      <div class="row col-sm-12 rightside_contents">
+        <!-- stage -->
+        <div>
+          stage
+        </div>
+        <!-- /stage -->
+      </div>
+      <!-- /rightside_contents -->
     </div>
+    <!-- /rightside -->
   </div>
   </main>
   <!-- /main -->
@@ -59,16 +67,7 @@
     </div>
   </footer>
   <!-- /footer -->
-  <!-- favorite count -->
   
-  
-  
-  
-  
-  <!-- all breed names -->
-  <!-- <ul v-for="i in allBreedNames">
-    <li>{{ i }}</li>
-  </ul> -->
 </div>
 </template>
 <script>
