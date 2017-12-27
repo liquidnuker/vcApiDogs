@@ -21,11 +21,11 @@
       <!-- breed selector -->
       <div>
         <div class="custom-select breed-selector">
-        <select>
-          <option value="">Choose Breed...</option>
-          <option v-for="i in options"
-          @click="switchBreed(i)" :value="i">{{ i }}</option>
-        </select>
+          <select>
+            <option value="">Choose Breed...</option>
+            <option v-for="i in options"
+            @click="switchBreed(i)" :value="i">{{ i }}</option>
+          </select>
         </div>
       </div>
       <!-- /breed selector -->
@@ -48,61 +48,69 @@
     <div class="col-sm-8 rightside">
       <!-- rightside_contents -->
       <div class="row col-sm-12 rightside_contents">
-      <!-- stage -->
-<div>
-  stage
-</div>
-<!-- /stage -->
-<!-- page controls -->
-<div>
-  <span class="pg_holder" v-if="pagerButtons">
-    <button class="btn btn1-01" tabindex="0"
-    @click="prevPage()">Prev</button>
-    page
-    <div class="custom-select pg_totalpages">
-      <select v-model="currentPage">
-        <option v-for="i in totalPages" :value="i"
-        @click="showPage(i)">{{ i }}</option>
-      </select>
-    </div>
-    of {{ totalPages }}
-    <button class="btn btn1-01" tabindex="0"
-    @click="nextPage()">Next</button>
-  </span>
-  <button class="btn btn1-01"
-  @click="showAll()">Show All</button>
-  <!-- breed filter -->
-  <div class="custom-select breed-filter">
-    <select>
-      <option value="">Filter Breed...</option>
-      <option v-for="i in favoriteCategories"
-      @click="filter(i)" :value="i">{{ i }}</option>
-    </select>
-  </div>
-</div>
-<!-- /page controls -->
-<!-- favorites display -->
-<div>
-  <ul>
-    <li v-for="(i, index) in currentFavorites">
-      {{ i.breed }} {{ i.name }}
-      
-      <button class="btn btn1-01"
-      @click="removeItem(i.name)">remove</button>
-      <div v-show = "i.edit == false">
-        <label>{{ i.notes }}</label>
-        <button class="btn btn1-01"
-        v-show = "i.edit == false" @click="i.edit = true; edit()">edit</button>
-      </div>
-      <input v-show="i.edit == true" v-model="i.notes"
-      v-on:blur= "i.edit = false"
-      @keyup.enter = "i.edit = false; update(i.notes, i.name)">
-      <button class="btn btn1-01"
-      v-show="i.edit == true" @click="i.edit = false; cancel()">cancel</button>
-    </li>
-  </ul>
-</div>
-<!-- /favorites display -->
+        <!-- stage -->
+        <div>
+          stage
+        </div>
+        <!-- /stage -->
+        <!-- page controls -->
+        <div>
+          <span class="pg_holder" v-if="pagerButtons">
+            <button class="btn btn1-01 btn_prev" tabindex="0"
+            @click="prevPage()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+            </svg>
+            Prev</button>
+            page
+            <div class="custom-select pg_totalpages">
+              <select v-model="currentPage">
+                <option v-for="i in totalPages" :value="i"
+                @click="showPage(i)">{{ i }}</option>
+              </select>
+            </div>
+            of {{ totalPages }}
+            <button class="btn btn1-01 btn_next" tabindex="0"
+            @click="nextPage()">Next
+            <svg xmlns="http://www.w3.org/2000/svg" class="carousel1-04_chevron" viewBox="0 0 24 24">
+              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+            </svg>
+            </button>
+          </span>
+          <button class="btn btn1-01"
+          @click="showAll()">Show All</button>
+          <!-- breed filter -->
+          <div class="custom-select breed-filter">
+            <select>
+              <option value="">Filter Breed...</option>
+              <option v-for="i in favoriteCategories"
+              @click="filter(i)" :value="i">{{ i }}</option>
+            </select>
+          </div>
+        </div>
+        <!-- /page controls -->
+        <!-- favorites display -->
+        <div>
+          <ul>
+            <li v-for="(i, index) in currentFavorites">
+              {{ i.breed }} {{ i.name }}
+              
+              <button class="btn btn1-01"
+              @click="removeItem(i.name)">remove</button>
+              <div v-show = "i.edit == false">
+                <label>{{ i.notes }}</label>
+                <button class="btn btn1-01"
+                v-show = "i.edit == false" @click="i.edit = true; edit()">edit</button>
+              </div>
+              <input v-show="i.edit == true" v-model="i.notes"
+              v-on:blur= "i.edit = false"
+              @keyup.enter = "i.edit = false; update(i.notes, i.name)">
+              <button class="btn btn1-01"
+              v-show="i.edit == true" @click="i.edit = false; cancel()">cancel</button>
+            </li>
+          </ul>
+        </div>
+        <!-- /favorites display -->
       </div>
       <!-- rightside_contents -->
     </div>

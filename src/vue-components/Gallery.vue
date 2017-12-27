@@ -46,34 +46,41 @@
       <!-- rightside_contents -->
       <div class="row col-sm-12 rightside_contents">
         <!-- stage -->
-      <div>
-        stage
-      </div>
-      <!-- /stage -->
-      <!-- page controls -->
-      <div>
-        <span class="pg_holder" v-if="pagerButtons">
-          <button class="btn btn1-01" tabindex="0"
-  @click="prevPage()">Prev</button>
-          page
-          <div class="custom-select pg_totalpages">
-          <select @change="showPage($event.target.value)" v-model="currentPage">
-            <option v-for="i in totalPages" :value="i">{{ i }}</option>
-          </select>
-          </div> of {{ totalPages }}
-          <button class="btn btn1-01" tabindex="0"
-  @click="nextPage()">Next</button>
-        </span>
-      </div>
-      <!-- /page controls -->
-      <!-- gallery display -->
-      <div>
-        <vcGalleryDisplay
-        :pr-status="status.galleryDisplay"
-        :pr-current-breed="currentBreed"
-        :pr-current-images="currentImages" />
-      </div>
-      <!-- /gallery display -->
+        <div>
+          stage
+        </div>
+        <!-- /stage -->
+        <!-- page controls -->
+        <div>
+          <span class="pg_holder" v-if="pagerButtons">
+            <button class="btn btn1-01 btn_prev" tabindex="0"
+            @click="prevPage()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+            </svg>
+            Prev</button>
+            page
+            <div class="custom-select pg_totalpages">
+              <select @change="showPage($event.target.value)" v-model="currentPage">
+                <option v-for="i in totalPages" :value="i">{{ i }}</option>
+              </select>
+            </div> of {{ totalPages }}
+            <button class="btn btn1-01 btn_prev" tabindex="0"
+            @click="nextPage()">Next
+            <svg xmlns="http://www.w3.org/2000/svg" class="carousel1-04_chevron" viewBox="0 0 24 24">
+              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+            </svg></button>
+          </span>
+        </div>
+        <!-- /page controls -->
+        <!-- gallery display -->
+        <div>
+          <vcGalleryDisplay
+          :pr-status="status.galleryDisplay"
+          :pr-current-breed="currentBreed"
+          :pr-current-images="currentImages" />
+        </div>
+        <!-- /gallery display -->
       </div>
       <!-- /rightside_contents -->
     </div>
