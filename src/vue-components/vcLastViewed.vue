@@ -2,7 +2,7 @@
 <div>
   <!--begin navSide103-->
   <nav class="navSide103" role="navigation">
-    <h3 class="navSide103_heading">Recently Viewed</h3>
+    <h2 class="navSide103_heading">Recently Viewed</h2>
     <ul>
       <li v-for="i in lastViewed">
         <div class="navSide103_img-holder">

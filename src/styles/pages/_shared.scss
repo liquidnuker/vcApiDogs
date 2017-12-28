@@ -122,14 +122,14 @@ main > .container {
 // vcRandomDog.vue
 // ==================================================/
 @mixin itemBox102_theme() {
+  .itemBox102_heading1 {
+    background-color: #ccc;
+    color: #000;
+  }
+
   .itemBox102 {
     background-color: #2a2a2d;
     color: #d5d5d5;
-
-    .itemBox102_heading1 {
-      background-color: #343437;
-      color: #fff;
-    }
 
     .itemBox102_heading2 {
       color: #fff;
@@ -145,13 +145,14 @@ main > .container {
 }
 @include itemBox102_theme();
 
+
+.itemBox102_heading1 {
+  @extend %padd--4;
+  // @extend %margin-bottom--4;
+}
+
 .itemBox102 {
   @extend %padd--4;
-
-  .itemBox102_heading1 {
-    padding: 4px 0px 4px 0px; /* trbl */
-    @extend %margin-bottom--4;
-  }
 
   .itemBox102_heading2 {
     margin: 4px 0 4px 0; /* trbl */
