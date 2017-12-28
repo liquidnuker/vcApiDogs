@@ -19,7 +19,7 @@
   position: relative;
 }
 
-footer,header,nav,main,.custom-select::after,.navSide103 a,.navSide103 .navSide103_img-holder {
+footer,header,nav,main,.custom-select::after,.navSide103 a,.navSide103 .navSide103_img-holder,.favorites_filter {
   display: block;
 }
 
@@ -40,7 +40,7 @@ input,select,html,body,div,span,object,h1,h2,h3,h4,h5,h6,p,a,img,sub,i,ul,li,for
   margin-bottom: 4px;
 }
 
-.btn1-01,main > .container,.navSide103 .navSide103_heading,.navSide103 li,.navSide103 .navSide103_img-holder,.itemBox102,.itemBox102 .itemBox102_img-holder,.pg_holder,.gallery_display > li {
+.btn1-01,main > .container,.navSide103 .navSide103_heading,.navSide103 li,.navSide103 .navSide103_img-holder,.itemBox102,.itemBox102 .itemBox102_img-holder,.rightside_contents,.gallery_display > li {
   padding: 4px;
 }
 
@@ -97,6 +97,12 @@ html {
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
 }
 
 a {
@@ -794,6 +800,8 @@ button,input [type="button"],[type="reset"],[type="submit"],.btn {
 }
 
 .pg_holder {
+  padding: 4px 4px 4px 0;
+  /* trbl */
   background-color: #ccc;
 }
 
@@ -888,6 +896,22 @@ button,input [type="button"],[type="reset"],[type="submit"],.btn {
   vertical-align: text-bottom;
   width: 18px;
   height: 18px;
+}
+
+.favorites_filter {
+  padding: 4px 4px 4px 0;
+  /* trbl */
+  background-color: #ccc;
+}
+
+.favorites_filter .custom-select {
+  vertical-align: middle;
+  border: 1px solid #2c2d32;
+}
+
+.favorites_filter .btn {
+  height: 30px;
+  vertical-align: middle;
 }
 
 [class|="col"] {

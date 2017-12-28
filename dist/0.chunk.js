@@ -2254,6 +2254,9 @@ exports.nameExists = nameExists;
 //
 //
 //
+//
+//
+//
 
 
 
@@ -2593,14 +2596,16 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "d": "M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
     }
-  })])])]) : _vm._e(), _vm._v(" "), _c('button', {
+  })])])]) : _vm._e(), _vm._v(" "), _c('span', {
+    staticClass: "favorites_filter"
+  }, [_c('button', {
     staticClass: "btn btn1-01",
     on: {
       "click": function($event) {
         _vm.showAll()
       }
     }
-  }, [_vm._v("Show All")]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Show all breeds")]), _vm._v(" "), _c('div', {
     staticClass: "custom-select breed-filter"
   }, [_c('select', [_c('option', {
     attrs: {
@@ -2617,7 +2622,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         }
       }
     }, [_vm._v(_vm._s(i))])
-  })], 2)])]), _vm._v(" "), _c('div', [_c('ul', _vm._l((_vm.currentFavorites), function(i, index) {
+  })], 2)])]), _vm._v(" "), _c('hr')]), _vm._v(" "), _c('div', [_c('ul', _vm._l((_vm.currentFavorites), function(i, index) {
     return _c('li', [_vm._v("\r\n              " + _vm._s(i.breed) + " " + _vm._s(i.name) + "\r\n              \r\n              "), _c('button', {
       staticClass: "btn btn1-01 btn_remove",
       on: {

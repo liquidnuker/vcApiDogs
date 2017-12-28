@@ -77,8 +77,9 @@
             </svg>
             </button>
           </span>
+          <span class="favorites_filter">
           <button class="btn btn1-01"
-          @click="showAll()">Show All</button>
+          @click="showAll()">Show all breeds</button>
           <!-- breed filter -->
           <div class="custom-select breed-filter">
             <select>
@@ -87,11 +88,13 @@
               @click="filter(i)" :value="i">{{ i }}</option>
             </select>
           </div>
+          </span>
+          <hr>
         </div>
         <!-- /page controls -->
         <!-- favorites display -->
         <div>
-          <ul>
+          <ul >
             <li v-for="(i, index) in currentFavorites">
               {{ i.breed }} {{ i.name }}
               

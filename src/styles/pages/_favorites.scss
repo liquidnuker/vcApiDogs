@@ -54,3 +54,21 @@
     height: 18px;
   }
 }
+
+// favorites filter
+// ==================================================/
+.favorites_filter {
+  @extend %display--block;
+  padding: 4px 4px 4px 0; /* trbl */
+  background-color: #ccc;
+  
+  .custom-select {
+    vertical-align: middle;
+    border: 1px solid #2c2d32;
+  }
+
+  .btn {
+    height: 30px;
+    vertical-align: middle;
+  }
+}

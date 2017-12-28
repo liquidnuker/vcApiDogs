@@ -240,7 +240,7 @@ main > .container {
 
 .pg_holder {
   @extend %display--inline-block;
-  @extend %padd--4;
+  padding: 4px 4px 4px 0; /* trbl */
   background-color: #ccc;
   
   .custom-select {
@@ -288,6 +288,7 @@ main > .container {
 }
 
 .rightside_contents {
+  @extend %padd--4;
   background-color: #ccc;
 }
 
