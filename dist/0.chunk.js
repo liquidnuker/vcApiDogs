@@ -2246,6 +2246,14 @@ exports.nameExists = nameExists;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2611,13 +2619,22 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }, [_vm._v(_vm._s(i))])
   })], 2)])]), _vm._v(" "), _c('div', [_c('ul', _vm._l((_vm.currentFavorites), function(i, index) {
     return _c('li', [_vm._v("\r\n              " + _vm._s(i.breed) + " " + _vm._s(i.name) + "\r\n              \r\n              "), _c('button', {
-      staticClass: "btn btn1-01",
+      staticClass: "btn btn1-01 btn_remove",
       on: {
         "click": function($event) {
           _vm.removeItem(i.name)
         }
       }
-    }, [_vm._v("remove")]), _vm._v(" "), _c('div', {
+    }, [_c('svg', {
+      attrs: {
+        "xmlns": "http://www.w3.org/2000/svg",
+        "viewBox": "0 0 24 24"
+      }
+    }, [_c('path', {
+      attrs: {
+        "d": "M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zm2.46-7.12l1.41-1.41L12 12.59l2.12-2.12 1.41 1.41L13.41 14l2.12 2.12-1.41 1.41L12 15.41l-2.12 2.12-1.41-1.41L10.59 14l-2.13-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4z"
+      }
+    })])]), _vm._v(" "), _c('div', {
       directives: [{
         name: "show",
         rawName: "v-show",
@@ -2631,14 +2648,23 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         value: (i.edit == false),
         expression: "i.edit == false"
       }],
-      staticClass: "btn btn1-01",
+      staticClass: "btn btn1-01 btn_edit",
       on: {
         "click": function($event) {
           i.edit = true;
           _vm.edit()
         }
       }
-    }, [_vm._v("edit")])]), _vm._v(" "), _c('input', {
+    }, [_c('svg', {
+      attrs: {
+        "xmlns": "http://www.w3.org/2000/svg",
+        "viewBox": "0 0 24 24"
+      }
+    }, [_c('path', {
+      attrs: {
+        "d": "M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+      }
+    })])])]), _vm._v(" "), _c('input', {
       directives: [{
         name: "show",
         rawName: "v-show",

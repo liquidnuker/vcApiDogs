@@ -42,3 +42,15 @@
     margin-left: -1px;
   }
 }
+
+// edit/remove buttons
+// ==================================================/
+.btn_remove,
+.btn_edit {
+  svg {
+    @extend %display--inline-block;
+    vertical-align: text-bottom;
+    width: 18px;
+    height: 18px;
+  }
+}

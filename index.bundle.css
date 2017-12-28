@@ -23,7 +23,7 @@ footer,header,nav,main,.custom-select::after,.navSide103 a,.navSide103 .navSide1
   display: block;
 }
 
-.btn,.custom-select,.pg_holder,.pg_holder .btn_prev svg,.pg_holder .btn_next svg,.pg_holder p {
+.btn,.custom-select,.pg_holder,.pg_holder .btn_prev svg,.pg_holder .btn_next svg,.pg_holder p,.btn_remove svg,.btn_edit svg {
   display: inline-block;
 }
 
@@ -882,6 +882,12 @@ button,input [type="button"],[type="reset"],[type="submit"],.btn {
   .pg_totalpages {
     margin-left: -1px;
   }
+}
+
+.btn_remove svg,.btn_edit svg {
+  vertical-align: text-bottom;
+  width: 18px;
+  height: 18px;
 }
 
 [class|="col"] {
