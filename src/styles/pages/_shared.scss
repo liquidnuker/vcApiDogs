@@ -112,7 +112,7 @@ main > .container {
     margin-right: 4px;
         
     > img {
-      @include center-both();
+      // @include center-both();
       @extend %img--responsive;
     }
   }
@@ -165,7 +165,9 @@ main > .container {
   .itemBox102_img-holder {
     @extend %padd--4;
     > img {
-      @extend %img--responsive;
+      // @extend %img--responsive;
+      max-width: 50px;
+      border: 1px solid #red;
       // margin-top: 4px;
     }
   }

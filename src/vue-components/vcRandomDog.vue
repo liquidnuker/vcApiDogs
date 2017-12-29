@@ -4,12 +4,14 @@
   <div class="itemBox102">
     
     <div class="itemBox102_img-holder">
-      <img :src="prRandomImage[0]" :alt="'random' + ' ' + prRandomBreed[0] + ' ' + 'image'" 
+      <a :href="prRandomImage[0]">
+        <img :src="prRandomImage[0]" :alt="'random' + ' ' + prRandomBreed[0] + ' ' + 'image'" 
       :title="'random' + ' ' + prRandomBreed[0] + ' ' + 'image'">
+      </a>
       <!-- {{ prRandomImage[0] }} -->
     </div>
     <h3 class="itemBox102_heading2">Name</h3>
-    <p>Breed: {{ prRandomBreed[0] }}</p>
+    <p>Breed: <a :href="'#/gallery/' + prRandomBreed[0]">{{ prRandomBreed[0] }}</a></p>
   </div>
 </div>
 </template>

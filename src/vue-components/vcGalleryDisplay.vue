@@ -6,9 +6,16 @@
   <ul class="gallery_display" v-for="i in prCurrentImages">
     <li class="col-xs-6 col-sm-3">
       <div class="gallery_display_img-holder">
-        <img :src="i" :alt="prCurrentBreed + ' image'"
+      <!-- todo:
+      1. add method for router push
+      2. insertLastViewed/addToFavorites
+      3. push param(i) -->
+
+        <a :href="i" @click="insertLastViewed(i, prCurrentBreed); addToFavorites(i, prCurrentBreed)">
+          <img :src="i" :alt="prCurrentBreed + ' image'"
         :title="prCurrentBreed + ' image'" 
         @click="insertLastViewed(i, prCurrentBreed); addToFavorites(i, prCurrentBreed)" />
+        </a>
       
 
         <!-- <p @click="insertLastViewed(i, prCurrentBreed); addToFavorites(i, prCurrentBreed)">{{ i }}
