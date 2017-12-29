@@ -311,9 +311,11 @@ main > .container {
     height: 314px;
     background-color: #eee;
 
-    > img {
-      @include center-both();
-      @extend %img--responsive;
+    img {
+      // @include center-both();
+      
+      max-width: 100%;
+      max-height: 100%;
     }
   }
 }
