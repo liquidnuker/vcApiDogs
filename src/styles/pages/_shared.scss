@@ -112,8 +112,15 @@ main > .container {
     margin-right: 4px;
         
     > img {
-      // @include center-both();
-      @extend %img--responsive;
+      max-width: 100%;
+      max-height: 100%;
+      
+      // centering
+      // use absolute to ignore parent's padding
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);      
     }
   }
 } 
@@ -145,6 +152,24 @@ main > .container {
 }
 @include itemBox102_theme();
 
+// mobile portrait (320x480) 
+@include mq($from: mobile) {
+  .itemBox102 {
+    .itemBox102_img-holder {
+      height: 120px;
+    }
+  }
+}
+
+// *mobile landscape (480x320)
+@include mq($from: mobileLandscape) {
+  .itemBox102 {
+    .itemBox102_img-holder {
+      height: 220px;
+    }
+  }
+}
+// end breakpoints
 
 .itemBox102_heading1 {
   @extend %padd--4;
@@ -164,13 +189,18 @@ main > .container {
 
   .itemBox102_img-holder {
     @extend %padd--4;
-    
+    @extend %pos--relative;
+
     img {
       max-width: 100%;
       max-height: 100%;
       
-      border: 1px solid #red;
-      // margin-top: 4px;
+      // centering
+      // use absolute to ignore parent's padding
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
     }
   }
 }
@@ -307,15 +337,20 @@ main > .container {
 
   .gallery_display_img-holder {
     @extend %pos--relative;
-    padding: 4px;
-    height: 314px;
+    @extend %padd--4;
+    height: 200px;
     background-color: #eee;
 
     img {
-      // @include center-both();
-      
       max-width: 100%;
       max-height: 100%;
+
+      // centering
+      // use absolute to ignore parent's padding
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
     }
   }
 }
