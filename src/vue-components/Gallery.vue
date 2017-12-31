@@ -52,7 +52,8 @@
         <!-- /stage -->
         <!-- page controls -->
         <div>
-          <span class="pg_holder" v-if="pagerButtons">
+          <span class="pg_holder" v-if="pagerButtons"
+            v-show="!viewDog">
             <button class="btn btn1-01 btn_prev" tabindex="0"
             @click="prevPage()">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -74,12 +75,29 @@
         </div>
         <!-- /page controls -->
         <!-- gallery display -->
-        <div>
-          <vcGalleryDisplay
-          :pr-status="status.galleryDisplay"
-          :pr-current-breed="currentBreed"
-          :pr-current-images="currentImages" />
+        <!-- dog view -->
+        <div v-if="viewDog">
+          <p @click="viewDog=false">Back to gallery</p>
+          <a :href="currentDog">
+            <img :src="currentDog"
+            :alt="currentDog" :title="currentDog" />
+          </a>
         </div>
+        <!-- /dog view -->
+        <!-- gallery view -->
+        <div v-else>
+          {{ prStatus }}
+          <ul class="gallery_display" v-for="i in currentImages">
+            <li class="col-xs-6 col-sm-3">
+              <div class="gallery_display_img-holder">
+                <img :src="i" :alt="currentBreed + ' image'"
+                :title="currentBreed + ' image'"
+                @click="insertLastViewed(i, currentBreed); addToFavorites(i, currentBreed)" />
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!-- /gallery view -->
         <!-- /gallery display -->
       </div>
       <!-- /rightside_contents -->
@@ -107,9 +125,11 @@ import {itemExists} from "../js/itemexists.js";
 import {shuffle} from "../js/shuffle.js";
 import {router} from "../js/router.js";
 import Paginate from "../js/vendor/Paginate.js";
+import {store} from "../js/store.js";
+import {extractFileName} from "../js/extractfilename.js";
+import {nameExists} from "../js/nameexists.js";
 
 const vcBreedSelector = () => import ('./vcBreedSelector.vue');
-const vcGalleryDisplay = () => import ('./vcGalleryDisplay.vue');
 const vcRandomDog = () => import ('./vcRandomDog.vue');
 const vcLastViewed = () => import ('./vcLastViewed.vue');
 const vcFavoriteCount = () => import ('./vcFavoriteCount.vue');
@@ -135,11 +155,14 @@ export default {
         galleryDisplay: "",
         randomDog: ""  
       },
+
+      // viewDog
+      viewDog: false,
+      currentDog: ""
     }
   },
   components: {
     vcBreedSelector: vcBreedSelector,
-    vcGalleryDisplay: vcGalleryDisplay,
     vcRandomDog: vcRandomDog,
     vcFavoriteCount: vcFavoriteCount,
     vcLastViewed: vcLastViewed,
@@ -226,7 +249,45 @@ export default {
         .then(function () {
         
       });      
-    },      
+    },
+    insertLastViewed: function(imgSrc, breed) {
+      this.currentDog = imgSrc;
+      this.viewDog = true;
+
+      let name = extractFileName(imgSrc, false);
+      
+      // check before pushing
+      if (nameExists(name, store.lastViewed) !== undefined) {
+        return;
+      } else {
+        // lastViewed limit
+        if (store.lastViewed.length === 4) {
+          store.lastViewed.pop();
+        } 
+        store.lastViewed.unshift({
+          name: name,
+          imgSrc: imgSrc,
+          breed: breed,
+        });
+      }      
+    },
+    addToFavorites: function(imgSrc, breed) {
+      let name = extractFileName(imgSrc, false);
+
+      // check before pushing
+      if (nameExists(name, store.favorites) !== undefined) {
+        console.log("already in favorites");
+        return;
+      } else {
+      store.favorites.push({
+        name: name,
+        imgSrc: imgSrc,
+        breed: breed,
+        notes: "",
+        edit: false
+      });
+      }
+    }      
   }
 }
 </script>

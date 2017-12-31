@@ -1,36 +1,16 @@
 <template>
 <div>
-  {{ prStatus }}
-  <ul class="gallery_display" v-for="i in prCurrentImages">
-    <li class="col-xs-6 col-sm-3">
-      <div class="gallery_display_img-holder">
-        <!-- todo:
-        1. add method for router push
-        2. insertLastViewed/addToFavorites
-        3. push param(i) -->
-        <a :href="i" @click="insertLastViewed(i, prCurrentBreed); addToFavorites(i, prCurrentBreed)">
-          <img :src="i" :alt="prCurrentBreed + ' image'"
-          :title="prCurrentBreed + ' image'"
-          @click="insertLastViewed(i, prCurrentBreed); addToFavorites(i, prCurrentBreed)" />
-        </a>
-        
-        <!-- <p @click="insertLastViewed(i, prCurrentBreed); addToFavorites(i, prCurrentBreed)">{{ i }}
-        </p> -->
-      </div>
-    </li>
-  </ul>
+  
 </div>
 </template>
 <script>
-import {store} from "../js/store.js";
-import {extractFileName} from "../js/extractfilename.js";
-import {nameExists} from "../js/nameexists.js";
 
 
 export default {
   data () {
     return {   
-      
+      viewDog: false,
+      currentDog: ""
     }
   },
   watch: {
@@ -49,6 +29,9 @@ export default {
   },
   methods: {   
     insertLastViewed: function(imgSrc, breed) {
+      this.currentDog = imgSrc;
+      this.viewDog = true;
+
       let name = extractFileName(imgSrc, false);
       
       // check before pushing
