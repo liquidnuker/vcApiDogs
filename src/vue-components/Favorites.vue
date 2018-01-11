@@ -20,14 +20,12 @@
       <!-- leftside -->
       <!-- breed selector -->
       <div>
-        <div class="custom-select breed-selector">
-          <select>
-            <option value="">Choose Breed...</option>
-            <option v-for="i in options"
-            @click="switchBreed(i)" :value="i">{{ i }}</option>
-          </select>
-        </div>
-      </div>
+<select class="breed-selector">
+  <option value="">Choose Breed...</option>
+  <option v-for="i in options"
+  @click="switchBreed(i)" :value="i">{{ i }}</option>
+</select>
+</div>
       <!-- /breed selector -->
       <!-- randog -->
       <div>
@@ -63,12 +61,10 @@
             </svg>
             Prev</button>
             page
-            <div class="custom-select pg_totalpages">
-              <select v-model="currentPage">
+            <select class="pg_totalpages" v-model="currentPage">
                 <option v-for="i in totalPages" :value="i"
                 @click="showPage(i)">{{ i }}</option>
               </select>
-            </div>
             of {{ totalPages }}
             <button class="btn btn1-01 btn_next" tabindex="0"
             @click="nextPage()">Next
@@ -81,13 +77,11 @@
           <button class="btn btn1-01"
           @click="showAll()">Show all breeds</button>
           <!-- breed filter -->
-          <div class="custom-select breed-filter">
-            <select>
+          <select class="breed-selector">
               <option value="">Filter Breed...</option>
               <option v-for="i in favoriteCategories"
               @click="filter(i)" :value="i">{{ i }}</option>
             </select>
-          </div>
           </span>
           <hr>
         </div>

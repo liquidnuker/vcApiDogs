@@ -19,12 +19,10 @@
       <!-- leftside -->
       <!-- breed selector -->
       <div>
-        <div class="custom-select breed-selector">
-          <select @change="switchBreed($event.target.value)">
-            <option value="">Choose Breed...</option>
-            <option v-for="i in options" :value="i">{{ i }}</option>
-          </select>
-        </div>
+        <select class="breed-selector" @change="switchBreed($event.target.value)">
+          <option value="">Choose Breed...</option>
+          <option v-for="i in options" :value="i">{{ i }}</option>
+        </select>
       </div>
       <!-- /breed selector -->
       <!-- randog -->

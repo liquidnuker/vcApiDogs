@@ -60,12 +60,11 @@
               <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
             </svg>
             Prev</button>
-            page
-            <div class="custom-select pg_totalpages">
-              <select @change="showPage($event.target.value)" v-model="currentPage">
+            <p>page</p>            
+              <select class="pg_select" @change="showPage($event.target.value)" v-model="currentPage">
                 <option v-for="i in totalPages" :value="i">{{ i }}</option>
               </select>
-            </div> of {{ totalPages }}
+            <p>of {{ totalPages }}</p>
             <button class="btn btn1-01 btn_prev" tabindex="0"
             @click="nextPage()">Next
             <svg xmlns="http://www.w3.org/2000/svg" class="carousel1-04_chevron" viewBox="0 0 24 24">

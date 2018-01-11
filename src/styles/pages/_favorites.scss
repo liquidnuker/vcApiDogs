@@ -57,16 +57,29 @@
 
 // favorites filter
 // ==================================================/
+// mobile portrait (320x480) 
+@include mq($from: mobile) {
+  .favorites_filter {
+    .breed-selector {
+      width: 100%;
+    }
+  }
+}
+
+// *mobile landscape (480x320)
+@include mq($from: mobileLandscape) {
+  .favorites_filter {
+    .breed-selector {
+      width: 30%;
+    }
+  }
+}
+
 .favorites_filter {
   @extend %display--block;
   padding: 4px 4px 4px 0; /* trbl */
   background-color: #ccc;
   
-  .custom-select {
-    vertical-align: middle;
-    border: 1px solid #2c2d32;
-  }
-
   .btn {
     height: 30px;
     vertical-align: middle;

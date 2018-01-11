@@ -228,6 +228,14 @@ main > .container {
   }
 }
 
+.breed-selector {
+  @extend %padd--4;
+  vertical-align: middle;
+  height: 30px;
+  border: 1px solid #000;
+  background-color: #fff;
+}
+
 // pager controls
 // ==================================================/
 // mobile portrait (320x480) 
@@ -278,11 +286,6 @@ main > .container {
   padding: 4px 4px 4px 0; /* trbl */
   background-color: #ccc;
   
-  .custom-select {
-    vertical-align: middle;
-    border: 1px solid #2c2d32;
-  }
-
   .btn {
     height: 30px;
     vertical-align: middle;
@@ -308,6 +311,15 @@ main > .container {
     svg {
       margin-right: -4px;
     }
+  }
+
+  .pg_select,
+  .pg_totalpages {
+    @extend %padd--4;
+    vertical-align: middle;
+    height: 30px;
+    border: 1px solid #000;
+    background-color: #fff;
   }
 
   p {

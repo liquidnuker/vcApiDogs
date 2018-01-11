@@ -4,12 +4,9 @@
     <span>
       <p>Choose Breeds:</p>
     </span>
-    <!-- vendor/select-css.scss -->
-    <div class="custom-select breed-selector">
-     <select @change="switchBreed($event.target.value)" v-model="prSelected">
-        <option v-for="i in options" :value="i">{{ i }}</option>
-      </select>
-    </div>
+    <select class="breed-selector" @change="switchBreed($event.target.value)" v-model="prSelected">
+      <option v-for="i in options" :value="i">{{ i }}</option>
+    </select>
   </form>
 </div>
 </template>
