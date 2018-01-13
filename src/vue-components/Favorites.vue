@@ -61,7 +61,7 @@
             </svg>
             Prev</button>
             page
-            <select class="pg_totalpages" v-model="currentPage">
+            <select @change="showPage($event.target.value)" class="pg_totalpages" v-model="currentPage">
                 <option v-for="i in totalPages" :value="i"
                 @click="showPage(i)">{{ i }}</option>
               </select>

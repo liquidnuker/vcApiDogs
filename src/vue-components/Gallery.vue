@@ -62,7 +62,8 @@
             Prev</button>
             <p>page</p>            
               <select class="pg_select" @change="showPage($event.target.value)" v-model="currentPage">
-                <option v-for="i in totalPages" :value="i">{{ i }}</option>
+                <option v-for="i in totalPages" :value="i"
+                @click="showPage(i)">{{ i }}</option>
               </select>
             <p>of {{ totalPages }}</p>
             <button class="btn btn1-01 btn_prev" tabindex="0"
