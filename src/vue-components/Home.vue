@@ -49,6 +49,12 @@
           stage
         </div>
         <!-- /stage -->
+        <!-- main breed directory holder -->
+        <div>
+          <vcBreedDirectory 
+           :pr-breed-dir-items="options" />
+        </div>
+        <!-- /main breed directory holder -->
       </div>
       <!-- /rightside_contents -->
     </div>
@@ -77,6 +83,7 @@ import {router} from "../js/router.js";
 const vcRandomDog = () => import ('./vcRandomDog.vue');
 const vcLastViewed = () => import ('./vcLastViewed.vue');
 const vcFavoriteCount = () => import ('./vcFavoriteCount.vue');
+const vcBreedDirectory = () => import ('./vcBreedDirectory.vue');
 export default {
   data() {
     return {
@@ -103,10 +110,11 @@ export default {
   components: {
     vcRandomDog: vcRandomDog,
     vcLastViewed: vcLastViewed,
-    vcFavoriteCount: vcFavoriteCount
+    vcFavoriteCount: vcFavoriteCount,
+    vcBreedDirectory: vcBreedDirectory
   },
   mounted: function () {
-    this.listAllBreedNames();
+    // this.listAllBreedNames();
   },
   methods: {
     listAllBreedNames: function () {
