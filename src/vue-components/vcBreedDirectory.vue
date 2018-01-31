@@ -1,17 +1,22 @@
 <template>
-  <div>
-    breed directory
-
-    <div v-for="i in breedDirList">
-    {{ i.startsWith }}
-      <div v-for="z in i.name">
-        {{ z }} 
-      </div>
-      <br>
-        -------------------
-      <br>
+<div class="row">
+  breed directory<br>
+  <div v-for="i in breedDirList" class="col-sm-3 bd_grid"
+  v-if="i.length > 0">
+    <div class="bd_grid_items">
+      <!-- {{ i.length }}
+      {{ i.startsWith }} -->
+      <template v-for="(z, index) in i.name">
+      <p v-if="index === 0">{{ z }}</p>
+      <!-- with separator -->
+      <p v-else-if="index > 0 && index < i.name.length-1">
+      {{ z }},&nbsp;</p>
+      <!-- last item -->
+      <p v-else>{{ z }}</p>
+      </template>
     </div>
   </div>
+</div>
 </template>
 <script>
 export default {
@@ -19,7 +24,9 @@ export default {
       return {
         breedDirItems: "",
         breedDirChars: "",
-        breedDirList: []
+        breedDirList: [],
+
+        pagerBreedList: "" // todo
       };
     },
     watch: {
@@ -56,6 +63,11 @@ export default {
             length: z.length
           });
         });
+
+        this.paginateBreedList();
+      },
+      paginateBreedList: function() {
+        console.log("paginateBreedList todo");
       },
       extractChars: function (arr, char) {
         // returns array of items that starts with char
