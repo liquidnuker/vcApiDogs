@@ -1,16 +1,7 @@
 <template>
 <div>
   <!-- header -->
-  <header class="row container-fluid--h">
-    <div class="row container main-header">
-      <div class="col-sm-4">logo</div>
-      <div class="col-sm-8">
-        <!-- favoriteCount -->
-        <vcFavoriteCount />
-        <!-- /favoriteCount -->
-      </div>
-    </div>
-  </header>
+  <vcHeader />
   <!-- /header -->
   <!-- main -->
   <main class="row container-fluid--m">
@@ -131,8 +122,8 @@ import {nameExists} from "../js/nameexists.js";
 
 const vcBreedSelector = () => import ('./vcBreedSelector.vue');
 const vcRandomDog = () => import ('./vcRandomDog.vue');
+const vcHeader = () => import ('./vcHeader.vue');
 const vcLastViewed = () => import ('./vcLastViewed.vue');
-const vcFavoriteCount = () => import ('./vcFavoriteCount.vue');
 export default {
   data () {
     return {   
@@ -164,8 +155,8 @@ export default {
   components: {
     vcBreedSelector: vcBreedSelector,
     vcRandomDog: vcRandomDog,
-    vcFavoriteCount: vcFavoriteCount,
     vcLastViewed: vcLastViewed,
+    vcHeader: vcHeader
   },
   watch: {
     $route: function () {

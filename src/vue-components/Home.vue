@@ -1,16 +1,7 @@
 <template>
 <div>
   <!-- header -->
-  <header class="row container-fluid--h">
-    <div class="row container main-header">
-      <div class="col-sm-4">logo</div>
-      <div class="col-sm-8">
-        <!-- favoriteCount -->
-        <vcFavoriteCount />
-        <!-- /favoriteCount -->
-      </div>
-    </div>
-  </header>
+  <vcHeader />
   <!-- /header -->
   <!-- main -->
   <main class="row container-fluid--m">
@@ -62,16 +53,6 @@
   </div>
   </main>
   <!-- /main -->
-  <!-- footer -->
-  <footer class="row container-fluid--f">
-    <div class="row container main-footer">
-      <div class="col-sm-12">
-        footer
-      </div>
-    </div>
-  </footer>
-  <!-- /footer -->
-  
 </div>
 </template>
 <script>
@@ -82,8 +63,8 @@ import {router} from "../js/router.js";
 
 const vcRandomDog = () => import ('./vcRandomDog.vue');
 const vcLastViewed = () => import ('./vcLastViewed.vue');
-const vcFavoriteCount = () => import ('./vcFavoriteCount.vue');
 const vcBreedDirectory = () => import ('./vcBreedDirectory.vue');
+const vcHeader = () => import ('./vcHeader.vue');
 export default {
   data() {
     return {
@@ -110,8 +91,8 @@ export default {
   components: {
     vcRandomDog: vcRandomDog,
     vcLastViewed: vcLastViewed,
-    vcFavoriteCount: vcFavoriteCount,
-    vcBreedDirectory: vcBreedDirectory
+    vcBreedDirectory: vcBreedDirectory,
+    vcHeader: vcHeader
   },
   mounted: function () {
     // this.listAllBreedNames();

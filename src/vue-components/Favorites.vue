@@ -1,14 +1,7 @@
 <template>
 <div>
   <!-- header -->
-  <header class="row container-fluid--h">
-    <div class="row container main-header">
-      <div class="col-sm-4">logo</div>
-      <div class="col-sm-8">
-        <vcFavoriteCount />
-      </div>
-    </div>
-  </header>
+  <vcHeader />
   <!-- /header -->
   <!-- main -->
   <main class="row container-fluid--m">
@@ -145,7 +138,7 @@ import {arr_filter} from "../js/arr_filter.js";
 import Paginate from "../js/vendor/Paginate.js";
 import {router} from "../js/router.js";
 
-const vcFavoriteCount = () => import ('./vcFavoriteCount.vue');
+const vcHeader = () => import ('./vcHeader.vue');
 const vcRandomDog = () => import ('./vcRandomDog.vue');
 const vcLastViewed = () => import ('./vcLastViewed.vue');
 export default {
@@ -182,7 +175,7 @@ export default {
   // }
   },
   components: {
-    vcFavoriteCount: vcFavoriteCount,
+    vcHeader: vcHeader,
     vcRandomDog: vcRandomDog,
     vcLastViewed: vcLastViewed,
   },

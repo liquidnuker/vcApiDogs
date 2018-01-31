@@ -16,7 +16,8 @@ body {
 }
 
 .main-header {
-  background-color: #000;
+  @extend %padd--4;
+  background-color: #ccc;
 }
 
 .main-items {
@@ -24,7 +25,8 @@ body {
 }
 
 .main-footer {
-  background-color: #000;
+  @extend %padd--4;
+  background-color: #ccc;
 }
 
 main > .container {
