@@ -32,12 +32,14 @@
         <!-- {{ i.length }}
         {{ i.startsWith }} -->
         <template v-for="(z, index) in i.name">
-        <p v-if="index === 0">{{ z }}</p>
+        <a v-if="index === 0" 
+        @click="jumpToGallery(z)">{{ z }}</a>
         <!-- with separator -->
-        <p v-else-if="index > 0 && index < i.name.length-1">
-        {{ z }},&nbsp;</p>
+        <a v-else-if="index > 0 && index < i.name.length-1" 
+        @click="jumpToGallery(z)">
+        {{ z }},</a>
         <!-- last item -->
-        <p v-else>{{ z }}</p>
+        <a v-else @click="jumpToGallery(z)">{{ z }}</a>
         </template>
       </div>
     </div>
@@ -46,6 +48,7 @@
 </template>
 <script>
 import Paginate from "../js/vendor/Paginate.js";
+import {router} from "../js/router.js";
 export default {
   data() {
       return {
@@ -161,6 +164,12 @@ export default {
       },
       showPage: function (num) {
         this.pagerBreedList = this.pager.page(num);
+      },
+      jumpToGallery: function(breedName) {
+        console.log(breedName);
+
+        router.push({path: "/gallery/" + breedName});
+
       }
     }
 };
