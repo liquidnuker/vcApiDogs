@@ -15,6 +15,12 @@
     </svg></button>
   </span>
   <!-- /prev/next dirList -->
+  <!-- page group selector -->
+  <span class="pg_holder" v-for="i in breedDogNames">
+    <button class="btn btn1-01 btn_prev" 
+    @click="showPage(i.pageTarget)">Dogs {{ i.start }} - {{ i.end }}</button>
+  </span>
+  <!-- /page group selector -->
   <div class="row">
     breed directory<br>
     <div v-for="i in pagerBreedList" class="col-sm-3 bd_grid">
@@ -46,12 +52,15 @@ export default {
         breedDirItems: "",
         breedDirChars: "",
         breedDirList: [],
+
+        breedDogNames: [],
+
         // paginator
         pager: "",
         currentPage: "",
         totalPages: "",
         pagerButtons: null,
-        pagerBreedList: ""
+        pagerBreedList: []
       };
     },
     watch: {
@@ -77,41 +86,72 @@ export default {
         }
         return a;
       },
+      extractChars: function (arr, char) {
+        // returns array of items that starts with char
+        let extracted = arr.filter(function (el) {
+          return el[0].toLowerCase() === char;
+        });
+        return extracted;
+      },
       extractBreeds: function (chars, items, dirList) {
-      // extract breeds from dir chars
-      chars.map((i) => {
-        let z = this.extractChars(items, i);
+        // extract breeds from dir chars
+        chars.map((i) => {
+          let z = this.extractChars(items, i);
 
-        // don't push empty sets
-        if (z.length > 0) {
-          dirList.push({
-            name: z,
-            startsWith: i,
-            length: z.length
-          });
-        }
-      });
-      this.paginateBreedList(this.breedDirList);
+          // don't push empty sets
+          if (z.length > 0) {
+            dirList.push({
+              name: z,
+              startsWith: i,
+              length: z.length
+            });
+          }
+        });
+        // this.breedDirList = dirList;
+        this.paginateBreedList(this.breedDirList);
       },
       paginateBreedList: function (data) {
         this.pager = null;
         this.pager = new Paginate(data);
-        this.pagerBreedList = this.pager.page(0);
+        this.pagerBreedList = this.pager.page(1);
         this.currentPage = this.pager.currentPage;
         this.totalPages = this.pager.totalPages;
         this.pagerButtons = true;
 
-        console.log(this.pager.totalPages);
+        this.setBreedNameButtons();
+      },
+      setBreedNameButtons: function () {
+        let temp2 = [];
+        for (let i = 0, l = this.pager.totalPages + 1; i < l; i++) {
+          temp2.push(this.pager.page(i));
+        }
+
+        temp2.forEach((i, index) => {
+          let startName = i[0].name;
+          let lastIndex = i.length - 1;
+          let lastName = i[lastIndex].name;
+          // console.log(startName[0].charAt(0) + " " + lastName[0].charAt(0));
+
+          if (index > 0) { // to remove duplicate entries
+            this.breedDogNames.push({
+              start: startName[0].charAt(0).toUpperCase(),
+              end: lastName[0].charAt(0).toUpperCase(),
+              pageTarget: index
+            });
+          }
+        });
+        temp2 = null;
       },
       nextPage: function () {
         if (!this.pager.hasNext()) {
-          this.pagerBreedList = this.pager.page(0);
+          this.pagerBreedList = this.pager.page(1);
         } else {
           this.pagerBreedList = this.pager.next();
         }
         this.currentPage = this.pager.currentPage;
       },
       prevPage: function () {
+        // console.log(this.pager.currentPage);
         if (this.pager.currentPage === 1) {
           this.pagerBreedList = this.pager.page(this.pager.totalPages);
         } else {
@@ -119,12 +159,8 @@ export default {
         }
         this.currentPage = this.pager.currentPage;
       },
-      extractChars: function (arr, char) {
-        // returns array of items that starts with char
-        let extracted = arr.filter(function (el) {
-          return el[0].toLowerCase() === char;
-        });
-        return extracted;
+      showPage: function (num) {
+        this.pagerBreedList = this.pager.page(num);
       }
     }
 };
