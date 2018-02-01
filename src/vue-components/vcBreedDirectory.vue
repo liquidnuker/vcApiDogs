@@ -16,9 +16,9 @@
   </span>
   <!-- /prev/next dirList -->
   <!-- page group selector -->
-  <span class="pg_holder" v-for="i in breedDogNames">
+  <span class="pg_holder" v-for="(i, index) in breedDogNames">
     <button class="btn btn1-01 btn_prev" 
-    @click="showPage(i.pageTarget)">Dogs {{ i.start }} - {{ i.end }}</button>
+    @click="showPage(index + 1)">Dogs {{ i.start }} - {{ i.end }}</button>
   </span>
   <!-- /page group selector -->
   <div class="row">
@@ -61,7 +61,6 @@ export default {
         // paginator
         pager: "",
         currentPage: "",
-        totalPages: "",
         pagerButtons: null,
         pagerBreedList: []
       };
@@ -98,7 +97,7 @@ export default {
       },
       extractBreeds: function (chars, items, dirList) {
         // extract breeds from dir chars
-        chars.map((i) => {
+        chars.forEach((i) => {
           let z = this.extractChars(items, i);
 
           // don't push empty sets
@@ -110,16 +109,17 @@ export default {
             });
           }
         });
-        // this.breedDirList = dirList;
+        this.breedDirList = dirList;
         this.paginateBreedList(this.breedDirList);
       },
       paginateBreedList: function (data) {
         this.pager = null;
         this.pager = new Paginate(data);
         this.pagerBreedList = this.pager.page(1);
-        this.currentPage = this.pager.currentPage;
-        this.totalPages = this.pager.totalPages;
+        this.currentPage = 1;
         this.pagerButtons = true;
+
+        // console.log(this.pager.totalPages);
 
         this.setBreedNameButtons();
       },
@@ -139,37 +139,35 @@ export default {
             this.breedDogNames.push({
               start: startName[0].charAt(0).toUpperCase(),
               end: lastName[0].charAt(0).toUpperCase(),
-              pageTarget: index
             });
           }
         });
         temp2 = null;
       },
       nextPage: function () {
-        if (!this.pager.hasNext()) {
-          this.pagerBreedList = this.pager.page(1);
+        if (this.currentPage !== this.pager.totalPages) {
+          this.currentPage = this.currentPage + 1;
         } else {
-          this.pagerBreedList = this.pager.next();
+          this.currentPage = 1;
         }
-        this.currentPage = this.pager.currentPage;
+        this.showPage(this.currentPage);
       },
       prevPage: function () {
-        // console.log(this.pager.currentPage);
-        if (this.pager.currentPage === 1) {
-          this.pagerBreedList = this.pager.page(this.pager.totalPages);
+        if (this.currentPage === 1) {
+          this.currentPage = this.pager.totalPages;
         } else {
-          this.pagerBreedList = this.pager.prev();
+          this.currentPage = this.currentPage - 1;
         }
-        this.currentPage = this.pager.currentPage;
+        this.showPage(this.currentPage);
       },
       showPage: function (num) {
-        this.pagerBreedList = this.pager.page(num);
+        this.currentPage = num;
+        this.pagerBreedList = this.pager.page(this.currentPage);
       },
-      jumpToGallery: function(breedName) {
-        console.log(breedName);
-
-        router.push({path: "/gallery/" + breedName});
-
+      jumpToGallery: function (breedName) {
+        router.push({
+          path: "/gallery/" + breedName
+        });
       }
     }
 };
