@@ -41,6 +41,9 @@
         <!-- last item -->
         <a v-else @click="jumpToGallery(z)">{{ z }}</a>
         </template>
+        
+
+        <img :src="'./src/img/ui/dogs/dirlist_' + i.startsWith + '.png'" />
       </div>
     </div>
   </div>
