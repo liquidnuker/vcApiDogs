@@ -97,19 +97,20 @@
               <div class="favorites_notes" v-show="!i.edit">
                 <label>{{ i.notes }}</label>
                 <button class="btn btn1-01 btn_edit"
-                v-show="i.edit == false" @click="i.edit = true; edit()">
+                v-show = "!i.edit" @click="edit(i.name)">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                   <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
                 </svg>
                 </button>
               </div>
               <div class="favorites_edit" v-show="i.edit">
-                <textarea class="col-sm-12" v-model="i.notes" v-show="i.edit" @keyup.enter="i.edit = false; update(i.notes, i.name)"></textarea>
+                <!-- v-on:blur= "i.edit = false" -->
+                <textarea class="col-sm-12" v-model="i.notes" v-show="i.edit" @keyup.enter = "update(i.notes, i.name)"></textarea>
                 <br>
-                <button class="btn btn1-01" v-show="i.edit" @click="i.edit = false; update(i.notes, i.name)">
+                <button class="btn btn1-01" v-show="i.edit" @click="update(i.notes, i.name)">
                 save
                 </button>
-                <button class="btn btn1-01" v-show="i.edit" @click="i.edit = false; cancel(i.name)">
+                <button class="btn btn1-01" v-show="i.edit" @click="cancelEdit(i.name)">
                 cancel
                 </button>
               </div>
@@ -166,9 +167,6 @@ export default {
 
         filterItem: null,
 
-        indexToEdit: null,
-        editNoteCache: null,
-
         // random dog
         randomDogBreed: "",
         randomDogImage: "",
@@ -177,6 +175,10 @@ export default {
         status: {
           randomDog: ""
         },
+
+        // list edit
+        previousEditIndex: 0,
+        editNoteCache: null,
       };
     },
     watch: {
@@ -236,18 +238,43 @@ export default {
         this.currentPage = this.pager.currentPage;
       },
       edit: function (name) {
-        // todo
+        let index = nameExists(name, store.favorites);
+
+        // console.log("previous: " + this.previousEditIndex + " current:" + index);
+        if (store.favorites[this.previousEditIndex] !== undefined) {
+        console.log("not equal");
+        // unset previous
+        store.favorites[this.previousEditIndex].edit = false;
+
+        // set new previous
+        this.previousEditIndex = index;
+
+        // current edit
+        store.favorites[index].edit = true;
+
+        // if cancelled
+        this.editNoteCache = store.favorites[index].notes;
+        } else {
+          // catcher
+          // console.log("index: " + index + " previousEditIndex " + store.favorites[this.previousEditIndex] +
+          //   "thisprevious: " + this.previousEditIndex);
+          store.favorites[index].edit = true;
+        }        
+
       },
-      cancel: function (name) {
-        // console.log(name);
+      cancelEdit: function (name) {
+        let index = nameExists(name, store.favorites);
+        store.favorites[index].edit = false;
+        store.favorites[index].notes = this.editNoteCache;
       },
       update: function (newNote, name) {
-        let itemIndex = nameExists(name, store.favorites);
-        store.favorites[itemIndex].notes = newNote;
+        let index = nameExists(name, store.favorites);
+        store.favorites[index].notes = newNote;
+        store.favorites[index].edit = false;
       },
       removeItem: function (name) {
-        let itemIndex = nameExists(name, store.favorites);
-        store.favorites.splice(itemIndex, 1);
+        let index = nameExists(name, store.favorites);
+        store.favorites.splice(index, 1);
         this.filteredFavorites = store.favorites;
 
         // stay on filtered view
