@@ -94,23 +94,22 @@
                 </svg>
                 </button>
               </div>
-              <div class="favorites_notes" v-show = "!i.edit">
+              <div class="favorites_notes" v-show="!i.edit">
                 <label>{{ i.notes }}</label>
                 <button class="btn btn1-01 btn_edit"
-                v-show = "i.edit == false" @click="edit(i.name)">
+                v-show="i.edit == false" @click="i.edit = true; edit()">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                   <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
                 </svg>
                 </button>
               </div>
               <div class="favorites_edit" v-show="i.edit">
-                <!-- v-on:blur= "i.edit = false" -->
-                <textarea class="col-sm-12" v-show="i.edit" v-model="i.notes" @keyup.enter = "update(i.notes, i.name)"></textarea>
+                <textarea class="col-sm-12" v-model="i.notes" v-show="i.edit" @keyup.enter="i.edit = false; update(i.notes, i.name)"></textarea>
                 <br>
-                <button class="btn btn1-01" v-show="i.edit" @click="update(i.notes, i.name)">
+                <button class="btn btn1-01" v-show="i.edit" @click="i.edit = false; update(i.notes, i.name)">
                 save
                 </button>
-                <button class="btn btn1-01" v-show="i.edit" @click="cancelEdit(i.name)">
+                <button class="btn btn1-01" v-show="i.edit" @click="i.edit = false; cancel(i.name)">
                 cancel
                 </button>
               </div>
@@ -237,22 +236,14 @@ export default {
         this.currentPage = this.pager.currentPage;
       },
       edit: function (name) {
-        let index = nameExists(name, store.favorites);
-        this.indexToEdit = index;
-        this.editNoteCache = store.favorites[this.indexToEdit].notes;
-        store.favorites[this.indexToEdit].edit = true;
+        // todo
       },
-      cancelEdit: function (name) {
-        let index = nameExists(name, store.favorites);
-        store.favorites[index].edit = false;
-        store.favorites[index].notes = this.editNoteCache;
-        this.indexToEdit = null;
+      cancel: function (name) {
+        // console.log(name);
       },
       update: function (newNote, name) {
-        console.log("update");
         let itemIndex = nameExists(name, store.favorites);
         store.favorites[itemIndex].notes = newNote;
-        store.favorites[itemIndex].edit = false;
       },
       removeItem: function (name) {
         let itemIndex = nameExists(name, store.favorites);
