@@ -95,7 +95,7 @@ export default {
     vcHeader: vcHeader
   },
   mounted: function () {
-    // this.listAllBreedNames();
+    this.listAllBreedNames();
   },
   methods: {
     listAllBreedNames: function () {

@@ -10,16 +10,17 @@
       </a>
       <!-- {{ prRandomImage[0] }} -->
     </div>
-    <h3 class="itemBox102_heading2">Name</h3>
+    <p>Name: {{ randomDogName }}</p>
     <p>Breed: <a :href="'#/gallery/' + prRandomBreed[0]">{{ prRandomBreed[0] }}</a></p>
   </div>
 </div>
 </template>
 <script>
+import {extractFileName} from "../js/extractfilename.js";
 export default {
   data () {
     return {   
-
+      randomDogName: "zzz"
     }
   },
   props: [
@@ -31,9 +32,13 @@ export default {
   },
   mounted: function () {
   },
-  // todo: add extractfilename for {{ name }}
+  updated: function () {
+    this.getDogName();
+  },
   methods: {
-
+    getDogName: function() {
+      this.randomDogName = extractFileName(this.prRandomImage[0], false);
+    }
   }
 }
 </script>
