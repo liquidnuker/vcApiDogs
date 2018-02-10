@@ -239,12 +239,12 @@ export default {
       },
       edit: function (name) {
         let index = nameExists(name, store.favorites);
-
-        // console.log("previous: " + this.previousEditIndex + " current:" + index);
+        // console.log(`previous: ${this.previousEditIndex} current: ${index}`);
+        
         if (store.favorites[this.previousEditIndex] !== undefined) {
-        console.log("not equal");
-        // unset previous
-        store.favorites[this.previousEditIndex].edit = false;
+          // unset previous
+          store.favorites[this.previousEditIndex].edit = false;
+        } 
 
         // set new previous
         this.previousEditIndex = index;
@@ -253,14 +253,7 @@ export default {
         store.favorites[index].edit = true;
 
         // if cancelled
-        this.editNoteCache = store.favorites[index].notes;
-        } else {
-          // catcher
-          // console.log("index: " + index + " previousEditIndex " + store.favorites[this.previousEditIndex] +
-          //   "thisprevious: " + this.previousEditIndex);
-          store.favorites[index].edit = true;
-        }        
-
+        this.editNoteCache = store.favorites[index].notes;        
       },
       cancelEdit: function (name) {
         let index = nameExists(name, store.favorites);
@@ -274,6 +267,12 @@ export default {
       },
       removeItem: function (name) {
         let index = nameExists(name, store.favorites);
+
+        // temp
+        for (let i = 0, l = store.favorites.length; i < l; i++) {
+          store.favorites[i].edit = false;
+        }
+
         store.favorites.splice(index, 1);
         this.filteredFavorites = store.favorites;
 
