@@ -2,7 +2,23 @@
 // import VueRouter from "vue-router";
 
 import vcRouterView from "../vue-components/RouterView.vue";
+import VueProgressBar from 'vue-progressbar';
 
+const options = {
+  color: '#bffaf3',
+  failedColor: '#874b4b',
+  thickness: '5px',
+  transition: {
+    speed: '0.2s',
+    opacity: '0.6s',
+    termination: 300
+  },
+  autoRevert: true,
+  location: 'top',
+  inverse: false
+}
+
+Vue.use(VueProgressBar, options);
 Vue.use(VueRouter);
 
 // const vcHome = (resolve) => import("../vue-components/Home.vue").then(resolve);

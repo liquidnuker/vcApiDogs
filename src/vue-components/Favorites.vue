@@ -6,16 +6,24 @@
   <!-- main -->
   <main class="row container-fluid--m">
   <div class="row container main-items">
-    <div class="col-sm-12">
-      breadcrumb
-    </div>
-    <div class="col-sm-4">
-      <!-- leftside -->
+    <span class="col-sm-12 breadcrumb">
+      <a href="index.html#/">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+      </svg>
+      </a>
+      <a href="index.html#/">Home</a>
+      <svg xmlns="http://www.w3.org/2000/svg" class="carousel1-04_chevron" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+      <p>Favorites</p>
+    </span>
+    <!-- leftside -->
+    <div class="col-sm-4 lrbg">
       <!-- breed selector -->
       <div>
         <select class="breed-selector">
           <option value="">Choose Breed...</option>
-          <option v-for="i in options"
+          <option v-for="i in options" 
+          @change="switchBreed(i)" 
           @click="switchBreed(i)" :value="i">{{ i }}</option>
         </select>
       </div>
@@ -25,7 +33,8 @@
         <vcRandomDog
         :pr-status="status.randomDog"
         :pr-random-breed="randomDogBreed"
-        :pr-random-image="randomDogImage" />
+        :pr-random-image="randomDogImage"
+        :pr-random-dog-name="randomDogName" />
       </div>
       <!-- /randog -->
       <!-- lastViewed -->
@@ -33,14 +42,14 @@
         <vcLastViewed />
       </div>
       <!-- /lastViewed -->
-      <!-- /leftside -->
     </div>
+    <!-- /leftside -->
     <!-- rightside -->
     <div class="col-sm-8 rightside">
       <!-- rightside_contents -->
-      <div class="row col-sm-12 rightside_contents">
+      <div class="row col-sm-12 rightside_contents lrbg">
         <!-- stage -->
-        <div>
+        <div class="stage">
           stage
         </div>
         <!-- /stage -->
@@ -72,7 +81,8 @@
             <!-- breed filter -->
             <select class="breed-selector">
               <option value="">Filter Breed...</option>
-              <option v-for="i in favoriteCategories"
+              <option v-for="i in favoriteCategories" 
+              @change="filter(i)" 
               @click="filter(i)" :value="i">{{ i }}</option>
             </select>
           </span>
@@ -84,9 +94,9 @@
           <ul>
             <li v-for="(i, index) in currentFavorites">
               <div class="favorites_list_info">
-                <p>{{ i.name }}</p>
+                <p class="favorites_list_name">{{ i.name }}</p>
                 <br>
-                <p>Breed: {{ i.breed }}</p>
+                <span>Breed:&nbsp;<a class="favorites_list_breed" @click="switchBreed(i.breed)">{{ i.breed }}</a></span>
                 <button class="btn btn1-01 btn_remove"
                 @click="removeItem(i.name)">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -125,15 +135,6 @@
   </div>
   </main>
   <!-- /main -->
-  <!-- footer -->
-  <footer class="row container-fluid--f">
-    <div class="row container main-footer">
-      <div class="col-sm-12">
-        footer
-      </div>
-    </div>
-  </footer>
-  <!-- /footer -->
 </div>
 </template>
 <script>
@@ -141,11 +142,15 @@ import {axios_get} from "../js/axios_get.js";
 import {allbreeds} from "../js/allbreeds.js";
 import {shuffle} from "../js/shuffle.js";
 import {store} from "../js/store.js";
+import {storage} from "../js/localStorage.js";
 import {nameExists} from "../js/nameexists.js";
 import {arr_extractUnique} from "../js/arr_extractUnique.js";
 import {arr_filter} from "../js/arr_filter.js";
 import Paginate from "../js/vendor/Paginate.js";
 import {router} from "../js/router.js";
+import {extractFileName} from "../js/extractfilename.js";
+
+const xss = require("xss");
 
 const vcHeader = () => import ('./vcHeader.vue');
 const vcRandomDog = () => import ('./vcRandomDog.vue');
@@ -153,6 +158,8 @@ const vcLastViewed = () => import ('./vcLastViewed.vue');
 export default {
   data() {
       return {
+        STORAGE_KEY_FAVORITES: "vcApiDogs-favorites",  
+
         filteredFavorites: "",
         currentFavorites: "", // displayed items
 
@@ -170,6 +177,7 @@ export default {
         // random dog
         randomDogBreed: "",
         randomDogImage: "",
+        randomDogName: "",
 
         // status
         status: {
@@ -191,11 +199,13 @@ export default {
       vcLastViewed: vcLastViewed,
     },
     mounted: function () {
-      this.filteredFavorites = store.favorites;
+      // this.filteredFavorites = store.favorites; // replace with fetchData
+      this.fetchData();
+
       this.activatePager();
 
       // for favorites dropdown
-      this.setFavoriteCategories(store.favorites);
+      this.setFavoriteCategories(this.filteredFavorites);
 
       this.showRandomDogImage();
       this.status.randomDog = "loading random dog...";
@@ -208,6 +218,13 @@ export default {
         this.currentPage = this.pager.currentPage;
         this.totalPages = this.pager.totalPages;
         this.pagerButtons = true;
+      },
+      fetchData: function() {
+        this.filteredFavorites = storage.fetch(this.STORAGE_KEY_FAVORITES);
+        store.favorites = this.filteredFavorites;
+      },
+      saveData: function() {
+        storage.save(this.STORAGE_KEY_FAVORITES, store.favorites);
       },
       setFavoriteCategories: function (arr) {
         this.favoriteCategories = [];
@@ -245,7 +262,6 @@ export default {
           // unset previous
           store.favorites[this.previousEditIndex].edit = false;
         } 
-
         // set new previous
         this.previousEditIndex = index;
 
@@ -253,7 +269,9 @@ export default {
         store.favorites[index].edit = true;
 
         // if cancelled
-        this.editNoteCache = store.favorites[index].notes;        
+        this.editNoteCache = store.favorites[index].notes;
+
+        this.saveData();
       },
       cancelEdit: function (name) {
         let index = nameExists(name, store.favorites);
@@ -262,8 +280,18 @@ export default {
       },
       update: function (newNote, name) {
         let index = nameExists(name, store.favorites);
-        store.favorites[index].notes = newNote;
+
+        let sanitized = xss(newNote, {
+          whiteList: [], // empty, means filter out all tags
+          stripIgnoreTag: true, // filter out all HTML not in the whilelist
+          stripIgnoreTagBody: ["script"] // the script tag is a special case, we need
+          // to filter out its content
+        });
+
+        store.favorites[index].notes = sanitized;
         store.favorites[index].edit = false;
+
+        this.saveData();
       },
       removeItem: function (name) {
         let index = nameExists(name, store.favorites);
@@ -285,6 +313,8 @@ export default {
 
         // update dropdown
         this.setFavoriteCategories(store.favorites);
+
+        this.saveData();
       },
       filter: function (breed) {
         this.filterItem = breed;
@@ -310,7 +340,7 @@ export default {
             self.randomDogImage = shuffle(arr[0].message);
           })
           .then(function () {
-
+            self.randomDogName = extractFileName(self.randomDogImage[0], false);
           });
       },
       switchBreed: function (breed) {

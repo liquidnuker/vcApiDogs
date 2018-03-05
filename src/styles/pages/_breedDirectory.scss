@@ -1,5 +1,11 @@
-.bd_grid {
+.breed_dir_title {
   @extend %padd--4;
+  @extend %lrbg2;
+  margin: 4px 0px 4px 0px; /* trbl */
+}
+
+.bd_grid {
+  padding: 0px 4px 4px 0px; /* trbl */
   height: 200px;
   // overflow-y: hidden;
   
@@ -11,9 +17,10 @@
 .bd_grid_items {
   @extend %padd--4;
   @extend %pos--relative;
+  @extend %lrbg2;
+  border: 1px solid #f3764a;
   z-index: 1;
   height: 100%;
-  background-color: #999;
   overflow: hidden;
   text-overflow: clip;
 
@@ -21,15 +28,14 @@
     z-index: 3;
     cursor: pointer;
     text-decoration: underline;  
-    
+
     &:hover {
       text-decoration: none;  
     }
 
     &:first-of-type {
       @extend %display--block;
-      @include font-size(22px);
-
+      
       &::first-letter {
         text-transform: uppercase;
       }
@@ -37,12 +43,35 @@
 
     &:not(:first-of-type) {
       @extend %display--inline-block;
+      @extend %font_primary_color1;
       margin-top: 2px;
       line-height: 114%; /* most browsers is about 110% to 120% */
+    
+      &:hover {
+        @extend %button--bg1;
+        @extend %button_font_color1;
+      }
+
     }  
   }
 
-  img {
+  .dog_shadow {
+    @extend %pos--absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -4;
+    
+    // temp skew
+    -webkit-transform: skew(60deg, -20deg);
+    -moz-transform: skew(60deg, -20deg);
+    -o-transform: skew(60deg, -20deg);
+    -ms-transform: skew(60deg, -20deg);
+    transform: skew(60deg, -20deg);
+
+    filter: opacity(15%);
+  }
+
+  .dog_preview {
     @extend %pos--absolute;
     bottom: 0;
     right: 0;

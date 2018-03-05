@@ -1,16 +1,24 @@
 <template>
 <div>
+   <vue-progress-bar></vue-progress-bar>
   <!-- header -->
   <vcHeader />
   <!-- /header -->
   <!-- main -->
   <main class="row container-fluid--m">
   <div class="row container main-items">
-    <div class="col-sm-12">
-      breadcrumb
+    <div class="col-sm-12 breadcrumb">
+      <a href="index.html#/">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+      </svg>
+      </a>
+      <a href="index.html#/">Home</a>
+      <svg xmlns="http://www.w3.org/2000/svg" class="carousel1-04_chevron" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+      <p>Gallery: {{ currentBreed }}</p>
     </div>
-    <div class="col-sm-4">
-      <!-- leftside -->
+    <!-- leftside -->
+    <div class="col-sm-4 lrbg">
       <!-- breed selector -->
       <div>
         <vcBreedSelector
@@ -22,7 +30,8 @@
         <vcRandomDog
         :pr-status="status.randomDog"
         :pr-random-breed="randomDogBreed"
-        :pr-random-image="randomDogImage" />
+        :pr-random-image="randomDogImage"
+        :pr-random-dog-name="randomDogName" />
       </div>
       <!-- /randog -->
       <!-- lastViewed -->
@@ -30,15 +39,18 @@
         <vcLastViewed />
       </div>
       <!-- /lastViewed -->
-      <!-- /leftside -->
     </div>
+    <!-- /leftside -->
     <!-- rightside -->
     <div class="col-sm-8 rightside">
       <!-- rightside_contents -->
-      <div class="row col-sm-12 rightside_contents">
+      <div class="row col-sm-12 rightside_contents lrbg">
         <!-- stage -->
-        <div>
-          stage
+        <div class="stage">
+          <div class="stage_gallery">
+          <p class="stage_gallery_breedname font_heading1">{{ currentBreed }}</p>
+          <p class="stage_gallery_description">{{ currentBreed }} is the finest dog breed in the world...</p>
+          </div>
         </div>
         <!-- /stage -->
         <!-- page controls -->
@@ -67,8 +79,12 @@
         <!-- /page controls -->
         <!-- gallery display -->
         <!-- dog view -->
-        <div v-if="viewDog">
-          <p @click="viewDog=false">Back to gallery</p>
+        <div v-if="viewDog" class="dogview">
+          <button class="btn btn1-01" @click="viewDog=false">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+          </svg>
+          Back to {{ currentBreed }} gallery</button>
+          <span class="dogview_name font_heading1">{{ extractDogName(currentDog) }}</span>
           <a :href="currentDog">
             <img :src="currentDog"
             :alt="currentDog" :title="currentDog" />
@@ -77,13 +93,19 @@
         <!-- /dog view -->
         <!-- gallery view -->
         <div v-else>
-          {{ prStatus }}
+          <p>{{ status.galleryDisplay }}</p>
           <ul class="gallery_display" v-for="i in currentImages">
             <li class="col-xs-6 col-sm-3">
               <div class="gallery_display_img-holder">
                 <img :src="i" :alt="currentBreed + ' image'"
                 :title="currentBreed + ' image'"
-                @click="insertLastViewed(i, currentBreed); addToFavorites(i, currentBreed)" />
+                @click="insertLastViewed(i, currentBreed);" />
+              </div>
+              <div class="gallery_display_info">
+                <p class="gallery_display_dogname">{{ extractDogName(i) }}</p>
+              <button class="btn btn1-01" @click="addToFavorites(i, currentBreed)">
+                +Fav
+              </button>
               </div>
             </li>
           </ul>
@@ -97,16 +119,6 @@
   </div>
   </main>
   <!-- /main -->
-  <!-- footer -->
-  <footer class="row container-fluid--f">
-    <div class="row container main-footer">
-      <div class="col-sm-12">
-        footer
-      </div>
-    </div>
-  </footer>
-  <!-- /footer -->
-  
 </div>
 </template>
 <script>
@@ -117,6 +129,7 @@ import {shuffle} from "../js/shuffle.js";
 import {router} from "../js/router.js";
 import Paginate from "../js/vendor/Paginate.js";
 import {store} from "../js/store.js";
+import {storage} from "../js/localStorage.js";
 import {extractFileName} from "../js/extractfilename.js";
 import {nameExists} from "../js/nameexists.js";
 
@@ -127,6 +140,9 @@ const vcLastViewed = () => import ('./vcLastViewed.vue');
 export default {
   data () {
     return {   
+      STORAGE_KEY_LASTVIEWED: "vcApiDogs-lastViewed",
+      STORAGE_KEY_FAVORITES: "vcApiDogs-favorites",  
+      
       currentBreed: "",
       cachedImages: "", // default unfiltered
       currentImages: "", // displayed items
@@ -134,6 +150,7 @@ export default {
       // random dog
       randomDogBreed: "",
       randomDogImage: "",
+      randomDogName: "",
 
       // paginator 
       pager: "",
@@ -149,7 +166,7 @@ export default {
 
       // viewDog
       viewDog: false,
-      currentDog: ""
+      currentDog: "",
     }
   },
   components: {
@@ -167,6 +184,10 @@ export default {
     this.checkCategory();
   },
   methods: {  
+    extractDogName: function(url) {
+      let name = extractFileName(url, false);
+      return name;
+    },
     checkCategory: function () {
       // check if category exists before loading json
       let breedToCheck = this.$route.params.breedname.toLowerCase();
@@ -181,18 +202,23 @@ export default {
     },
     displayBreedImages: function (breedName) {
       this.status.galleryDisplay = `fetching ${this.currentBreed} data`;
+      this.$Progress.start();
 
       // Returns an array of all the images from the breed
       let url = `https://dog.ceo/api/breed/${breedName}/images`;
       let self = this;
       axios_get(url)
         .then(function (response) {
+          self.$Progress.finish();
+
           let arr = Object.values(response);
           self.cachedImages = arr[0].message; 
           self.status.galleryDisplay = "fetching images...";         
           self.activatePager();
         })
         .then(function () {
+          self.$Progress.fail();
+
           self.status.galleryDisplay = "";  
           // show random dog 
           self.showRandomDogImage();
@@ -238,7 +264,7 @@ export default {
           self.randomDogImage = shuffle(arr[0].message);
         })
         .then(function () {
-        
+          self.randomDogName = extractFileName(self.randomDogImage[0], false);
       });      
     },
     insertLastViewed: function(imgSrc, breed) {
@@ -260,6 +286,8 @@ export default {
           imgSrc: imgSrc,
           breed: breed,
         });
+
+        storage.save(this.STORAGE_KEY_LASTVIEWED, store.lastViewed);
       }      
     },
     addToFavorites: function(imgSrc, breed) {
@@ -275,10 +303,13 @@ export default {
         imgSrc: imgSrc,
         breed: breed,
         notes: "",
-        edit: false
+        edit: false,
+        favorited: true
       });
+
+      storage.save(this.STORAGE_KEY_FAVORITES, store.favorites);
       }
-    }      
+    },
   }
 }
 </script>

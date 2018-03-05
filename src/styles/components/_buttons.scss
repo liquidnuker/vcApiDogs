@@ -29,12 +29,14 @@ input [type="button"],
 // ==================================================/
 .btn1-01 {
   @extend %padd--4;
-  @include background-gradient(#fff, #e8e8e8, 'vertical');  
-  border: 1px solid #2c2d32;
+  @extend %button--bg1;
+  @extend %button_font_color1;
+  // @include background-gradient(#fff, #e8e8e8, 'vertical');  
+  border: 1px solid #8b4e1f;
+
   cursor: pointer;
 
   &:hover {
-    background: none;
-    background-color: #fff;
+    color: #fff;
   }
 }

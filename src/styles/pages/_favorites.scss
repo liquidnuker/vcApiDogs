@@ -49,9 +49,16 @@
 .btn_edit {
   svg {
     @extend %display--inline-block;
+    fill: #f6e39e;
     vertical-align: text-bottom;
     width: 18px;
     height: 18px;
+  }
+
+  &:hover {
+    svg {
+      fill: #fff;
+    }
   }
 }
 
@@ -77,8 +84,9 @@
 
 .favorites_filter {
   @extend %display--block;
-  padding: 4px 4px 4px 0; /* trbl */
-  background-color: #ccc;
+  @extend %padd--4;
+  @extend %margin-top--4;
+  @extend %lrbg2;
   
   .btn {
     height: 30px;
@@ -116,11 +124,9 @@
   .favorites_list_info {
     @extend %padd--4;
     @extend %clearfix;
-    background-color: #555;
-
+    
     p {
       @extend %display--inline-block;
-      background-color: #666;
     }
 
     button {
@@ -129,17 +135,30 @@
     }
   }
 
+  .favorites_list_name {
+    @extend %font_heading_color1;
+  }
+
+  .favorites_list_breed {
+    cursor: pointer;
+    text-decoration: underline;  
+
+    &:hover {
+      text-decoration: none;  
+    }
+  }
+
   .favorites_notes {
     @extend %padd--4;
     @extend %clearfix;
-    background-color: #333;
+    @extend %lrbg2;
   }
 
   .favorites_edit {
     @extend %padd--4;
     @extend %clearfix;
-    background-color: green;
-
+    @extend %lrbg2;
+    
     textarea {
       margin-bottom: 2px;
     }

@@ -1,42 +1,73 @@
-// backgrounds
 %bg--main {
-  background-color: #1e1e1e;
+  background-color: #f2f1ec;
 }
 
-%bg--primary {
-  background-color: #262626;
+%bg--main2 {
+  background-color: #dac58c;
 }
 
-%bg--secondary {
-  background-color: #4b4b4b;
+%lrbg {
+  background-color: #f7f4c6;
 }
 
-%bg--extra1 {
-  background-color: #ccc;
+%lrbg2 {
+  background-color: #f6e39e;
 }
 
-// fonts
-%font_color--primary {
-  color: #d8d8d8;
+%border_color1 {
+  color: #8b4e1f;
 }
 
-%link_color {
-  color: #d1d4b9;
+%border_color2 {
+  color: #f3764a;
 }
 
-%link_color--hover {
-  color: #fff;
+%font_heading_color1 {
+  color: #8d2a15;
 }
 
-%font_color--h2 {
-  color: #f5f3da;
+%font_primary_color1 {
+  color: #5c442a;
 }
 
-// unsorted
-%color--pink {
-  background-color: #c32349;
+%button--bg1 {
+  background-color: #a82420;
 }
 
-%icon_holder_text {
-  color: #3b443f;
+%button_font_color1 {
+  color: #f6e39e; // same as header font
+}
+
+%header--bg {
+  background-color: #8d2a15;
+}
+
+%header_font_color2 {
+  color: #f2efbc;
+}
+
+%header_liner {
+  color: #877453;
+}
+
+%header_liner_thin {
+  color: #6f241e;
+}
+
+// 
+// ==================================================/
+.bg--main {
+  @extend %bg--main;
+}
+
+.bg--main2 {
+  @extend %bg--main2;
+}
+
+.lrbg {
+  @extend %lrbg;
+}
+
+.lrbg2 {
+  @extend %lrbg2;
 }

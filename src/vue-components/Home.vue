@@ -6,9 +6,9 @@
   <!-- main -->
   <main class="row container-fluid--m">
   <div class="row container main-items">
-    <div class="col-sm-4">
-      <!-- leftside -->
-      <!-- breed selector -->
+    <!-- leftside -->
+    <div class="col-sm-4 leftside lrbg">
+     <!-- breed selector -->
       <div>
         <select class="breed-selector" @change="switchBreed($event.target.value)">
           <option value="">Choose Breed...</option>
@@ -21,7 +21,8 @@
         <vcRandomDog
         :pr-status="status.randomDog"
         :pr-random-breed="randomDogBreed"
-        :pr-random-image="randomDogImage" />
+        :pr-random-image="randomDogImage"
+        :pr-random-dog-name="randomDogName" />
       </div>
       <!-- /randog -->
       <!-- lastViewed -->
@@ -29,14 +30,14 @@
         <vcLastViewed />
       </div>
       <!-- /lastViewed -->
-      <!-- /leftside -->
     </div>
+    <!-- /leftside -->
     <!-- rightside -->
     <div class="col-sm-8 rightside">
       <!-- rightside_contents -->
-      <div class="row col-sm-12 rightside_contents">
+      <div class="row col-sm-12 rightside_contents lrbg">
         <!-- stage -->
-        <div>
+        <div class="stage">
           stage
         </div>
         <!-- /stage -->
@@ -60,6 +61,7 @@ import {axios_get} from "../js/axios_get.js";
 import {shuffle} from "../js/shuffle.js";
 import {allbreeds} from "../js/allbreeds.js";
 import {router} from "../js/router.js";
+import {extractFileName} from "../js/extractfilename.js";
 
 const vcRandomDog = () => import ('./vcRandomDog.vue');
 const vcLastViewed = () => import ('./vcLastViewed.vue');
@@ -75,6 +77,7 @@ export default {
       // random dog
       randomDogBreed: "",
       randomDogImage: "",
+      randomDogName: "",
 
       status: {
         randomDog: ""
@@ -131,7 +134,8 @@ export default {
           self.randomDogImage = shuffle(arr[0].message);
         })
         .then(function () {
-        
+          // for vcRandomDog.vue name
+          self.randomDogName = extractFileName(self.randomDogImage[0], false);
       });      
     },
     switchBreed: function(breed) {

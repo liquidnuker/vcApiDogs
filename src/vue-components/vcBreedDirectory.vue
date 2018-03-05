@@ -21,29 +21,30 @@
     @click="showPage(index + 1)">Dogs {{ i.start }} - {{ i.end }}</button>
   </span>
   <!-- /page group selector -->
+  <p class="breed_dir_title font_heading1">Breed directory</p>
   <div class="row">
-    breed directory<br>
     <div v-for="i in pagerBreedList" class="col-sm-3 bd_grid">
 
     <!-- for hiding empty sets.
     <div v-for="i in pagerBreedList" 
     class="col-sm-3 bd_grid" v-if="i.length > 0"> -->
-      <div class="bd_grid_items">
+      <div class="bd_grid_items lrbg2">
         <!-- {{ i.length }}
         {{ i.startsWith }} -->
         <template v-for="(z, index) in i.name">
-        <a v-if="index === 0" 
+        <a class="font_heading1" v-if="index === 0" 
         @click="jumpToGallery(z)">{{ z }}</a>
         <!-- with separator -->
-        <a v-else-if="index > 0 && index < i.name.length-1" 
+        <a :title="z" v-else-if="index > 0 && index < i.name.length-1" 
         @click="jumpToGallery(z)">
         {{ z }},</a>
         <!-- last item -->
-        <a v-else @click="jumpToGallery(z)">{{ z }}</a>
+        <a :title="z" v-else @click="jumpToGallery(z)">{{ z }}</a>
         </template>
         
 
-        <img :src="'./src/img/ui/dogs/dirlist_' + i.startsWith + '.png'" />
+        <img class="dog_shadow" :src="'./src/img/ui/dogs/dirlist_' + i.startsWith + '.png'" />
+        <img class="dog_preview" :src="'./src/img/ui/dogs/dirlist_' + i.startsWith + '.png'" />
       </div>
     </div>
   </div>

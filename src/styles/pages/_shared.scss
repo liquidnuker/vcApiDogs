@@ -1,10 +1,23 @@
 body {
   @extend %system_normal--300;
+  @extend %font_primary_color1;
+}
 
+a {
+  @extend %font_heading_color1;
+  &:hover {
+    text-decoration: none;  
+  }
+}
+
+.font_heading1 {
+  @extend %font_heading_color1;
+  @include font-size(22px);
 }
 
 .container-fluid--h {
   background-color: #999;
+  // border-bottom: 1px solid green;
 }
 
 .container-fluid--m {
@@ -17,16 +30,22 @@ body {
 
 .main-header {
   @extend %padd--4;
-  background-color: #ccc;
+  @extend %header--bg;
+  @extend %button_font_color1;
+
+  .main-header_fav-link {
+    @extend %header_font_color2;
+  }
 }
 
 .main-items {
-  background-color: #666;
+  @extend %bg--main2;
 }
 
 .main-footer {
   @extend %padd--4;
-  background-color: #ccc;
+  @extend %header--bg;
+  @extend %button_font_color1;
 }
 
 main > .container {
@@ -39,33 +58,37 @@ main > .container {
 @mixin navSide103_theme() {
   .navSide103 {
     a {    
-      color: #fff;
+      
 
       &:hover {
-        color: #d5d5d5;
+        
       }
     }
 
     .navSide103_heading {
-      background-color: #f0f0f0;
-      color: #141416;
+      
     }
 
     li {
-      background-color: #2c2d32;
-      border-bottom: 1px solid #5c5d60;    
+      margin: 0px 4px 0px 4px; /* trbl */
+      // background-color: #2c2d32;
+      border-bottom: 1px solid #8b4e1f;    
 
       &:nth-of-type(odd) {
-        background-color: #343437;
+        @extend %lrbg2;
+      }
+
+      &:last-of-type {
+        @extend %margin-bottom--4;
       }
 
       p {
-        color: #d5d5d5;
+        // color: #d5d5d5;
       }
     }
 
     .navSide103_img-holder {
-      border: 1px solid #000;
+      border: 1px solid #f3764a;
     }
   } 
 }
@@ -79,6 +102,8 @@ main > .container {
   a {
     @extend %display--block;
     @extend %font--bold;
+    cursor: pointer;
+    text-decoration: underline;  
     margin-bottom: 2px;
 
     &:hover {
@@ -132,20 +157,18 @@ main > .container {
 // ==================================================/
 @mixin itemBox102_theme() {
   .itemBox102_heading1 {
-    background-color: #ccc;
-    color: #000;
+    
   }
 
   .itemBox102 {
-    background-color: #2a2a2d;
-    color: #d5d5d5;
-
+    // background-color: #2a2a2d;
+    
     .itemBox102_heading2 {
-      color: #fff;
+      
     }
 
     .itemBox102_img-holder {
-      border: 1px solid #5c5d60;
+      border: 1px solid #8b4e1f;
       > img {
         // border: 1px solid #000;
       }
@@ -175,11 +198,16 @@ main > .container {
 
 .itemBox102_heading1 {
   @extend %padd--4;
+  
   // @extend %margin-bottom--4;
 }
 
 .itemBox102 {
   @extend %padd--4;
+
+  a {
+    @extend %font--bold;
+  }
 
   .itemBox102_heading2 {
     margin: 4px 0 4px 0; /* trbl */
@@ -204,6 +232,27 @@ main > .container {
       left: 50%;
       transform: translateX(-50%) translateY(-50%);
     }
+  }
+}
+
+// breadcrumb
+// ==================================================/
+.breadcrumb {
+  @extend %display--inline-block;
+  @extend %padd--4;
+  @extend %lrbg;
+  @extend %margin-bottom--4;
+
+  p {
+    @extend %display--inline-block;
+  }
+
+  svg {
+    @extend %display--inline-block;
+    fill: #8d2a15;
+    vertical-align: text-bottom;
+    width: 18px;
+    height: 18px;
   }
 }
 
@@ -285,9 +334,10 @@ main > .container {
 
 .pg_holder {
   @extend %display--inline-block;
-  padding: 4px 4px 4px 0; /* trbl */
-  background-color: #ccc;
-  
+  @extend %lrbg2;
+  @extend %padd--4;
+  @extend %margin-bottom--4;
+    
   .btn {
     height: 30px;
     vertical-align: middle;
@@ -297,6 +347,7 @@ main > .container {
   .btn_next {
     svg {
       @extend %display--inline-block;
+      fill: #f2efbc;
       vertical-align: text-bottom;
       width: 18px;
       height: 18px;
@@ -330,33 +381,60 @@ main > .container {
   }
 }
 
+// leftside
+// ==================================================/
+.leftside {
+  
+}
+
 // rightside
 // ==================================================/
 .rightside {
   padding-left: 4px;
-  // background-color: #eee
 }
 
 .rightside_contents {
   @extend %padd--4;
-  background-color: #ccc;
+}
+
+// stage
+// ==================================================/
+.stage {
+  @extend %padd--4;
+  @extend %margin-bottom--4;
+  @extend %lrbg2;
+
+  .stage_gallery_breedname,
+  .stage_gallery_description {
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
 }
 
 // gallery
 // ==================================================/
 .gallery_display {
+  // text-overflow: clip;
+  
   > li {
-    @extend %padd--4;
-    @extend %margin-bottom--4;
+    padding: 0px 4px 4px 0px; /* trbl */
+  }
+
+  .gallery_display_dogname {
+    // overflow-x: hidden;
   }
 
   .gallery_display_img-holder {
     @extend %pos--relative;
     @extend %padd--4;
+    @extend %lrbg2;
+    border: 1px solid #f3764a;
+    border-bottom: none;
     height: 200px;
-    background-color: #eee;
 
     img {
+      cursor: pointer;
       max-width: 100%;
       max-height: 100%;
 
@@ -367,5 +445,40 @@ main > .container {
       left: 50%;
       transform: translateX(-50%) translateY(-50%);
     }
+  }
+
+  .gallery_display_info {
+    @extend %padd--4;
+    @extend %lrbg2;
+    border: 1px solid #f3764a;
+    border-top: none;
+
+    p {
+      @extend %text--center;
+    }
+  }
+}
+
+// dog view
+// ==================================================/
+.dogview {
+  @extend %padd--4;
+  @extend %lrbg2;
+
+  .dogview_name,
+  .dogview_breed {
+    @extend %display--block;
+  }
+
+  .dogview_name {
+    margin: 6px 0px 4px 0px; /* trbl */
+  }
+
+  svg {
+    @extend %display--inline-block;
+    fill: #f2efbc;
+    vertical-align: text-bottom;
+    width: 18px;
+    height: 18px;
   }
 }

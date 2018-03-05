@@ -31,7 +31,7 @@ export default {
     vcFavoriteCount: vcFavoriteCount,
   },
   mounted: function () {
-    console.log("vcheader.vue mounted");
+    // console.log("vcheader.vue mounted");
   },
   methods: {        
   }
