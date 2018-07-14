@@ -209,7 +209,7 @@ export default {
 
       // Returns an array of all the images from the breed
       // let url = `https://dog.ceo/api/breed/${breedName}/images`;
-      let url = `https://dog.ceo/api/breed/${breedName}/imageszz`;
+      let url = `https://dog.ceo/api/breed/${breedName}/images`;
       
       axios_get(url)
         .then((response) => {
