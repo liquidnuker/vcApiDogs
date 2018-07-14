@@ -48,6 +48,7 @@
         <!-- stage -->
         <div class="stage">
           <div class="stage_gallery">
+          {{ bd }}
           <p class="stage_gallery_breedname font_heading1">{{ currentBreed }}</p>
           <p class="stage_gallery_description">{{ currentBreed }} is the finest dog breed in the world...</p>
           </div>
@@ -167,6 +168,8 @@ export default {
       // viewDog
       viewDog: false,
       currentDog: "",
+
+      bd: ""
     }
   },
   components: {
@@ -205,25 +208,43 @@ export default {
       this.$Progress.start();
 
       // Returns an array of all the images from the breed
-      let url = `https://dog.ceo/api/breed/${breedName}/images`;
-      let self = this;
+      // let url = `https://dog.ceo/api/breed/${breedName}/images`;
+      let url = `https://dog.ceo/api/breed/${breedName}/imageszz`;
+      
       axios_get(url)
-        .then(function (response) {
-          self.$Progress.finish();
-
+        .then((response) => {
+          this.$Progress.finish();
           let arr = Object.values(response);
-          self.cachedImages = arr[0].message; 
-          self.status.galleryDisplay = "fetching images...";         
-          self.activatePager();
+          this.cachedImages = arr[0].message; 
+          this.status.galleryDisplay = "fetching images...";         
         })
-        .then(function () {
-          self.$Progress.fail();
-
-          self.status.galleryDisplay = "";  
-          // show random dog 
-          self.showRandomDogImage();
-          self.status.randomDog = "loading random dog...";
+        .then(() => {
+          this.prepareRandomDog();
+        })
+        .catch((error) => {
+          // console.log(error);
+          this.loadBackupGallery();
         });
+    },
+    loadBackupGallery: function() {
+      console.log("loading gallery backup");
+      let url = "./src/js/ajax/gallery_backup_default.json";
+      axios_get(url)
+        .then((response) => {
+          this.cachedImages = response.data["default"]; 
+        })
+        .then(() => {
+          this.prepareRandomDog();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    prepareRandomDog: function() {
+      this.activatePager();
+      this.$Progress.fail();
+      this.status.galleryDisplay = "";  
+      this.showRandomDogImage();
     },
     activatePager: function() {
       this.pager = null;
@@ -253,18 +274,19 @@ export default {
       this.currentPage = this.pager.currentPage;
     },
     showRandomDogImage: function () {
+      this.status.randomDog = "loading random dog...";
       this.randomDogBreed = shuffle(allbreeds);
       // Returns an array of all the images from the breed
       let url = "https://dog.ceo/api/breed/" + this.randomDogBreed[0] + "/images";
-      let self = this;
+      
       axios_get(url)
-        .then(function (response) {
+        .then((response) => {
           let arr = Object.values(response);
-          self.status.randomDog = "";
-          self.randomDogImage = shuffle(arr[0].message);
+          this.status.randomDog = "";
+          this.randomDogImage = shuffle(arr[0].message);
         })
-        .then(function () {
-          self.randomDogName = extractFileName(self.randomDogImage[0], false);
+        .then(() => {
+          this.randomDogName = extractFileName(this.randomDogImage[0], false);
       });      
     },
     insertLastViewed: function(imgSrc, breed) {
