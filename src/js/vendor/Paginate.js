@@ -14,7 +14,7 @@ function Paginate (data, perPage) {
 	if (!(data instanceof Array)) throw new Error('Invalid Argument Type')
 
 	this.data = data
-	this.perPage = perPage || 8
+	this.perPage = perPage || 10
 	this.currentPage = 0
 	this.totalPages = Math.ceil(this.data.length / this.perPage)
 }
@@ -46,8 +46,8 @@ Paginate.prototype.page = function (pageNum) {
 	
 	this.currentPage = pageNum
 	
-	var start = this.offset()
-	  , end = start + this.perPage
+	var start = this.offset();
+	var end = start + this.perPage;
 
 	return this.data.slice(start, end);
 }
@@ -60,7 +60,6 @@ Paginate.prototype.page = function (pageNum) {
  */
  
 Paginate.prototype.next = function () {
-
 	return this.page(this.currentPage + 1);
 }
 

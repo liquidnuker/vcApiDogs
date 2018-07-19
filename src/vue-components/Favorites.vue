@@ -57,7 +57,7 @@
         <div>
           <span class="pg_holder" v-if="pagerButtons">
             <button class="btn btn1-01 btn_prev" tabindex="0"
-            @click="prevPage()">
+            @click="flip()">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
             </svg>
@@ -69,7 +69,7 @@
             </select>
             of {{ totalPages }}
             <button class="btn btn1-01 btn_next" tabindex="0"
-            @click="nextPage()">Next
+            @click="flip('next')">Next
             <svg xmlns="http://www.w3.org/2000/svg" class="carousel1-04_chevron" viewBox="0 0 24 24">
               <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
             </svg>
@@ -146,9 +146,9 @@ import {storage} from "../js/localStorage.js";
 import {nameExists} from "../js/nameexists.js";
 import {arr_extractUnique} from "../js/arr_extractUnique.js";
 import {arr_filter} from "../js/arr_filter.js";
-import Paginate from "../js/vendor/Paginate.js";
 import {router} from "../js/router.js";
 import {extractFileName} from "../js/extractfilename.js";
+import Pager from "../js/pager.js";
 
 const xss = require("xss");
 
@@ -171,6 +171,7 @@ export default {
         currentPage: "",
         totalPages: "",
         pagerButtons: true,
+        perPage: 2,
 
         filterItem: null,
 
@@ -213,11 +214,25 @@ export default {
     methods: {
       activatePager: function () {
         this.pager = null;
-        this.pager = new Paginate(this.filteredFavorites);
-        this.currentFavorites = this.pager.page(0);
-        this.currentPage = this.pager.currentPage;
-        this.totalPages = this.pager.totalPages;
+        this.pager = new Pager({
+          perPage: this.perPage,
+          data: this.filteredFavorites
+        });
+        
+        this.totalPages = this.pager.getTotalPages();
         this.pagerButtons = true;
+        this.showPage(1);
+      },
+      showPage: function (num) {
+        this.currentFavorites = this.pager.page(num);
+        this.currentPage = this.pager.currentPage;
+      },
+      flip: function(direction) {
+        if (direction === "next") {
+          this.showPage(this.pager.next());
+        } else {
+          this.showPage(this.pager.prev());
+        }
       },
       fetchData: function() {
         this.filteredFavorites = storage.fetch(this.STORAGE_KEY_FAVORITES);
@@ -234,25 +249,6 @@ export default {
           this.favoriteCategories.push(categoryTemp[i]);
         }
         categoryTemp = null;
-      },
-      showPage: function (num) {
-        this.currentFavorites = this.pager.page(num);
-      },
-      nextPage: function () {
-        if (!this.pager.hasNext()) {
-          this.currentFavorites = this.pager.page(0);
-        } else {
-          this.currentFavorites = this.pager.next();
-        }
-        this.currentPage = this.pager.currentPage;
-      },
-      prevPage: function () {
-        if (this.pager.currentPage === 1) {
-          this.currentFavorites = this.pager.page(this.pager.totalPages);
-        } else {
-          this.currentFavorites = this.pager.prev();
-        }
-        this.currentPage = this.pager.currentPage;
       },
       edit: function (name) {
         let index = nameExists(name, store.favorites);

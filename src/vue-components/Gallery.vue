@@ -58,7 +58,7 @@
           <span class="pg_holder" v-if="pagerButtons"
             v-show="!viewDog">
             <button class="btn btn1-01 btn_prev" tabindex="0"
-            @click="prevPage()">
+            @click="flip()">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
             </svg>
@@ -70,7 +70,7 @@
               </select>
             <p>of {{ totalPages }}</p>
             <button class="btn btn1-01 btn_prev" tabindex="0"
-            @click="nextPage()">Next
+            @click="flip('next')">Next
             <svg xmlns="http://www.w3.org/2000/svg" class="carousel1-04_chevron" viewBox="0 0 24 24">
               <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
             </svg></button>
@@ -122,17 +122,18 @@
 </div>
 </template>
 <script>
+import {jsonDir} from "../js/jsondir.js";
 import {axios_get} from "../js/axios_get.js";
 import {allbreeds} from "../js/allbreeds.js";
 import {itemExists} from "../js/itemexists.js";
 import {shuffle} from "../js/shuffle.js";
 import {router} from "../js/router.js";
-import Paginate from "../js/vendor/Paginate.js";
 import {store} from "../js/store.js";
 import {storage} from "../js/localStorage.js";
 import {extractFileName} from "../js/extractfilename.js";
 import {nameExists} from "../js/nameexists.js";
-import {jsonDir} from "../js/jsondir.js";
+import Pager from "../js/pager.js";
+
 
 const vcBreedSelector = () => import ('./vcBreedSelector.vue');
 const vcRandomDog = () => import ('./vcRandomDog.vue');
@@ -158,6 +159,7 @@ export default {
       currentPage: "",
       totalPages: "",
       pagerButtons: true,
+      perPage: 4,
 
       // status
       status: {
@@ -207,22 +209,26 @@ export default {
 
       // Returns an array of all the images from the breed
       // let url = `https://dog.ceo/api/breed/${breedName}/images`;
-      let url = `https://dog.ceo/api/breed/${breedName}/images`;
       
-      axios_get(url)
-        .then((response) => {
-          this.$Progress.finish();
-          let arr = Object.values(response);
-          this.cachedImages = arr[0].message; 
-          this.status.galleryDisplay = "fetching images...";         
-        })
-        .then(() => {
-          this.prepareRandomDog();
-        })
-        .catch((error) => {
-          // console.log(error);
-          this.loadBackupGallery();
-        });
+      this.loadBackupGallery();
+      // --
+      // let url = `https://dog.ceo/api/breed/${breedName}/images`;
+      
+      // axios_get(url)
+      //   .then((response) => {
+      //     this.$Progress.finish();
+      //     let arr = Object.values(response);
+      //     this.cachedImages = arr[0].message; 
+      //     this.status.galleryDisplay = "fetching images...";         
+      //   })
+      //   .then(() => {
+      //     this.prepareRandomDog();
+      //   })
+      //   .catch((error) => {
+      //     // console.log(error);
+      //     this.loadBackupGallery();
+      //   });
+      // --
     },
     loadBackupGallery: function() {
       console.log("loading gallery backup");
@@ -246,30 +252,24 @@ export default {
     },
     activatePager: function() {
       this.pager = null;
-      this.pager = new Paginate(this.cachedImages); 
-      this.currentImages = this.pager.page(0);
-      this.currentPage = this.pager.currentPage; 
-      this.totalPages = this.pager.totalPages;
+      this.pager = new Pager({
+        perPage: this.perPage,
+        data: this.cachedImages
+      });
+      this.totalPages = this.pager.getTotalPages();
       this.pagerButtons = true;
+      this.showPage(1);
     },
     showPage: function(num) {
       this.currentImages = this.pager.page(num);
-    },
-    nextPage: function() {
-      if (!this.pager.hasNext()) {
-        this.currentImages = this.pager.page(0);
-      } else {
-        this.currentImages = this.pager.next();
-      }
       this.currentPage = this.pager.currentPage;
     },
-    prevPage: function() {
-      if (this.pager.currentPage === 1) {
-        this.currentImages = this.pager.page(this.pager.totalPages);
+    flip: function(direction) {
+      if (direction === "next") {
+        this.showPage(this.pager.next());
       } else {
-        this.currentImages = this.pager.prev();
+        this.showPage(this.pager.prev());
       }
-      this.currentPage = this.pager.currentPage;
     },
     showRandomDogImage: function () {
       this.status.randomDog = "loading random dog...";
