@@ -48,7 +48,6 @@
         <!-- stage -->
         <div class="stage">
           <div class="stage_gallery">
-          {{ bd }}
           <p class="stage_gallery_breedname font_heading1">{{ currentBreed }}</p>
           <p class="stage_gallery_description">{{ currentBreed }} is the finest dog breed in the world...</p>
           </div>
@@ -87,7 +86,7 @@
           Back to {{ currentBreed }} gallery</button>
           <span class="dogview_name font_heading1">{{ extractDogName(currentDog) }}</span>
           <a :href="currentDog">
-            <img :src="currentDog"
+            <img class="dogview_img" :src="currentDog"
             :alt="currentDog" :title="currentDog" />
           </a>
         </div>
@@ -133,6 +132,7 @@ import {store} from "../js/store.js";
 import {storage} from "../js/localStorage.js";
 import {extractFileName} from "../js/extractfilename.js";
 import {nameExists} from "../js/nameexists.js";
+import {jsonDir} from "../js/jsondir.js";
 
 const vcBreedSelector = () => import ('./vcBreedSelector.vue');
 const vcRandomDog = () => import ('./vcRandomDog.vue');
@@ -168,8 +168,6 @@ export default {
       // viewDog
       viewDog: false,
       currentDog: "",
-
-      bd: ""
     }
   },
   components: {
@@ -228,7 +226,7 @@ export default {
     },
     loadBackupGallery: function() {
       console.log("loading gallery backup");
-      let url = "./src/js/ajax/gallery_backup_default.json";
+      let url = jsonDir + "gallery_backup_default.json";
       axios_get(url)
         .then((response) => {
           this.cachedImages = response.data["default"]; 

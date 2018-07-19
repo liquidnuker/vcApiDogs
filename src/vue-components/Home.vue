@@ -62,6 +62,7 @@ import {shuffle} from "../js/shuffle.js";
 import {allbreeds} from "../js/allbreeds.js";
 import {router} from "../js/router.js";
 import {extractFileName} from "../js/extractfilename.js";
+import {jsonDir} from "../js/jsondir.js";
 
 const vcRandomDog = () => import ('./vcRandomDog.vue');
 const vcLastViewed = () => import ('./vcLastViewed.vue');
@@ -88,7 +89,7 @@ export default {
       // url for api mode:
       // url_allBreedNames: "https://dog.ceo/api/breeds/list/all",
       // url for local list
-      url_allBreedNames: "./src/js/ajax/allbreeds.json",
+      url_allBreedNames: jsonDir + "allbreeds.json",
     }
   },
   components: {
@@ -102,22 +103,21 @@ export default {
   },
   methods: {
     listAllBreedNames: function () {
-      let self = this;
-      axios_get(self.url_allBreedNames)
-        .then(function (response) {
+      axios_get(this.url_allBreedNames)
+        .then((response) => {
           // for local list
-          self.allBreedNames = response.data.allbreeds;
+          this.allBreedNames = response.data.allbreeds;
 
           // for api mode
           // let arr = Object.values(response);
           // let arr2 = arr[0].message;
 
           // for (let i in arr2) {
-          //   self.allBreedNames.push(i);
+          //   this.allBreedNames.push(i);
           // }
         })
-        .then(function () {
-          self.showRandomDogImage();
+        .then(() => {
+          this.showRandomDogImage();
       });
     },
     showRandomDogImage: function () {
@@ -130,12 +130,12 @@ export default {
       axios_get(url)
         .then(function (response) {
           let arr = Object.values(response);
-          self.status.randomDog = "";
-          self.randomDogImage = shuffle(arr[0].message);
+          this.status.randomDog = "";
+          this.randomDogImage = shuffle(arr[0].message);
         })
         .then(function () {
           // for vcRandomDog.vue name
-          self.randomDogName = extractFileName(self.randomDogImage[0], false);
+          this.randomDogName = extractFileName(this.randomDogImage[0], false);
       });      
     },
     switchBreed: function(breed) {
