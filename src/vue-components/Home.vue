@@ -22,7 +22,8 @@
         :pr-status="status.randomDog"
         :pr-random-breed="randomDogBreed"
         :pr-random-image="randomDogImage"
-        :pr-random-dog-name="randomDogName" />
+        :pr-random-dog-name="randomDogName" 
+        :pr-is-random-dog-ready="isRandomDogReady" />
       </div>
       <!-- /randog -->
       <!-- lastViewed -->
@@ -79,6 +80,7 @@ export default {
       randomDogBreed: "",
       randomDogImage: "",
       randomDogName: "",
+      isRandomDogReady: false,
 
       status: {
         randomDog: ""
@@ -126,16 +128,17 @@ export default {
 
       // Returns an array of all the images from the breed
       let url = "https://dog.ceo/api/breed/" + this.randomDogBreed[0] + "/images";
-      let self = this;
+      
       axios_get(url)
-        .then(function (response) {
+        .then((response) => {
           let arr = Object.values(response);
           this.status.randomDog = "";
           this.randomDogImage = shuffle(arr[0].message);
         })
-        .then(function () {
+        .then(() => {
           // for vcRandomDog.vue name
           this.randomDogName = extractFileName(this.randomDogImage[0], false);
+          this.isRandomDogReady = true;
       });      
     },
     switchBreed: function(breed) {

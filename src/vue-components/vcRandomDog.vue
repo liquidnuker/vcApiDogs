@@ -1,10 +1,12 @@
 <template>
 <div>
   <h2 class="itemBox102_heading1 font_heading1">Random Dog</h2>
-  <div class="itemBox102">
-    
+  <div v-if="!prIsRandomDogReady" class="vcspinner1">
+    <span class="vcspinner1_loading"></span>
+  </div>
+  <div v-if="prIsRandomDogReady" class="itemBox102">    
     <div class="itemBox102_img-holder">
-      <a :href="prRandomImage[0]">
+     <a :href="prRandomImage[0]">
         <img :src="prRandomImage[0]" :alt="'random' + ' ' + prRandomBreed[0] + ' ' + 'image'"
         :title="'random' + ' ' + prRandomBreed[0] + ' ' + 'image'">
       </a>
@@ -26,7 +28,8 @@ export default {
     "prStatus",
     "prRandomBreed",
     "prRandomImage",
-    "prRandomDogName"
+    "prRandomDogName",
+    "prIsRandomDogReady"
   ],
   components: {
   },

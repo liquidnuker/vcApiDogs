@@ -1,0 +1,25 @@
+// vcSpinner.vue
+.vcspinner1 {
+  @extend %pos--relative;
+  // background-color: #ccc;
+  height: 100%;
+}
+
+.vcspinner1_loading {
+  @extend %display--block;
+  @extend %pos--absolute;
+  top: calc(50% - 1rem);
+  left: calc(50% - 1rem);
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid #5c442a;
+  border-bottom: 10px solid rgba(0,0,0,0);
+  border-radius: 50%;
+  animation: load 0.5s linear infinite;
+}
+
+@keyframes load {
+  to {
+    transform: rotate(360deg);
+  }
+}

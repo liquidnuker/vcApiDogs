@@ -31,7 +31,8 @@
         :pr-status="status.randomDog"
         :pr-random-breed="randomDogBreed"
         :pr-random-image="randomDogImage"
-        :pr-random-dog-name="randomDogName" />
+        :pr-random-dog-name="randomDogName" 
+        :pr-is-random-dog-ready="isRandomDogReady" />
       </div>
       <!-- /randog -->
       <!-- lastViewed -->
@@ -97,7 +98,9 @@
           <ul class="gallery_display" v-for="i in currentImages">
             <li class="col-xs-6 col-sm-3">
               <div class="gallery_display_img-holder">
-                <img :src="i" :alt="currentBreed + ' image'"
+                <vcSpinner 
+                :pr-is-thumbs-ready="isThumbsReady" />
+                <img v-if="isThumbsReady" :src="i" :alt="currentBreed + ' image'"
                 :title="currentBreed + ' image'"
                 @click="insertLastViewed(i, currentBreed);" />
               </div>
@@ -139,6 +142,7 @@ const vcBreedSelector = () => import ('./vcBreedSelector.vue');
 const vcRandomDog = () => import ('./vcRandomDog.vue');
 const vcHeader = () => import ('./vcHeader.vue');
 const vcLastViewed = () => import ('./vcLastViewed.vue');
+const vcSpinner = () => import ('./vcSpinner.vue');
 export default {
   data () {
     return {   
@@ -170,13 +174,17 @@ export default {
       // viewDog
       viewDog: false,
       currentDog: "",
+
+      isThumbsReady: false,
+      isRandomDogReady: false
     }
   },
   components: {
     vcBreedSelector: vcBreedSelector,
     vcRandomDog: vcRandomDog,
     vcLastViewed: vcLastViewed,
-    vcHeader: vcHeader
+    vcHeader: vcHeader,
+    vcSpinner: vcSpinner
   },
   watch: {
     $route: function () {
@@ -210,25 +218,24 @@ export default {
       // Returns an array of all the images from the breed
       // let url = `https://dog.ceo/api/breed/${breedName}/images`;
       
-      this.loadBackupGallery();
-      // --
-      // let url = `https://dog.ceo/api/breed/${breedName}/images`;
+      // this.loadBackupGallery();
       
-      // axios_get(url)
-      //   .then((response) => {
-      //     this.$Progress.finish();
-      //     let arr = Object.values(response);
-      //     this.cachedImages = arr[0].message; 
-      //     this.status.galleryDisplay = "fetching images...";         
-      //   })
-      //   .then(() => {
-      //     this.prepareRandomDog();
-      //   })
-      //   .catch((error) => {
-      //     // console.log(error);
-      //     this.loadBackupGallery();
-      //   });
-      // --
+      let url = `https://dog.ceo/api/breed/${breedName}/images`;
+      
+      axios_get(url)
+        .then((response) => {
+          this.$Progress.finish();
+          let arr = Object.values(response);
+          this.cachedImages = arr[0].message; 
+          this.status.galleryDisplay = "fetching images...";         
+        })
+        .then(() => {
+          this.prepareRandomDog();
+        })
+        .catch((error) => {
+          // console.log(error);
+          this.loadBackupGallery();
+        });
     },
     loadBackupGallery: function() {
       console.log("loading gallery backup");
@@ -263,13 +270,18 @@ export default {
     showPage: function(num) {
       this.currentImages = this.pager.page(num);
       this.currentPage = this.pager.currentPage;
+      this.setThumbsReady(true);
     },
     flip: function(direction) {
+      this.setThumbsReady(false);
       if (direction === "next") {
         this.showPage(this.pager.next());
       } else {
         this.showPage(this.pager.prev());
       }
+    },
+    setThumbsReady: function(isReady) {
+      this.isThumbsReady = isReady;
     },
     showRandomDogImage: function () {
       this.status.randomDog = "loading random dog...";
@@ -285,7 +297,8 @@ export default {
         })
         .then(() => {
           this.randomDogName = extractFileName(this.randomDogImage[0], false);
-      });      
+          this.isRandomDogReady = true;
+        });      
     },
     insertLastViewed: function(imgSrc, breed) {
       this.currentDog = imgSrc;
