@@ -124,7 +124,7 @@ export default {
     },
     showRandomDogImage: function () {
       this.randomDogBreed = shuffle(allbreeds);
-      this.status.randomDog = `loading ${this.randomDogBreed[0]}`;
+      this.status.randomDog = `Loading random ${this.randomDogBreed[0]}...`;
 
       // Returns an array of all the images from the breed
       let url = "https://dog.ceo/api/breed/" + this.randomDogBreed[0] + "/images";

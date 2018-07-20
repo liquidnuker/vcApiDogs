@@ -7,10 +7,9 @@
       <li v-for="i in lastViewedStorage">
         <div class="navSide103_img-holder">
           <img :src="i.imgSrc" :alt="i.breed + ' image'" :title="i.breed + ' image'">
-          <!-- {{ i.imgSrc }} -->
         </div>
         <p>{{ i.name }}</p>
-        <a tabindex="0" aria-setsize="3" aria-posinset="1" @click="jumpToGallery(z)">{{ i.breed }}</a>
+        <a tabindex="0" aria-setsize="3" aria-posinset="1" @click="jumpToGallery(i.breed)">{{ i.breed }}</a>
       </li>
     </ul>
   </nav>
@@ -31,7 +30,6 @@ export default {
   },
   watch: {
     lastViewed: function() {
-      console.log("lastViewed watcher");
       this.fetchData();
     }
   },

@@ -99,7 +99,8 @@
             <li class="col-xs-6 col-sm-3">
               <div class="gallery_display_img-holder">
                 <vcSpinner 
-                :pr-is-thumbs-ready="isThumbsReady" />
+                :pr-loading="isThumbsReady"
+                :pr-spinner="true" />
                 <img v-if="isThumbsReady" :src="i" :alt="currentBreed + ' image'"
                 :title="currentBreed + ' image'"
                 @click="insertLastViewed(i, currentBreed);" />
@@ -215,11 +216,9 @@ export default {
       this.status.galleryDisplay = `fetching ${this.currentBreed} data`;
       this.$Progress.start();
 
-      // Returns an array of all the images from the breed
-      // let url = `https://dog.ceo/api/breed/${breedName}/images`;
-      
       // this.loadBackupGallery();
       
+      // Returns an array of all the images from the breed
       let url = `https://dog.ceo/api/breed/${breedName}/images`;
       
       axios_get(url)
@@ -284,8 +283,9 @@ export default {
       this.isThumbsReady = isReady;
     },
     showRandomDogImage: function () {
-      this.status.randomDog = "loading random dog...";
       this.randomDogBreed = shuffle(allbreeds);
+      this.status.randomDog = `Loading random ${this.randomDogBreed[0]}...`;
+
       // Returns an array of all the images from the breed
       let url = "https://dog.ceo/api/breed/" + this.randomDogBreed[0] + "/images";
       

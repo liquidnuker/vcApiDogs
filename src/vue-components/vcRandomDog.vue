@@ -1,9 +1,10 @@
 <template>
 <div>
   <h2 class="itemBox102_heading1 font_heading1">Random Dog</h2>
-  <div v-if="!prIsRandomDogReady" class="vcspinner1">
-    <span class="vcspinner1_loading"></span>
-  </div>
+  <vcSpinner 
+  :pr-loading="prIsRandomDogReady"
+  :pr-spinner="false"
+  :pr-status="prStatus" />
   <div v-if="prIsRandomDogReady" class="itemBox102">    
     <div class="itemBox102_img-holder">
      <a :href="prRandomImage[0]">
@@ -18,6 +19,7 @@
 </div>
 </template>
 <script>
+const vcSpinner = () => import ('./vcSpinner.vue');
 export default {
   data () {
     return {   
@@ -32,6 +34,7 @@ export default {
     "prIsRandomDogReady"
   ],
   components: {
+    vcSpinner: vcSpinner
   },
   mounted: function () {
   },

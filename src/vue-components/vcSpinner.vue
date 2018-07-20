@@ -1,6 +1,7 @@
 <template>
-  <div v-if="!prIsThumbsReady" class="vcspinner1">
-    <span class="vcspinner1_loading"></span>
+  <div v-if="!prLoading" class="vcspinner1">
+    <span v-if="prSpinner" class="vcspinner1_loading"></span>
+    <p v-else class="vcspinner1_status">{{ prStatus }}</p>
   </div>
 </template>
 <script>
@@ -15,7 +16,9 @@ export default {
   // }
   },
   props: [
-    "prIsThumbsReady"
+    "prLoading",
+    "prSpinner",
+    "prStatus"
   ],
   components: {
   },
