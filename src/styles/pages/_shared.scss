@@ -138,13 +138,13 @@ main > .container {
     height: 50px;
     margin-right: 4px;
         
-    > img {
+    img {
       width: 100%;
       max-height: 100%;
       
       // centering
       // use absolute to ignore parent's padding
-      position: relative;
+      position: absolute;
       top: 50%;
       left: 50%;
       transform: translateX(-50%) translateY(-50%);      
