@@ -1,1 +1,246 @@
-webpackJsonp([8],{105:function(t,e,r){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var a=r(106),n=r.n(a),s=r(107),o=r(0),i=o(n.a,s.a,null,null,null);e.default=i.exports},106:function(t,e,r){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var a=r(18),n=r(26);e.default={data:function(){return{STORAGE_KEY_FAVORITES:"vcApiDogs-favorites",favorites:a.store.favorites,favoritesStorage:""}},watch:{favorites:function(){this.fetchData()}},mounted:function(){this.fetchData()},methods:{fetchData:function(){this.favoritesStorage=n.storage.fetch(this.STORAGE_KEY_FAVORITES)}}}},107:function(t,e,r){"use strict";var a=function(){var t=this,e=t.$createElement,r=t._self._c||e;return r("div",[t.favoritesStorage.length>0?r("div",[r("span",[t._v("\r\n    Favorites: \r\n    ")]),t._v(" "),r("a",{staticClass:"main-header_fav-link",attrs:{href:"index.html#/favorites"}},[t._v(t._s(t.favoritesStorage.length)+"\r\n    ")])]):t._e()])},n=[],s={render:a,staticRenderFns:n};e.a=s},18:function(t,e,r){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var a={lastViewed:[],favorites:[]};e.store=a},26:function(t,e,r){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.storage=void 0;var a=r(27),n=function(t){return t&&t.__esModule?t:{default:t}}(a),s={fetch:function(t){return JSON.parse(localStorage.getItem(t)||"[]")},save:function(t,e){localStorage.setItem(t,(0,n.default)(e))}};e.storage=s},27:function(t,e,r){t.exports={default:r(28),__esModule:!0}},28:function(t,e,r){var a=r(12),n=a.JSON||(a.JSON={stringify:JSON.stringify});t.exports=function(t){return n.stringify.apply(n,arguments)}}});
+webpackJsonp([8],{
+
+/***/ 105:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_vcFavoriteCount_vue__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_vcFavoriteCount_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_vcFavoriteCount_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6928aaed_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_vcFavoriteCount_vue__ = __webpack_require__(107);
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+
+/* template */
+
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_vcFavoriteCount_vue___default.a,
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6928aaed_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_vcFavoriteCount_vue__["a" /* default */],
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "vue-components\\vcFavoriteCount.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] vcFavoriteCount.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6928aaed", Component.options)
+  } else {
+    hotAPI.reload("data-v-6928aaed", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["default"] = (Component.exports);
+
+
+/***/ }),
+
+/***/ 106:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _store = __webpack_require__(18);
+
+var _localStorage = __webpack_require__(27);
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+  data: function data() {
+    return {
+      STORAGE_KEY_FAVORITES: "vcApiDogs-favorites",
+      favorites: _store.store.favorites,
+      favoritesStorage: ""
+    };
+  },
+
+  watch: {
+    favorites: function favorites() {
+      this.fetchData();
+    }
+  },
+  mounted: function mounted() {
+    this.fetchData();
+  },
+  methods: {
+    fetchData: function fetchData() {
+      this.favoritesStorage = _localStorage.storage.fetch(this.STORAGE_KEY_FAVORITES);
+    }
+  }
+};
+
+/***/ }),
+
+/***/ 107:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('div', [_c('span', [_vm._v("\r\n    Favorites: \r\n    ")]), _vm._v(" "), _c('a', {
+    staticClass: "main-header_fav-link",
+    attrs: {
+      "href": "index.html#/favorites"
+    }
+  }, [_vm._v(_vm._s(_vm.favoritesStorage.length) + "\r\n    ")])])])
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-6928aaed", esExports)
+  }
+}
+
+/***/ }),
+
+/***/ 18:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var store = {
+  lastViewed: [
+    // temp default for testing
+    // {
+    //   name: 'name1',
+    //   imgSrc: '',
+    //   breed: 'breed1'
+    // },
+    // {
+    //   name: 'name2',
+    //   imgSrc: '',
+    //   breed: 'breed2'
+    // },
+    // {
+    //   name: 'name3',
+    //   imgSrc: '',
+    //   breed: 'breed3'
+    // }
+  ],
+  favorites: [
+    // temp default for testing
+    // {
+    //   name: 'name1',
+    //   imgSrc: 'imgsrc1.jpg',
+    //   breed: 'african',
+    //   notes: "note1",
+    //   edit: false
+    // },
+    // {
+    //   name: 'name2',
+    //   imgSrc: 'imgsrc2.jpg',
+    //   breed:'african',
+    //   notes: "note2",
+    //   edit: false
+    // },
+    // {
+    //   name: 'name3',
+    //   imgSrc: 'imgsrc3.jpg',
+    //   breed: 'bulldog',
+    //   notes: "note3",
+    //   edit: false
+    // },
+    // {
+    //   name: 'name4',
+    //   imgSrc: 'imgsrc4.jpg',
+    //   breed:'bulldog',
+    //   notes: "note4",
+    //   edit: false
+    // },
+  ]
+};
+
+exports.store = store;
+
+/***/ }),
+
+/***/ 27:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.storage = undefined;
+
+var _stringify = __webpack_require__(28);
+
+var _stringify2 = _interopRequireDefault(_stringify);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var storage = {
+  fetch: function fetch(key) {
+    var data = JSON.parse(localStorage.getItem(key) || '[]');
+    return data;
+  },
+  save: function save(key, data) {
+    localStorage.setItem(key, (0, _stringify2.default)(data));
+  }
+};
+
+exports.storage = storage;
+
+/***/ }),
+
+/***/ 28:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(29), __esModule: true };
+
+/***/ }),
+
+/***/ 29:
+/***/ (function(module, exports, __webpack_require__) {
+
+var core  = __webpack_require__(12)
+  , $JSON = core.JSON || (core.JSON = {stringify: JSON.stringify});
+module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
+  return $JSON.stringify.apply($JSON, arguments);
+};
+
+/***/ })
+
+});

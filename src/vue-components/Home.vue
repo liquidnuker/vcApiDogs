@@ -119,7 +119,7 @@ export default {
           // }
         })
         .then(() => {
-          this.showRandomDogImage();
+          // this.showRandomDogImage();
       });
     },
     showRandomDogImage: function () {

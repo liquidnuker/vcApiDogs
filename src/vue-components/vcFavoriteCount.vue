@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div v-if="favoritesStorage.length > 0">
+  <div>
     <span>
     Favorites:&nbsp;
     </span>
