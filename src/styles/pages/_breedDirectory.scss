@@ -24,6 +24,12 @@
   overflow: hidden;
   text-overflow: clip;
 
+  &:hover {
+    .dog_preview {
+      opacity: 0.83;
+    }
+  }
+
   a {
     z-index: 3;
     cursor: pointer;
