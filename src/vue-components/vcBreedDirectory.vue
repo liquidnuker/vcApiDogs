@@ -3,13 +3,13 @@
   <!-- prev/next dirList -->
   <span class="pg_holder">
     <button class="btn btn1-01 btn_prev" tabindex="0"
-    @click="prevPage()">
+    @click="flip()">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
     </svg>
     Prev</button>
     <button class="btn btn1-01 btn_prev" tabindex="0"
-    @click="nextPage()">Next
+    @click="flip('next')">Next
     <svg xmlns="http://www.w3.org/2000/svg" class="carousel1-04_chevron" viewBox="0 0 24 24">
       <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
     </svg></button>
@@ -51,7 +51,7 @@
 </div>
 </template>
 <script>
-import Paginate from "../js/vendor/Paginate.js";
+import Pager from "../js/pager.js";
 import {router} from "../js/router.js";
 export default {
   data() {
@@ -66,7 +66,8 @@ export default {
         pager: "",
         currentPage: "",
         pagerButtons: null,
-        pagerBreedList: []
+        pagerBreedList: [],
+        perPage: 8,
       };
     },
     watch: {
@@ -118,18 +119,20 @@ export default {
       },
       paginateBreedList: function (data) {
         this.pager = null;
-        this.pager = new Paginate(data);
-        this.pagerBreedList = this.pager.page(1);
-        this.currentPage = 1;
-        this.pagerButtons = true;
 
-        // console.log(this.pager.totalPages);
+        this.pager = new Pager({
+          perPage: this.perPage,
+          data: data
+        });
+
+        this.showPage(1);
+        this.pagerButtons = true;
 
         this.setBreedNameButtons();
       },
       setBreedNameButtons: function () {
         let temp2 = [];
-        for (let i = 0, l = this.pager.totalPages + 1; i < l; i++) {
+        for (let i = 0, l = this.pager.getTotalPages() + 1; i < l; i++) {
           temp2.push(this.pager.page(i));
         }
 
@@ -148,21 +151,12 @@ export default {
         });
         temp2 = null;
       },
-      nextPage: function () {
-        if (this.currentPage !== this.pager.totalPages) {
-          this.currentPage = this.currentPage + 1;
+      flip: function(direction) {
+        if (direction === "next") {
+          this.showPage(this.pager.next());
         } else {
-          this.currentPage = 1;
+          this.showPage(this.pager.prev());
         }
-        this.showPage(this.currentPage);
-      },
-      prevPage: function () {
-        if (this.currentPage === 1) {
-          this.currentPage = this.pager.totalPages;
-        } else {
-          this.currentPage = this.currentPage - 1;
-        }
-        this.showPage(this.currentPage);
       },
       showPage: function (num) {
         this.currentPage = num;
