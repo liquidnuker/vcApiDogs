@@ -36,6 +36,10 @@ a {
   .main-header_fav-link {
     @extend %header_font_color2;
   }
+
+  .vcdogs_logo {
+    height: 100px;
+  }
 }
 
 .main-items {

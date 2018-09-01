@@ -94,9 +94,8 @@
           <ul>
             <li v-for="(i, index) in currentFavorites">
               <div class="favorites_list_info">
-                <p class="favorites_list_name">{{ i.name }}</p>
                 <img class="favorites_list_img" :src="i.imgSrc" />
-                <br>
+                <p class="favorites_list_name">{{ i.name }}</p><br>
                 <span>Breed:&nbsp;<a class="favorites_list_breed" @click="switchBreed(i.breed)">{{ i.breed }}</a></span>
                 <button class="btn btn1-01 btn_remove"
                 @click="removeItem(i.name)">

@@ -2,7 +2,9 @@
   <!-- header -->
   <header class="row container-fluid--h">
     <div class="row container main-header">
-      <div class="col-sm-4">logo</div>
+      <div class="col-sm-4">
+        <img class="vcdogs_logo" src="src/img/vcDogs_logo_v1.svg" alt="vcDogs logo" title="vcDogs logo">
+      </div>
       <div class="col-sm-8">
         <!-- favoriteCount -->
         <vcFavoriteCount />
