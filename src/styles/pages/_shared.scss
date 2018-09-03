@@ -50,6 +50,10 @@ a {
   @extend %padd--4;
   @extend %header--bg;
   @extend %button_font_color1;
+
+  a {
+    color: #F7F4C6;
+  }
 }
 
 main > .container {
@@ -404,15 +408,61 @@ main > .container {
 // stage
 // ==================================================/
 .stage {
+  @extend %pos--relative;
   @extend %padd--4;
   @extend %margin-bottom--4;
   @extend %lrbg2;
+
+  h1 {
+    margin: 0;
+  }
 
   .stage_gallery_breedname,
   .stage_gallery_description {
     &::first-letter {
       text-transform: uppercase;
     }
+  }
+}
+
+// mobile portrait (320x480) 
+@include mq($from: mobile) {
+  .stage_home {
+    height: 50px;
+    img {
+      display: none;
+      left: 0;
+    }
+  }
+}
+
+// *small tablet portrait (600x800)
+@include mq($from: smallTabletPortrait) {
+  .stage_home {
+    height: 100px;
+    img {
+      display: block;
+      width: auto;
+    }
+  }
+}
+
+.stage_home {
+  @extend %pos--relative;
+  
+  overflow: hidden;
+
+  .stage_home_desc-holder {
+    @extend %pos--absolute;
+    // @extend %padd--4;
+    z-index: 2;
+  } 
+
+  img {
+    @extend %pos--absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
   }
 }
 

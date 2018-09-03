@@ -50,7 +50,7 @@
       <div class="row col-sm-12 rightside_contents lrbg">
         <!-- stage -->
         <div class="stage">
-          stage
+          <p class="stage_gallery_breedname font_heading1">Favorites</p>
         </div>
         <!-- /stage -->
         <!-- page controls -->

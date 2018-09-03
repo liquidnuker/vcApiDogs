@@ -38,8 +38,12 @@
       <!-- rightside_contents -->
       <div class="row col-sm-12 rightside_contents lrbg">
         <!-- stage -->
-        <div class="stage">
-          stage
+        <div class="stage stage_home">
+          <div class="stage_home_desc-holder">
+            <h1 class="stage_gallery_breedname font_heading1">Welcome to vcDogs!</h1>
+          <p class="stage_gallery_description">Over 9000 dog images!</p>
+          </div>
+          <img src="src/img/ui/dogs/stage_home2.jpg" alt="main dog image" title="main dog image"/>
         </div>
         <!-- /stage -->
         <!-- main breed directory holder -->
